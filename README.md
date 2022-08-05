@@ -1,1 +1,1 @@
-# 42_Cursus
+# 42_Course
