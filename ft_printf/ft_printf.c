@@ -23,7 +23,7 @@ int	ft_print_str(char *str)
 	return (len);
 }
 
-int	ft_print_hex(unsigned int num, char format)
+int	ft_print_hex(size_t num, char format)
 {
 	int	len;
 
@@ -48,22 +48,8 @@ int	ft_print_hex(unsigned int num, char format)
 int	ft_print_ptr(void *ptr)
 {
 	int					len;
-	unsigned long int	num;
 
-	len = 0;
-	num = ptr;
-	if (num / 16 != 0)
-	{
-		len += ft_print_ptr(num / 16);
-		len += ft_print_ptr(num % 16);
-	}
-	else
-	{
-		if (num < 10)
-			len += ft_print_char(num + 48);
-		else
-			len += ft_print_char(num + 87);
-	}
+	len = ft_print_hex((size_t)ptr, 'x');
 	return (len);
 }
 
@@ -72,14 +58,39 @@ int	ft_print_num(int num)
 	int	len;
 
 	len = 0;
-	return (num);
+	if (num == -2147483648)
+	{
+		len += write(1, "-2147483648", 11);
+		return (len);
+	}
+	if (num < 0)
+	{
+		len += write(1, "-", 1);
+		num *= -1;
+	}
+	if (num / 10 != 0)
+	{
+		len += ft_print_num(num / 10);
+		len += ft_print_num(num % 10);
+	}
+	else
+		len += ft_print_char(num + 48);
+	return (len);
 }
 
 int	ft_print_u_num(unsigned int num)
 {
 	int	len;
 
-	len = 1;
+	len = 0;
+	if (num / 10 != 0)
+	{
+		len += ft_print_u_num(num / 10);
+		len += ft_print_u_num(num % 10);
+	}
+	else
+		len += ft_print_char(num + 48);
+	return (len);
 	return (num);
 }
 
@@ -104,10 +115,7 @@ int	ft_what_type(char format, va_list *ap)
 	else if (format == 'x' || format == 'X')
 		len = ft_print_hex(va_arg(*ap, int), format);
 	else if (format == '%')
-	{
-		write(1, "%", 1);
-		len++;
-	}
+		len += write(1, "%", 1);
 	else
 		return (0);
 	return (len);
@@ -142,6 +150,16 @@ int	main(void)
 {
 	int		result;
 
+	result = printf("d: %d \n", 0xbd51d);
+	printf("result: %d \n", result);
+	result = printf("i: %i \n", 0xbd51d);
+	printf("result: %d \n", result);
+	printf("------------------my---------------\n");
+	result = ft_printf("d: %d \n", 0xbd51d);
+	printf("result: %d \n", result);
+	result = ft_printf("i: %i \n", 0xbd51d);
+	printf("result: %d \n", result);
+
 /*
 	result = printf("c: %d \n", 'a');
 	printf("result: %d \n", result);
@@ -162,10 +180,16 @@ int	main(void)
 	result = printf("+d: %u \n", i);
 	result = printf("-d: %u \n", j);
 	printf("result: %d \n", result);
+*/
 
-	result = printf("x: %x \n", 314);
+/* pppppppppppppp
+	result = printf("x: %x \n", 3144565464564544568);
 	printf("result: %d \n", result);
-	result = printf("X: %X \n", 314);
+	result = printf("X: %X \n", 3144565464564544568);
+	printf("result: %d \n", result);
+	result = ft_printf("x: %x \n", 3144565464564544568);
+	printf("result: %d \n", result);
+	result = ft_printf("X: %X \n", 3144565464564544568);
 	printf("result: %d \n", result);
 */
 	/*
@@ -214,7 +238,7 @@ int	main(void)
 	result = printf("my c: %c \n");
 	printf("result: %d \n", result);
 */
-
+/*
 int a;
 
 a=1;
@@ -223,6 +247,7 @@ a=1;
 	result = printf("my p: %p \n", &a);
 	printf("result: %d \n", result);
 	printf("-------------------------\n2\n");
+*/
 	/*
 	result = ft_printf("my c: %x \n", -310004);
 	printf("result: %d \n", result);
