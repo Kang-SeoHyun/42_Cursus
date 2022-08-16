@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_extra.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 19:19:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/16 19:43:57 by seokang          ###   ########.fr       */
+/*   Created: 2022/08/16 17:57:14 by seokang           #+#    #+#             */
+/*   Updated: 2022/08/16 19:47:26 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_print_char(unsigned char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-int		ft_printf(const char *format, ...);
-int		ft_what_type(char format, va_list *ap);
-int		ft_print_char(unsigned char c);
-int		ft_print_str(char *str);
-int		ft_print_ptr(void *ptr);
-int		ft_print_hex(size_t num, char format);
-int		ft_print_num(int num);
-int		ft_print_u_num(unsigned int num);
+int	ft_print_str(char *str)
+{
+	int	len;
 
-#endif
+	len = 0;
+	if (!(str))
+		str = "(null)";
+	while (*str)
+	{
+		len += write(1, str, 1);
+		str++;
+	}
+	return (len);
+}
+
+int	ft_print_ptr(void *ptr)
+{
+	int					len;
+
+	len = ft_print_hex((size_t)ptr, 'p');
+	return (len);
+}

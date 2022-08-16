@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:55:23 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/16 19:20:43 by seokang          ###   ########.fr       */
+/*   Updated: 2022/08/16 19:47:48 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	ft_print_hex(size_t num, char format)
 	int	len;
 
 	len = 0;
-	if (num / 16 != 0)
+	if (format == 'x' || format == 'X')
+		num = (unsigned int)num;
+	if ((num / 16) != 0)
 	{
 		len += ft_print_hex(num / 16, format);
 		len += ft_print_hex(num % 16, format);
@@ -26,7 +28,7 @@ int	ft_print_hex(size_t num, char format)
 	{
 		if (num < 10)
 			len += ft_print_char(num + 48);
-		else if (format == 'x')
+		else if (format == 'x' || format == 'p')
 			len += ft_print_char(num + 87);
 		else
 			len += ft_print_char(num + 55);

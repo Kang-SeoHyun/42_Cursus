@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:30:20 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/16 19:20:27 by seokang          ###   ########.fr       */
+/*   Updated: 2022/08/16 20:00:19 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	while (*format)
 	{
+		if (len < 0)
+			return (-1);
 		if (*format == '%')
 		{
 			len += ft_what_type(*(format + 1), &ap);
