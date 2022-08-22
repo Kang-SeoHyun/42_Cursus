@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:19:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/22 21:37:56 by seokang          ###   ########.fr       */
+/*   Updated: 2022/08/22 23:14:54 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+
+
+typedef struct	s_flag
+{
+	int	hash;
+}				t_flag;
 
 int		ft_printf(const char *format, ...);
 int		ft_what_type(char format, va_list *ap);
