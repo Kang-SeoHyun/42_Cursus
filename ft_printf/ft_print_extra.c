@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:57:14 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/16 19:47:26 by seokang          ###   ########.fr       */
+/*   Updated: 2022/08/22 20:16:25 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 int	ft_print_char(unsigned char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	ft_print_str(char *str)
 {
 	int	len;
+	int	error;
 
 	len = 0;
+	error = 0;
 	if (!(str))
 		str = "(null)";
 	while (*str)
 	{
-		len += write(1, str, 1);
+		error = write(1, str, 1);
+		if (error == -1)
+			return (-1);
+		len += error;
 		str++;
 	}
 	return (len);

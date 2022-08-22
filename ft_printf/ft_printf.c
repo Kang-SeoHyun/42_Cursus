@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:30:20 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/16 20:00:19 by seokang          ###   ########.fr       */
+/*   Updated: 2022/08/22 21:57:55 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ft_what_type(char format, va_list *ap)
 	else if (format == 'p')
 	{
 		len += write(1, "0x", 2);
+		if (len == -1)
+			return (-1);
 		len += ft_print_ptr(va_arg(*ap, void *));
 	}
 	else if (format == 'd' || format == 'i')
@@ -42,24 +44,26 @@ int	ft_what_type(char format, va_list *ap)
 int	ft_printf(const char *format, ...)
 {
 	int		len;
+	int		error;
 	va_list	ap;
 
 	len = 0;
 	va_start(ap, format);
 	while (*format)
 	{
-		if (len < 0)
-			return (-1);
 		if (*format == '%')
 		{
-			len += ft_what_type(*(format + 1), &ap);
+			error = ft_what_type(*(format + 1), &ap);
+			len += error;
 			format++;
 		}
 		else
 		{
-			ft_print_char(*format);
+			error = ft_print_char(*format);
 			len++;
 		}
+		if (error == -1)
+			return (-1);
 		format++;
 	}
 	va_end(ap);
