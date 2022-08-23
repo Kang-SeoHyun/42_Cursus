@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:30:20 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/22 23:14:36 by seokang          ###   ########.fr       */
+/*   Updated: 2022/08/23 21:38:59 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	ft_printf(const char *format, ...)
 	int		len;
 	int		error;
 	va_list	ap;
-	struct flag	f_info;
 
 	len = 0;
 	va_start(ap, format);
