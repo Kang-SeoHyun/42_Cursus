@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:30:20 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/23 19:49:52 by seokang          ###   ########.fr       */
+/*   Updated: 2022/08/23 22:01:13 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	ft_flag_setting(t_flag *flag)
 	flag->left = 0;
 	flag->zero = 0;
 	flag->jeom = 0;
+	flag->
 }
 
 int	ft_this_is_flag(const char *flag, char c)
@@ -98,7 +99,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			ft_flag_setting(&flag);
-			while (*++format && ft_this_is_flag(FLAG, *format))
+			while (*(++format) && ft_this_is_flag(FLAG, *format))
 				ft_what_flag(&flag, *format);
 			error = ft_what_type(*format, &ap);
 			len += error;

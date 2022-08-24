@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 19:19:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/23 19:47:33 by seokang          ###   ########.fr       */
+/*   Updated: 2022/08/23 22:11:21 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_flag
 	int		left;
 	int		zero;
 	int		jeom;
+	char	width[20];
 }				t_flag;
 
 int		ft_printf(const char *format, ...);
