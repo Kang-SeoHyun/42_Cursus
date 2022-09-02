@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:49:15 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/21 12:56:02 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/02 17:48:50 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	new_str[0] = '\0';
 	ft_strcat(new_str, s1);
 	ft_strcat(new_str, s2);
+	s1 = NULL;
+	s2 = NULL;
 	return (new_str);
 }
