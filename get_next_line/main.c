@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/04 19:37:50 by seokang          ###   ########.fr       */
+/*   Created: 2022/09/04 17:56:54 by seokang           #+#    #+#             */
+/*   Updated: 2022/09/04 18:57:22 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+int	main(void)
 {
-	char		*buf;
-	static char	*backup;
+	char	*s;
+	int		fd;
+	int		i;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	backup = get_backup();
-	buf = get_line();
-	backup = next_backup();
-	return (buf);
+	i = 0;
+	if ((fd = open("b.txt", O_RDONLY)))
+	{
+		while (i++ < 3)
+		{
+			s = get_next_line(fd);
+			printf("%s", s);
+			free(s);
+			sleep(2);
+		}
+	}
+	return (0);
 }
