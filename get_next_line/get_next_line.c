@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/04 19:58:26 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/05 17:53:48 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,28 @@
 
 char	*baguni_pugi(int fd, char *backup)
 {
-	// 첫호출이라면 1칸짜리 메모리 할당
-	while (\n)
+	char	*buf;
+	int		reres;
+	char	*new_backup
+
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
+	reres = BUFFER_SIZE;
+	while (reres == BUFFER_SIZE)
 	{
-		baguni_pugi
-		backup = strjoin(backup + baguni)
+		reres = read(fd, buf, BUFFER_SIZE);
+		if (reres == -1)
+		{
+			free(buf);
+			return (NULL);
+		}
+		buf[reres] = '\0';
+		new_backup = ft_strjoin(backup, buf);
+		free(backup);
+		backup = new_backup;
+		if (ft_strchr(buf, '\n'))
+			break ;
 	}
 }
 
