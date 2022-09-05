@@ -6,28 +6,27 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/05 17:53:48 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/05 21:59:03 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*baguni_pugi(int fd, char *backup)
+char	*ft_baguni_pugi(int fd, char *backup, int reres)
 {
 	char	*buf;
-	int		reres;
-	char	*new_backup
+	char	*new_backup;
 
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	reres = BUFFER_SIZE;
 	while (reres == BUFFER_SIZE)
 	{
 		reres = read(fd, buf, BUFFER_SIZE);
 		if (reres == -1)
 		{
 			free(buf);
+			free(backup);
 			return (NULL);
 		}
 		buf[reres] = '\0';
@@ -37,16 +36,14 @@ char	*baguni_pugi(int fd, char *backup)
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
+	free(buf);
+	return (backup);
 }
 
-char	*return_mandulgi(char *backup)
+char	*ft_na_nugi(char	**buf, char *backup)
 {
-	
-}
 
-char	*next_backup(char *backup)
-{
-	
+	return (backup);
 }
 
 char	*get_next_line(int fd)
@@ -56,11 +53,14 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-    //if (is_newline() == -1)
-	backup = baguni_pugi(fd, backup);
+	if (backup == 0)
+	{
+		backup = malloc(sizeof(char) * 1);
+		*backup = '\0';
+	}
+	backup = ft_baguni_pugi(fd, backup, BUFFER_SIZE);
 	if (!backup)
 		return (NULL);
-	buf = return_mandulgi(backup);
-	backup = next_backup(backup);
+	backup = ft_na_nugi(&buf, backup);
 	return (buf);
 }

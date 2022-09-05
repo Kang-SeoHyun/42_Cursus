@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:43 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/04 19:51:14 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/05 21:35:34 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*baguni_pugi(int fd, char *backup);
-char	*return_mandulgi(char *backup);
-char	*next_backup(char *backup);
+char	*ft_baguni_pugi(int fd, char *backup, int reres);
+char	*ft_na_nugi(char	**buf, char *backup);
 
 int		ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
