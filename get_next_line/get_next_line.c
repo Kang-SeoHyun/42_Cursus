@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/05 21:59:03 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/05 22:24:20 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,20 @@ char	*ft_baguni_pugi(int fd, char *backup, int reres)
 
 char	*ft_na_nugi(char	**buf, char *backup)
 {
+	int	idx;
+	int	i;
 
+	idx = 0;
+	i = 0;
+	while (backup[idx] != '\n')
+		idx++;
+	*buf = (char *)malloc(sizeof(char) * (idx + 1));
+	if (!buf)
+		return (NULL);
+	while (i++ < idx + 1)
+		*buf[i] = backup[i];
+	*buf[i] = '\0';
+	backup = ft_strchr(backup, '\n');
 	return (backup);
 }
 

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:56:54 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/04 18:57:22 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/05 22:28:15 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	int		i;
 
 	i = 0;
-	if ((fd = open("b.txt", O_RDONLY)))
+	if ((fd = open("a.txt", O_RDONLY)))
 	{
 		while (i++ < 3)
 		{
