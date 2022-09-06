@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:43 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/05 21:35:34 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/06 21:08:03 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4
+#  define BUFFER_SIZE 12
 # endif
 
 # include <unistd.h>
