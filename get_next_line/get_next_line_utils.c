@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/05 21:58:18 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/06 23:05:16 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen(const char *s)
 	return (cnt);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	total_len;
 	char	*new_str;
@@ -37,7 +37,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	new_str[i] = '\0';
 	while (*s1)
-		new_str[i++] = *s1++;
+		new_str[i] = s1[i++];
 	while (*s2)
 		new_str[i++] = *s2++;
 	new_str[i] = '\0';
