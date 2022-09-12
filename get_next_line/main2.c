@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 17:56:54 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/12 17:06:20 by seokang          ###   ########.fr       */
+/*   Created: 2022/09/12 17:42:11 by seokang           #+#    #+#             */
+/*   Updated: 2022/09/12 17:46:05 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,16 @@
 
 int	main(void)
 {
-	char	*s;
+	char	*str;
 	int		fd;
-	int		i;
 
-	i = 0;
-	if ((fd = open("b.txt", O_RDONLY)))
+	fd = open("a.txt", O_RDONLY);
+	while (1)
 	{
-		while (i++ < 3)
-		{
-			s = get_next_line(fd);
-			printf("\n!!!!!나왔다: %s!!!!!다음 돌리기\n", s);
-			free(s);
-			sleep(2);
-		}
+		str = get_next_line(fd);
+		if (!str)
+			break ;
+		printf("\033[0;33mprintf : %s\n\033[0m", str);
+		free(str);
 	}
-	return (0);
 }

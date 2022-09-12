@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/06 23:03:12 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/12 17:51:21 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,36 @@
 
 char	*ft_baguni_pugi(int fd, char *backup, int reres)
 {
-	char	*buf;
-	//char	*new_backup;
+	char	*baguni;
 
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
+	baguni = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!baguni)
 		return (NULL);
 	while (reres == BUFFER_SIZE)
 	{
-		reres = read(fd, buf, BUFFER_SIZE);
+		reres = read(fd, baguni, BUFFER_SIZE);
 		if (reres == -1)
 		{
-			free(buf);
-			free(backup);
+			free(baguni);
 			return (NULL);
 		}
-		buf[reres] = '\0';
-		backup = ft_strjoin(backup, buf);
-printf("\n1: before free b: %s\n", backup);
-//printf("\n2: before free new_b: %s\n", new_backup);
-	//	free(backup);
-	//	backup = new_backup;
-printf("\n3: after free b: %s\n", backup);
-		if (ft_strchr(buf, '\n'))
+		// if (reres != BUFFER_SIZE)
+		// {
+		// 	return 
+		// }
+		baguni[reres] = '\0';
+		backup = ft_strjoin(backup, baguni);
+		if (ft_strchr(baguni, '\n'))
 			break ;
 	}
-	free(buf);
+	free(baguni);
 	return (backup);
 }
 
 char	*ft_na_nugi(char	**buf, char *backup)
 {
-	int	idx;
-	int	i;
-	char	*temp;
+	int		idx;
+	int		i;
 
 	idx = 0;
 	i = 0;
@@ -55,18 +51,16 @@ char	*ft_na_nugi(char	**buf, char *backup)
 		idx++;
 	if (backup[idx] == '\n')
 		i++;
-	temp = (char *)malloc(sizeof(char) * (idx + i + 1));
-	if (!temp)
+	*buf = (char *)malloc(sizeof(char) * (idx + i + 1));
+	if (!*buf)
 		return (NULL);
 	i = -1;
 	while (++i < idx)
-		temp[i] = backup[i];
+		(*buf)[i] = backup[i];
 	if (backup[idx] == '\n')
-		temp[i++] = '\n';
-	temp[i] = '\0';
-	*buf = temp;
+		(*buf)[i++] = '\n';
+	(*buf)[i] = '\0';
 	backup = ft_strchr(backup, '\n') + 1;
-printf("in nanugi b: %s\n", backup);
 	return (backup);
 }
 
@@ -87,20 +81,4 @@ char	*get_next_line(int fd)
 		return (NULL);
 	backup = ft_na_nugi(&buf, backup);
 	return (buf);
-}
-
-int	main(void)
-{
-	int		fd;
-	int		i;
-
-	i = 0;
-	if ((fd = open("a.txt", O_RDONLY)))
-	{
-		while (i++ < 3)
-		{
-			printf("\nresult: %s", get_next_line(fd));
-		}
-	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/06 23:05:16 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/12 17:22:21 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	i = 0;
 	new_str[i] = '\0';
-	while (*s1)
-		new_str[i] = s1[i++];
+	while (s1[i])
+	{
+		new_str[i] = s1[i];
+		i++;
+	}
 	while (*s2)
 		new_str[i++] = *s2++;
 	new_str[i] = '\0';
@@ -46,12 +49,16 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s++)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		if (*s == (char)c)
-			return ((char *)s);
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
 	}
 	if (c == '\0')
-		return ((char *)s);
+		return ((char *)&s[i]);
 	return (0);
 }
