@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:42:11 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/12 17:46:05 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/14 21:10:57 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 	char	*str;
 	int		fd;
 
-	fd = open("a.txt", O_RDONLY);
+	fd = open("c.txt", O_RDONLY);
 	while (1)
 	{
 		str = get_next_line(fd);

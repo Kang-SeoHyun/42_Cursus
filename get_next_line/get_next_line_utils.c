@@ -6,20 +6,20 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/12 17:22:21 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/14 21:40:47 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *s)
+int	ft_strlen(char *s)
 {
-	int	cnt;
+	int	i;
 
-	cnt = 0;
-	while (*s++)
-		cnt++;
-	return (cnt);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -28,7 +28,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*new_str;
 	int		i;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (0);
 	total_len = ft_strlen(s1) + ft_strlen(s2);
 	new_str = (char *)malloc(sizeof(char) * (total_len + 1));
@@ -47,7 +47,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (new_str);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 

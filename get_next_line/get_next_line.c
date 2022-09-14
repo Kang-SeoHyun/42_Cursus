@@ -6,41 +6,44 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/12 17:51:21 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/14 21:46:40 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_baguni_pugi(int fd, char *backup, int reres)
+char	*ft_baguni_pugi(int fd, char **backup, int reres)
 {
 	char	*baguni;
+	char	*temp;
 
 	baguni = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!baguni)
 		return (NULL);
 	while (reres == BUFFER_SIZE)
 	{
+		if (ft_strchr(*backup, '\n'))
+			break ;
 		reres = read(fd, baguni, BUFFER_SIZE);
 		if (reres == -1)
 		{
 			free(baguni);
+			free(*backup);
+			*backup = NULL;
 			return (NULL);
 		}
-		// if (reres != BUFFER_SIZE)
-		// {
-		// 	return 
-		// }
-		baguni[reres] = '\0';
-		backup = ft_strjoin(backup, baguni);
-		if (ft_strchr(baguni, '\n'))
+		if (reres == 0)
 			break ;
+		baguni[reres] = '\0';
+		temp = ft_strjoin(*backup, baguni);
+		free(*backup);
+		*backup = temp;
 	}
 	free(baguni);
-	return (backup);
+	return (*backup);
 }
 
-char	*ft_na_nugi(char	**buf, char *backup)
+char	*ft_na_nugi(char	**result, char *backup, int *flag)
 {
 	int		idx;
 	int		i;
@@ -51,34 +54,52 @@ char	*ft_na_nugi(char	**buf, char *backup)
 		idx++;
 	if (backup[idx] == '\n')
 		i++;
-	*buf = (char *)malloc(sizeof(char) * (idx + i + 1));
-	if (!*buf)
+	*result = (char *)malloc(sizeof(char) * (idx + i + 1));
+	if (!*result)
 		return (NULL);
 	i = -1;
 	while (++i < idx)
-		(*buf)[i] = backup[i];
+		(*result)[i] = backup[i];
 	if (backup[idx] == '\n')
-		(*buf)[i++] = '\n';
-	(*buf)[i] = '\0';
-	backup = ft_strchr(backup, '\n') + 1;
+		(*result)[i++] = '\n';
+	(*result)[i] = '\0';
+	if (ft_strchr(backup, '\n') && backup[++idx])
+		backup = ft_strchr(backup, '\n') + 1;
+	else
+		*flag = 1;
 	return (backup);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*buf;
+	char		*result;
 	static char	*backup;
+	int			flag;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	flag = 0;
+	if (fd < 0 || read(fd, 0, 0) < 0|| BUFFER_SIZE <= 0)
 		return (NULL);
-	if (backup == 0)	// ㅊㅓㅅ호출
+	if (!backup)
 	{
 		backup = (char *)malloc(sizeof(char) * 1);
-		*backup = '\0';
+		if (!backup)
+			return (NULL);
+		backup[0] = '\0';
 	}
-	backup = ft_baguni_pugi(fd, backup, BUFFER_SIZE);
+	ft_baguni_pugi(fd, &backup, BUFFER_SIZE);
 	if (!backup)
 		return (NULL);
-	backup = ft_na_nugi(&buf, backup);
-	return (buf);
+	if (!ft_strlen(backup))
+	{
+		free(backup);
+		backup = NULL;
+		return (NULL);
+	}
+	backup = ft_na_nugi(&result, backup, &flag);
+	if (flag)
+	{
+		free(backup);
+		backup = NULL;
+	}
+	return (result);
 }

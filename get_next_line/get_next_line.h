@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:43 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/12 15:33:22 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/14 21:40:55 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*ft_baguni_pugi(int fd, char *backup, int reres);
-char	*ft_na_nugi(char	**buf, char *backup);
+char	*ft_baguni_pugi(int fd, char **backup, int reres);
+char	*ft_na_nugi(char	**buf, char *backup, int *flag);
 
-int		ft_strlen(const char *s);
+int		ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(const char *s, int c);
+char	*ft_strchr(char *s, int c);
 
 #endif
