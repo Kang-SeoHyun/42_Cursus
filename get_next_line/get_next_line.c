@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/15 23:00:34 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/16 15:45:07 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*get_next_line(int fd)
 		backup = (char *)malloc(sizeof(char) * 1);
 		if (!backup)
 			return (NULL);
-		backup[0] = '\0';
+		*backup = '\0';
 	}
 	backup = ft_baguni_pugi(fd, backup);
 	if (!backup)

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:56:54 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/12 17:06:20 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/16 15:34:53 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@ int	main(void)
 	int		i;
 
 	i = 0;
-	if ((fd = open("b.txt", O_RDONLY)))
+	fd = open("b.txt", O_RDONLY);
+	while (i++ < 3)
 	{
-		while (i++ < 3)
-		{
-			s = get_next_line(fd);
-			printf("\n!!!!!나왔다: %s!!!!!다음 돌리기\n", s);
-			free(s);
-			sleep(2);
-		}
+		s = get_next_line(fd);
+		printf("\n!!!!!나왔다: %s!!!!!다음 돌리기\n", s);
+		free(s);
+		sleep(2);
 	}
 	return (0);
 }

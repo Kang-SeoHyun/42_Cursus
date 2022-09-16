@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:43 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/15 22:57:18 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/16 15:50:44 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 1024
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 49152
 # endif
 
 # include <unistd.h>
@@ -23,8 +27,8 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*ft_baguni_pugi(int fd, char *backup);
-char	*ft_na_nugi(char	**buf, char *backup);
+char	*ft_baguni_pugi(int fd, char **backup);
+char	*ft_na_nugi(char **result, char **backup);
 
 int		ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);
