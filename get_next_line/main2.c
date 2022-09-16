@@ -6,10 +6,12 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:42:11 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/14 21:10:57 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/16 19:26:38 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include <stdio.h>
 #include "get_next_line.h"
 
 int	main(void)
