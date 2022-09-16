@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/15 22:49:25 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/16 16:53:54 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,19 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-char	*ft_strndup(char *src, int start, int num)
+char	*ft_strndup(char *s, int start, int num)
 {
-	char	*temp;
 	int		idx_s;
 	int		idx_t;
+	char	*temp;
 
 	idx_s = 0;
 	idx_t = 0;
 	temp = (char *)malloc(sizeof(char) * num + 1);
 	if (!temp)
 		return (NULL);
-	while (src[idx_s] && idx_t < num)
-		temp[idx_t++] = src[start + idx_s++];
+	while (s[idx_s] && idx_t < num)
+		temp[idx_t++] = s[start + idx_s++];
 	temp[idx_t] = '\0';
 	return (temp);
 }

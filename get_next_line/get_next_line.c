@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/16 15:45:07 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/16 16:39:47 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_na_nugi(char **result, char *backup)
 		idx_nl = idx_end;
 	if (idx_nl == -1)
 	{
-		if (backup[0] != '\0')
+		if (*backup != '\0')
 			*result = ft_strndup(backup, 0, ft_strlen(backup));
 		free(backup);
 		return (NULL);
@@ -72,7 +72,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!backup)
 	{
-		backup = (char *)malloc(sizeof(char) * 1);
+		backup = ft_strndup("", 0, 0);
 		if (!backup)
 			return (NULL);
 		*backup = '\0';
