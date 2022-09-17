@@ -1,4 +1,4 @@
-# BORN TO BE ROOT
+# 🌱BORN TO BE ROOT🌱
 VirtualBox 공부하기.
 > 정말이지.. 공부 할 것도 많고 귀찮은 과제였다
 

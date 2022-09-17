@@ -1,2 +1,2 @@
-# PRINTF
-> 나만의 printf 만들기
+# 📄 fT_PRINTF 📄
+나만의 printf 만들기

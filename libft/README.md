@@ -1,6 +1,6 @@
-# Libft
+# 📚Libft📚
 
-man을 활용하여 라이브러리 제작하기.
+man을 활용하여 나만의 라이브러리 제작하기.
 
 ## Contents
 * [ft_isalpha](#ftisalpha)
