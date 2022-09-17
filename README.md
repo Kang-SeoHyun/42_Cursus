@@ -4,4 +4,4 @@
 * libft
 * born2beroot
 * ft_printf
-* get_next_line
+* get_next_lin
