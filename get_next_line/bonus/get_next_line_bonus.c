@@ -6,13 +6,13 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/16 16:13:13 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/18 13:06:12 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_baguni_pugi(int fd, char *backup)
+static char	*ft_baguni_pugi(int fd, char *backup)
 {
 	char	*baguni;
 	int		reres;
@@ -33,7 +33,7 @@ char	*ft_baguni_pugi(int fd, char *backup)
 	return (backup);
 }
 
-char	*ft_na_nugi(char **result, char *backup)
+static char	*ft_na_nugi(char **result, char *backup)
 {
 	int		idx_end;
 	int		idx_nl;

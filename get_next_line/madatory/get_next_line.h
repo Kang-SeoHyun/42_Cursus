@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:43 by seokang           #+#    #+#             */
-/*   Updated: 2022/09/16 17:26:15 by seokang          ###   ########.fr       */
+/*   Updated: 2022/09/18 13:05:52 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-char	*ft_baguni_pugi(int fd, char *backup);
-char	*ft_na_nugi(char **result, char *backup);
 
 int		ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);
