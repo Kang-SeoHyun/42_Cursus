@@ -3,22 +3,22 @@
 man을 활용하여 나만의 라이브러리 제작하기.
 
 ## Contents
-* [ft_isalpha](#ftisalpha)
-* [ft_isdigit](#ftisdigit)
-* [ft_isalnum](#ftisalnum)
-* [ft_isascii](#ftisascii)
-* [ft_isprint](#ftisprint)
-* [ft_strlen](#ftstrlen)
-* [ft_toupper](#fttoupper)
-* [ft_tolower](#fttolower)
-* [ft_strchr](#ftstrchr)
-* [ft_strrchr](#ftstrrchr)
-* [ft_strnstr](#ftstrnstr)
-* [ft_strncmp](#ftstrncmp)
-* [ft_strlcpy](#ftstrlcpy)
-* [ft_strlcat](#ftstrlcat)
-* [ft_atoi](#ftatoi)
-* [ft_memcmp](#ftmemcmp)
+* [ft_isalpha](#ft_isalpha)
+* [ft_isdigit](#ft_isdigit)
+* [ft_isalnum](#ft_isalnum)
+* [ft_isascii](#ft_isascii)
+* [ft_isprint](#ft_isprint)
+* [ft_strlen](#ft_strlen)
+* [ft_toupper](#ft_toupper)
+* [ft_tolower](#ft_tolower)
+* [ft_strchr](#ft_strchr)
+* [ft_strrchr](#ft_strrchr)
+* [ft_strnstr](#ft_strnstr)
+* [ft_strncmp](#ft_strncmp)
+* [ft_strlcpy](#ft_strlcpy)
+* [ft_strlcat](#ft_strlcat)
+* [ft_atoi](#ft_atoi)
+* [ft_memcmp](#ft_memcmp)
 
 ## Chapter 3.1
 
