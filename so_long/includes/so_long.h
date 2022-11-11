@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 19:19:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/08/23 21:38:53 by seokang          ###   ########.fr       */
+/*   Created: 2022/11/11 16:51:26 by seokang           #+#    #+#             */
+/*   Updated: 2022/11/11 16:57:28 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-# include <stdarg.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
 # include <unistd.h>
+# include <stdlib.h>
 
-int		ft_printf(const char *format, ...);
-int		ft_what_type(char format, va_list *ap);
-int		ft_print_char(unsigned char c);
-int		ft_print_str(char *str);
-int		ft_print_ptr(void *ptr);
-int		ft_print_hex(size_t num, char format);
-int		ft_print_num(int num);
-int		ft_print_u_num(unsigned int num);
+char	*get_next_line(int fd);
+
+int		ft_strlen(char *s);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
+char	*ft_strndup(char *s, int start, int num);
 
 #endif

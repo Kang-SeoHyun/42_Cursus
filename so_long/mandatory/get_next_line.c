@@ -6,11 +6,11 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2022/11/05 18:11:23 by seokang          ###   ########.fr       */
+/*   Updated: 2022/11/11 16:57:57 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/get_next_line.h"
+#include "../includes/so_long.h"
 
 static char	*ft_baguni_pugi(int fd, char *backup)
 {
