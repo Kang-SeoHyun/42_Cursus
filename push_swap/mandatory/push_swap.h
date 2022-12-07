@@ -6,11 +6,11 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/04 22:42:51 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/07 20:50:16 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <unistd.h>
@@ -19,7 +19,7 @@
 
 typedef struct	s_node
 {
-	int				val;
+	int				data;
 	struct s_node	*up;
 	struct s_node	*down;
 }	t_node;
@@ -34,12 +34,6 @@ typedef struct s_var
 {
 	struct s_stack	*stack_a;
 	struct s_stack	*stack_b;
-	int				*list;
-	int				list_size;
-	int				a_size;
-	int				b_size;
-	int				max_size;
-	int				*pivot_arr;
 }	t_var;
 
 // stack.c

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   .c                                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 22:04:19 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/04 22:48:59 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/07 20:35:28 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ void	init_stack(t_var *var)
 	var->stack_b->bottom = get_new_node(0);
 	var->stack_b->top->down = var->stack_b->bottom;
 	var->stack_b->bottom->up = var->stack_b->top;
-	var->list = (int *)malloc(sizeof(int));
-	var->list_size = 0;
-	var->a_size = 0;
-	var->b_size = 0;
 }
 
 t_node	*get_new_node(int num)
@@ -37,7 +33,7 @@ t_node	*get_new_node(int num)
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
 		return (0);
-	node->val = num;
+	node->data = num;
 	node->up = NULL;
 	node->down = NULL;
 	return (node);
