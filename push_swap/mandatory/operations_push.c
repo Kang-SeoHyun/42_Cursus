@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   operations_push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 12:13:32 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/10 13:37:46 by seokang          ###   ########.fr       */
+/*   Created: 2022/12/10 19:38:00 by seokang           #+#    #+#             */
+/*   Updated: 2022/12/10 21:30:00 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void)
+void	pa(t_info *info)
 {
-	write(2, "Error\n", 6);
-	exit(1);
+	t_node	*tmp;
+
+	tmp = pop_top(info->stack_b);
+	if (!tmp)
+		return ;
+	push_bottom(info->stack_a, tmp);
+	info->size_a += 1;
+	info->size_b -= 1;
+	write(1, "pa\n", 3);
 }
 
-int	main(int ac, char *av[])
+void	pb(t_info *info)
 {
-	int		array_size;
-	int		*num_array;
-	t_info	*stack_info;
+	t_node	*tmp;
 
-	if (ac < 2)
-		print_error();
-	else
-	{
-		init_stack(&stack_info);
-		validate_args(ac, av, &stack_info);
-		check_sort(&stack_info);
-		indexing(&stack_info);
-		stacking(&stack_info);
-		operating(&stack_info);
-		exit(0);
-	}	
-	return (0);
+	tmp = pop_top(info->stack_a);
+	if (!tmp)
+		return ;
+	push_bottom(info->stack_b, tmp);
+	info->size_a -= 1;
+	info->size_b += 1;
+	write(1, "pb\n", 3);
 }
