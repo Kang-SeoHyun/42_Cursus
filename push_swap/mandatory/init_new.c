@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_make.c                                       :+:      :+:    :+:   */
+/*   init_new.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 22:04:19 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/10 20:44:36 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/10 21:55:38 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 void	init_stack(t_info *info)
 {
@@ -26,15 +32,15 @@ void	init_stack(t_info *info)
 	info->stack_b->bottom->prev = info->stack_b->top;
 }
 
-t_node	*get_new_node(int num)
+t_node	*init_node(int data)
 {
-	t_node	*node;
+	t_node	*new;
 
-	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
+	new = (t_node *)malloc(sizeof(t_node));
+	if (!new)
 		return (0);
-	node->data = num;
-	node->prev = NULL;
-	node->next = NULL;
-	return (node);
+	new->data = data;
+	new->prev = NULL;
+	new->next = NULL;
+	return (new);
 }

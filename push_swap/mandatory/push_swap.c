@@ -6,17 +6,11 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 12:13:32 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/10 20:55:17 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/10 21:55:32 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
 
 int	main(int ac, char *av[])
 {

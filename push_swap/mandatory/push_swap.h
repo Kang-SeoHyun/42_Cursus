@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/10 20:49:17 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/10 21:55:57 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ typedef struct s_info
 	int				size_array;
 }	t_info;
 
-// stack_make.c
+//push_swap.c
+int		main(int ac, char *av[]);
+
+// init_new.c
+void	print_error(void);
 void	init_stack(t_info *info);
-t_node	*get_new_node(int num);
+t_node	*init_node(int data);
 
 // push_pop.c
 void	push_top(t_stack *stack, t_node *new);
 void	push_bottom(t_stack *stack, t_node *new);
 t_node	*pop_top(t_stack *stack);
 t_node	*pop_bottom(t_stack *stack);
-
-//push_swap.c
-void	print_error(void);
-int		main(int ac, char *av[]);
 
 //operations_swap.c
 void	sa(t_info *info);

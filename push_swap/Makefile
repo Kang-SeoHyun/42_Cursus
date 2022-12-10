@@ -6,7 +6,7 @@
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/07 17:06:51 by seokang           #+#    #+#              #
-#    Updated: 2022/12/07 20:18:35 by seokang          ###   ########.fr        #
+#    Updated: 2022/12/10 21:58:25 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,12 @@ bonus_check: $(B_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
 
 clean:
-	rm -rf $(SRCS_OBJS) $(BONUS_OBJS) all_check bonus_check
+	rm -rf $(SRCS_OBJS)
+	rm -rf $(BONUS_OBJS)
 
 fclean: clean
-	rm -rf $(NAME) $(BONUS_NAME)
+	rm -rf $(NAME)
+	rm -rf $(BONUS_NAME)
 
 re:
 		make fclean
