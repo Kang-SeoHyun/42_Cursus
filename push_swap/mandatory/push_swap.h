@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/09 18:12:49 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/10 14:41:30 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_info
 	struct s_stack	*stack_b;
 	int				size_b;
 	int				*array;
+	int				size_array;
 }	t_info;
 
 // stack_make.c
@@ -48,5 +49,9 @@ void	push_top(t_stack *stack, t_node *new);
 void	push_bottom(t_stack *stack, t_node *new);
 t_node	*pop_top(t_stack *stack);
 t_node	*pop_bottom(t_stack *stack);
+
+//main.c
+void	print_error(void);
+int		main(int ac, char *av[]);
 
 #endif
