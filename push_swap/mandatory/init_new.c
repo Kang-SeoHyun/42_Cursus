@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 22:04:19 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/10 21:55:38 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:06:53 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,4 @@ t_node	*init_node(int data)
 	new->next = NULL;
 	return (new);
 }
+ii
