@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/15 22:13:47 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/15 23:37:52 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,25 @@ char	*join_args(int ac, char *av[])
 	return (str);
 }
 
+static int	size_check(char const *str, char c)
+{
+	int	size;
+	int	i;
+
+	i = 0;
+	size = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] == c)
+			i++;
+		if (str[i] != '\0')
+			size++;
+		while (str[i] && str[i] != c)
+			i++;
+	}
+	return (size);
+}
+
 void	validate_args(int ac, char *av[], t_info *stack_info)
 {
 	int		i;
@@ -58,7 +77,14 @@ void	validate_args(int ac, char *av[], t_info *stack_info)
 	int		av_size;
 	t_node	*new_node;
 
-	i = 0;
 	args = join_args(ac, av);
 	split_av = ft_split(args, ' ');
+	av_size = size_check(args, ' ');
+	free(args);
+	i = 0;
+	while (i < av_size)
+	{
+		if (!)
+	}
+	free(split_av);
 }
