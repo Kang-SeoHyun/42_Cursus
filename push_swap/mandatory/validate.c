@@ -6,21 +6,11 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/15 23:37:52 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/16 18:07:16 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 char	*join_args(int ac, char *av[])
 {
@@ -69,6 +59,25 @@ static int	size_check(char const *str, char c)
 	return (size);
 }
 
+int	is_valid_num(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_strchr("+-0123456789", str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static void	no_jungbok(t_info *stack_info, int check)
+{
+	
+}
+
 void	validate_args(int ac, char *av[], t_info *stack_info)
 {
 	int		i;
@@ -84,7 +93,13 @@ void	validate_args(int ac, char *av[], t_info *stack_info)
 	i = 0;
 	while (i < av_size)
 	{
-		if (!)
+		if (!is_valid_num(split_av[i]))
+			print_error();
+		new_node = init_node(ft_atoi(split_av[i]));
+		free(split_av[i]);
+		no_jungbok(stack_info, new_node->data);
+		i++;
+		free(new_node);
 	}
 	free(split_av);
 }
