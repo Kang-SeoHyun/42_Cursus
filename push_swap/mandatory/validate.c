@@ -6,13 +6,13 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/16 18:07:16 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/16 20:12:04 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*join_args(int ac, char *av[])
+static char	*join_args(int ac, char *av[])
 {
 	int			i;
 	int			len;
@@ -59,7 +59,7 @@ static int	size_check(char const *str, char c)
 	return (size);
 }
 
-int	is_valid_num(char *str)
+static int	is_valid_num(char *str)
 {
 	int	i;
 
@@ -73,9 +73,32 @@ int	is_valid_num(char *str)
 	return (1);
 }
 
-static void	no_jungbok(t_info *stack_info, int check)
+static void	overlap_dup(t_info *stack_info, int input)
 {
-	
+	int	i;
+	int	*tmp;
+
+	i = -1;
+	while (++i < stack_info->size_array)
+	{
+		if (stack_info->array[i] == input)
+			print_error();
+	}
+	stack_info->size_array++;
+	tmp = (int *)malloc(sizeof(int) * stack_info->size_array);
+	if (!tmp)
+		print_error();
+	if (stack_info->size_array == 1)
+		tmp[0] = input;
+	else
+	{
+		i = -1;
+		while (++i < stack_info->size_array - 1)
+			tmp[i] = stack_info->array[i];
+		tmp[i] = input;
+	}
+	free(stack_info->array);
+	stack_info->array = tmp;
 }
 
 void	validate_args(int ac, char *av[], t_info *stack_info)
