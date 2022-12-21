@@ -6,13 +6,13 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 12:13:32 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/16 20:31:02 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/21 18:15:54 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	first_check(t_info	*stack_info)
+static void	first_check(t_info	*stack_info)
 {
 	int	i;
 	int	val;

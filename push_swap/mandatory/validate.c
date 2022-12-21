@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/16 20:12:04 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/21 18:18:01 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	validate_args(int ac, char *av[], t_info *stack_info)
 			print_error();
 		new_node = init_node(ft_atoi(split_av[i]));
 		free(split_av[i]);
-		no_jungbok(stack_info, new_node->data);
+		overlap_dup(stack_info, new_node->data);
 		i++;
 		free(new_node);
 	}

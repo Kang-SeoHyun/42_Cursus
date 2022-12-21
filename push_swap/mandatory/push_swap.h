@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/16 18:11:00 by seokang          ###   ########.fr       */
+/*   Updated: 2022/12/21 18:24:14 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,56 @@ typedef struct s_info
 }	t_info;
 
 //push_swap.c
-int		main(int ac, char *av[]);
+static void	first_check(t_info	*stack_info);
+int			main(int ac, char *av[]);
 
 // init_new.c
-void	print_error(void);
-void	init_stack(t_info *info);
-t_node	*init_node(int data);
+void		print_error(void);
+void		init_stack(t_info *info);
+t_node		*init_node(int data);
 
 // push_pop.c
-void	push_top(t_stack *stack, t_node *new);
-void	push_bottom(t_stack *stack, t_node *new);
-t_node	*pop_top(t_stack *stack);
-t_node	*pop_bottom(t_stack *stack);
+void		push_top(t_stack *stack, t_node *new);
+void		push_bottom(t_stack *stack, t_node *new);
+t_node		*pop_top(t_stack *stack);
+t_node		*pop_bottom(t_stack *stack);
 
 //operations_swap.c
-void	sa(t_info *info);
-void	sb(t_info *info);
-void	ss(t_info *info);
+void		sa(t_info *info);
+void		sb(t_info *info);
+void		ss(t_info *info);
 
 //operations_push.c
-void	pa(t_info *info);
-void	pb(t_info *info);
+void		pa(t_info *info);
+void		pb(t_info *info);
 
 //operations_rotate.c
-void	ra(t_info *info);
-void	rb(t_info *info);
-void	rr(t_info *info);
+void		ra(t_info *info);
+void		rb(t_info *info);
+void		rr(t_info *info);
 
 //operations_R_rotate.c
-void	rra(t_info *info);
-void	rrb(t_info *info);
-void	rrr(t_info *info);
+void		rra(t_info *info);
+void		rrb(t_info *info);
+void		rrr(t_info *info);
+
+//utils_libft.c
+int			ft_strlen(char	*s);
+char		*ft_strchr(const char *s, int c);
+int			ft_atoi(const char *str);
+
+//utils_split.c
+static int	is_charset(char c, char *charset);
+static int	count_word(char *str, char *charset);
+static char	*str_copy(char **str, char charset);
+static char	**free_copy(char **str, int size);
+char		**ft_split(char *str, char charset);
+
+//validate.c
+static char	*join_args(int ac, char *av[]);
+static int	size_check(char const *str, char c);
+static int	is_valid_num(char *str);
+static void	overlap_dup(t_info *stack_info, int input);
+void		validate_args(int ac, char *av[], t_info *stack_info);
 
 #endif
