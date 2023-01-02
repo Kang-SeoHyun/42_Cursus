@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/21 18:24:14 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/02 19:37:46 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ typedef struct s_info
 	int				size_b;
 	int				*array;
 	int				size_array;
+	int				max_size;
 }	t_info;
 
 //push_swap.c
-static void	first_check(t_info	*stack_info);
 int			main(int ac, char *av[]);
 
 // init_new.c
@@ -93,4 +93,14 @@ static int	is_valid_num(char *str);
 static void	overlap_dup(t_info *stack_info, int input);
 void		validate_args(int ac, char *av[], t_info *stack_info);
 
+//ready_sort.c
+void		first_check(t_info	*stack_info);
+int			find_max(t_info *stack_info);
+void		indexing(t_info *stack_info);
+void		stacking(t_info *stack_info);
+
+//sort.c
+void		sort_self(t_info *stack_info);
+void		sort_array(t_info *stack_info);
+void		sorting(t_info *stack_info);
 #endif
