@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/02 19:37:46 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/08 22:41:43 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,12 @@ void		indexing(t_info *stack_info);
 void		stacking(t_info *stack_info);
 
 //sort.c
-void		sort_self(t_info *stack_info);
+void		sort_hardcode(t_info *stack_info);
 void		sort_array(t_info *stack_info);
 void		sorting(t_info *stack_info);
+//조금 수정해보기
+void		divide_pivot(t_info *stack_info);
+
+//rotate.c
+void		get_min_rotate(t_info *stack_info, int *a, int *b);
 #endif
