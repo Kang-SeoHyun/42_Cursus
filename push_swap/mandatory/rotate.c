@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:39:35 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/08 22:41:29 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:51:31 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	get_min_rotate(t_info *stack_info, int *a, int *b)
 {
-	
+	int		a_lo
 }

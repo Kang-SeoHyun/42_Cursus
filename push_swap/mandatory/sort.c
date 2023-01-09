@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:26:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/08 22:38:13 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:09:45 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ void	sort_hardcode(t_info *stack_info)
 	}
 }
 
-void	divide_pivot(t_info *stack_info)
+void	divide_group(t_info *stack_info)
 {
 	t_node	*tmp;
-	int		times;
+	int		cnt;
 	int		p1;
 	int		p2;
 
-	times = 0;
+	cnt = 0;
 	p1 = stack_info->max_size / 3;
 	p2 = p1 * 2;
-	while (times < stack_info->max_size)
+	while (cnt < stack_info->max_size)
 	{
 		tmp = pop_top(stack_info->stack_a);
 		if (tmp->data < p2)
@@ -64,7 +64,7 @@ void	divide_pivot(t_info *stack_info)
 			push_top(stack_info->stack_a, tmp);
 			ra(stack_info);
 		}
-		times++;
+		cnt++;
 	}
 }
 
@@ -73,7 +73,7 @@ void	sort_array(t_info *stack_info)
 	int	a;
 	int	b;
 
-	divide_pivot(stack_info);
+	divide_group(stack_info);
 	while (stack_info->size_a > 3)
 		pb(stack_info);
 	if (stack_info->size_a == 2)
