@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/02 16:46:20 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/09 21:17:07 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static void	overlap_dup(t_info *stack_info, int input)
 	stack_info->array = tmp;
 }
 
-void	validate_args(int ac, char *av[], t_info *stack_info)
+void	validate_args(t_info *stack_info, int ac, char *av[])
 {
 	int		i;
 	char	*args;

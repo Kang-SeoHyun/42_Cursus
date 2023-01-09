@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/09 15:05:21 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/09 21:38:22 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static char	*join_args(int ac, char *av[]);
 static int	size_check(char const *str, char c);
 static int	is_valid_num(char *str);
 static void	overlap_dup(t_info *stack_info, int input);
-void		validate_args(int ac, char *av[], t_info *stack_info);
+void		validate_args(t_info *stack_info, int ac, char *av[]);
 
 //ready_sort.c
 void		first_check(t_info	*stack_info);
@@ -100,12 +100,27 @@ void		indexing(t_info *stack_info);
 void		stacking(t_info *stack_info);
 
 //sort.c
-void		sort_hardcode(t_info *stack_info);
+void 		ascending_order(t_info *stack_info);
 void		sort_array(t_info *stack_info);
-void		sorting(t_info *stack_info);
+void		start_sorting(t_info *stack_info);
 //조금 수정해보기
 void		divide_group(t_info *stack_info);
 
+//hard_code.c
+void		sort_two(t_info *stack_info);
+void		sort_three(t_info *stack_info);
+
 //rotate.c
 void		get_min_rotate(t_info *stack_info, int *a, int *b);
+
+//utils_find.c
+int			min_of_idx(t_info *stack_info);
+int			max_of_idx(t_info *stack_info);
+int			mid_of_idx(t_info *stack_info, int num);
+int			find_idx(t_info *stack_info, int num);
+
+//utils_sort.c
+int 		min_of_data(t_info *stack_info);
+int 		max_of_data(t_info *stack_info);
+
 #endif
