@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/09 21:38:22 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/10 17:18:11 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		indexing(t_info *stack_info);
 void		stacking(t_info *stack_info);
 
 //sort.c
-void 		ascending_order(t_info *stack_info);
+void		ascending_order(t_info *stack_info);
 void		sort_array(t_info *stack_info);
 void		start_sorting(t_info *stack_info);
 //조금 수정해보기
@@ -120,7 +120,8 @@ int			mid_of_idx(t_info *stack_info, int num);
 int			find_idx(t_info *stack_info, int num);
 
 //utils_sort.c
-int 		min_of_data(t_info *stack_info);
-int 		max_of_data(t_info *stack_info);
+int			min_of_data(t_info *stack_info);
+int			max_of_data(t_info *stack_info);
+int			setidx_getbig(int a, int b, int a_idx, int b_idx);
 
 #endif
