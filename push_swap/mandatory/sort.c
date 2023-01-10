@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:26:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/09 21:16:12 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/10 18:07:45 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	divide_group(t_info *stack_info)
 	}
 }
 
-void ascending_order(t_info *stack_info)
+void	ascending_order(t_info *stack_info)
 {
 	int	target;
-	
+
 	target = min_of_idx(stack_info);
 	while (target)
 	{
@@ -75,10 +75,10 @@ void	sort_array(t_info *stack_info)
 		a = 0;
 		b = 0;
 		get_min_rotate(stack_info, &a, &b);
-		//// 
-		////
-		////
-		////
+		rotate_same(stack_info, &a, &b);
+		rotate_in_a(stack_info, a);
+		rotate_in_b(stack_info, b);
+		pa(stack_info);
 	}
 	ascending_order(stack_info);
 }

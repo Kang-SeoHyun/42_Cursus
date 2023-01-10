@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 17:18:11 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/10 18:04:34 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,9 @@ void		sort_three(t_info *stack_info);
 
 //rotate.c
 void		get_min_rotate(t_info *stack_info, int *a, int *b);
+void		rotate_same(t_info *stack_info, int *a, int *b);
+void		rotate_in_a(t_info *stack_info, int a);
+void		rotate_in_b(t_info *stack_info, int b);
 
 //utils_find.c
 int			min_of_idx(t_info *stack_info);
