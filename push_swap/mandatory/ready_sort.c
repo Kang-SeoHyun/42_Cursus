@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 17:03:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/11 16:39:13 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/11 17:37:14 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	first_check(t_info	*stack_info)
 {
-	int	i;
-	int	val;
+	int	size;
+	int	check;
 
-	i = 0;
-	val = stack_info->array[0];
-	while (++i < stack_info->size_array)
+	size = stack_info->size_array;
+	check = 0;
+	while (size > 1)
 	{
-		if (val > stack_info->array[i])
-			return ;
-		val = stack_info->array[i];
+		if (stack_info->array[size - 1] - stack_info->array[size - 2] > 0)
+			check++;
+		size--;
 	}
-	if (i == stack_info->size_array - 1)
+	if (check == stack_info->size_array - 1)
 		exit(0);
 }
 
