@@ -6,102 +6,91 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 22:17:44 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/15 23:23:18 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/10 21:51:56 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_charset(char c, char *charset)
-{
-	while (*charset)
-	{
-		if (c == *charset)
-			return (1);
-		charset++;
-	}
-	return (0);
-}
-
-static int	count_word(char *str, char *charset)
+static int	ft_count_word(const char *str, char c)
 {
 	int	count;
 
 	count = 0;
 	while (*str)
 	{
-		while (*str && is_charset(*str, charset))
+		while (*str && *str == c)
 			str++;
-		if (*str && !is_charset(*str, charset))
+		if (*str && *str != c)
 		{
 			count++;
-			while (*str && !is_charset(*str, charset))
+			while (*str && *str != c)
 				str++;
 		}
 	}
 	return (count);
 }
 
-static char	*str_copy(char **str, char charset)
+static char	*ft_strlen_dup(const char **str, char c)
 {
-	int		word_len;
-	int		count;
+	int		w_len;
+	int		cnt;
 	char	*copy;
 
-	word_len = 0;
-	while (*(*str) && !is_charset(*(*str), charset))
+	w_len = 0;
+	while (*(*str) && *(*str) != c)
 	{
-		word_len++;
-		*str++;
+		w_len++;
+		(*str)++;
 	}
-	*str -= word_len;
-	copy = malloc(sizeof(char) * (word_len + 1));
+	*str -= w_len;
+	copy = malloc(sizeof(char) * (w_len + 1));
 	if (!copy)
 		return (0);
-	count = 0;
-	while (*(*str) && ++count <= word_len)
+	cnt = 0;
+	while (*(*str) && ++cnt <= w_len)
 		*copy++ = *(*str)++;
 	*copy = '\0';
-	copy -= word_len;
+	copy -= w_len;
 	return (copy);
 }
 
 static char	**free_copy(char **str, int size)
 {
-	int	index;
+	int	i;
 
-	index = 0;
-	while (++index < size)
+	i = 0;
+	while (i < size)
 	{
-		free(str[index]);
-		index++;
+		free(str[i]);
+		i++;
 	}
 	free(str);
 	return (0);
 }
 
-char	**ft_split(char *str, char charset)
+char	**ft_split(char const *s, char c)
 {
-	char	**copy;
-	int		words;
-	int		index;
+	char	**result;
+	int		c_word;
+	int		i;
 
-	if (!str)
+	if (!s)
 		return (0);
-	words = count_word(str, charset);
-	copy = malloc(sizeof(char *) * (words + 1));
-	if (!copy)
+	i = 0;
+	c_word = ft_count_word(s, c);
+	result = (char **)malloc(sizeof(char *) * (c_word + 1));
+	if (!result)
 		return (0);
-	index = 0;
-	while (index < words)
+	while (i < c_word)
 	{
-		while (*str && is_charset(*str, charset))
-			++str;
-		copy[index] = str_copy(&str, charset);
-		if (!copy[index])
-			return (free_copy(copy, index));
-		index++;
+		while (*s && *s == c)
+			s++;
+		result[i] = ft_strlen_dup(&s, c);
+		if (!result[i])
+			return (free_copy(result, i));
+		i++;
 	}
-	copy[index] = 0;
-	return (copy);
+	result[i] = 0;
+	return (result);
 }

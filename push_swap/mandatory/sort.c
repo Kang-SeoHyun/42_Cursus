@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:26:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 18:07:45 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/11 17:16:32 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@ void	ascending_order(t_info *stack_info)
 	target = min_of_idx(stack_info);
 	while (target)
 	{
-		if (target-- > 0)
+		if (target > 0)
+		{
+			target--;
 			ra(stack_info);
+		}
 		else
 		{
 			target++;
@@ -86,9 +89,9 @@ void	sort_array(t_info *stack_info)
 void	start_sorting(t_info *stack_info)
 {
 	if (stack_info->size_array == 2)
-		sa(stack_info);
+		sort_two(stack_info);
 	else if (stack_info->size_array == 3)
-		sort_self(stack_info);
+		sort_three(stack_info);
 	else
 		sort_array(stack_info);
 }

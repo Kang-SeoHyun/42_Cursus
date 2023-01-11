@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:12:15 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 17:09:15 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/11 17:08:03 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	min_of_idx(t_info *stack_info)
 
 	idx = 0;
 	min = min_of_data(stack_info);
+	tmp = 0;
 	size_a = stack_info->size_a;
 	stack_a = stack_info->stack_a->top->next;
 	while (idx < size_a)
@@ -40,23 +41,25 @@ int	min_of_idx(t_info *stack_info)
 int	max_of_idx(t_info *stack_info)
 {
 	int		idx;
-	int		min;
+	int		max;
 	int		tmp;
 	int		size_a;
 	t_node	*stack_a;
 
 	idx = 0;
-	min = max_of_data(stack_info);
+	tmp = 0;
+	max = max_of_data(stack_info);
 	size_a = stack_info->size_a;
 	stack_a = stack_info->stack_a->top->next;
 	while (idx < size_a)
 	{
 		tmp = stack_a->data;
-		if (tmp == min)
+		if (tmp == max)
 			break ;
 		idx++;
 		stack_a = stack_a->next;
 	}
+	idx++;
 	if (idx >= (size_a + 1) / 2)
 		idx = (size_a - idx) * -1;
 	return (idx);

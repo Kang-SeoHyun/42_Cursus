@@ -6,7 +6,7 @@
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/07 17:06:51 by seokang           #+#    #+#              #
-#    Updated: 2022/12/10 21:58:25 by seokang          ###   ########.fr        #
+#    Updated: 2023/01/11 15:38:22 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,41 +16,57 @@ NAME 		= push_swap
 BONUS_NAME	= checker
 HEADER 		= push_swap.h
 
-SRCS 		=
+OBJS 		=	hard_code.c \
+				init_new.c \
+				operations_push.c \
+				operations_R_rotate.c \
+				operations_rotate.c \
+				operations_swap.c \
+				push_pop.c \
+				push_swap.c \
+				ready_sort.c \
+				rotate.c \
+				sort.c \
+				utils_find.c \
+				utils_libft.c \
+				utils_sort.c \
+				utils_split.c \
+				validate.c
+				
 
-SRCS_W		= $(addprefix ./mandatory/, $(SRC))
+SRCS = $(addprefix ./mandatory/, $(OBJS))
+SRCS_BONUS = $(addprefix ./bonus/, $(OBJS_CHECKER))
+SRCS_FILES = $(SRCS:c=o)
+SRCS_BONUS_FILES = $(SRCS_BONUS:c=o)
 
-BONUS 		= 
+MAND_DIR = mandatory
+BONUS_DIR = bonus
 
-BONUS_W		= $(addprefix ./bonus/, $(BONUS))
+RM = rm -rf
 
-SRCS_OBJS 	= $(SRCS_W:.c=.o)
-BONUS_OBJS 	= $(BONUS_W:.c=.o)
+%.o : %c
+	$(CC) $(CFLAGS) -c $< -I.
 
-all: $(NAME)
+$(NAME) : $(SRCS_FILES)
+	$(CC) $(CFLAGS) -o $@ $^
 
-$(NAME): all_check
+$(BONUS) : $(SRCS_BONUS_FILES)
+	$(CC) $(CFLAGS) -o $@ $^
 
-all_check: $(OBJS)
-	touch $@
-	$(CC) $(CFLAGS) $(SRCS_OBJS) -o $(NAME)
+all : $(NAME)
 
-bonus: bonus_check
+bonus : $(BONUS)
 
-bonus_check: $(B_OBJS)
-	touch $@
-	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
+clean :
+	$(RM) $(SRCS_FILES)
+	$(RM) $(SRCS_BONUS_FILES)
 
-clean:
-	rm -rf $(SRCS_OBJS)
-	rm -rf $(BONUS_OBJS)
+fclean : clean
+	$(RM) $(NAME)
+	$(RM) $(BONUS)
 
-fclean: clean
-	rm -rf $(NAME)
-	rm -rf $(BONUS_NAME)
-
-re:
-		make fclean
-		make all
+re :
+	make fclean
+	make all
 
 .PHONY: all bonus clean fclean re

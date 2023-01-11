@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:20:23 by seokang           #+#    #+#             */
-/*   Updated: 2022/12/16 17:38:58 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/10 21:16:36 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,27 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int			i;
 	int			sign;
-	long long	result;
+	long long	res;
 
-	i = 0;
 	sign = 1;
-	result = 0;
-	while (str[i] && (9 <= str[i] && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] && (str[i] == '-' || str[i] == '+'))
+	res = 0;
+	while ((9 <= *str && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			sign *= -1;
-		i++;
+		str++;
 	}
-	while (str[i] && ('0' <= str[i] && str[i] <= '9'))
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	result *= sign;
-	if (result > 2147483647 || result < -2147483648)
+	if (!('0' <= *str && *str <= '9'))
 		print_error();
-	return (result * sign);
+	while ('0' <= *str && *str <= '9')
+	{
+		res = res * 10 + (*str - '0');
+		str++;
+	}
+	return (res * sign);
 }

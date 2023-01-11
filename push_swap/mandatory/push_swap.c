@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 12:13:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/09 21:17:35 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/10 20:54:29 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int ac, char *av[])
 		indexing(&stack_info);
 		stacking(&stack_info);
 		start_sorting(&stack_info);
+		exit(0);
 	}	
 	return (0);
 }

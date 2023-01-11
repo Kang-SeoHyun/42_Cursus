@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 17:03:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/02 17:59:51 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:39:13 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	first_check(t_info	*stack_info)
 			return ;
 		val = stack_info->array[i];
 	}
-	exit(0);
+	if (i == stack_info->size_array - 1)
+		exit(0);
 }
 
 int	find_max(t_info *stack_info)

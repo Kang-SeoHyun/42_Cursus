@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 18:04:34 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/10 22:25:48 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,12 @@ void		rrr(t_info *info);
 //utils_libft.c
 int			ft_strlen(char	*s);
 char		*ft_strchr(const char *s, int c);
-int			ft_atoi(const char *str);
+long long	ft_atoi(const char *str);
 
 //utils_split.c
-static int	is_charset(char c, char *charset);
-static int	count_word(char *str, char *charset);
-static char	*str_copy(char **str, char charset);
-static char	**free_copy(char **str, int size);
-char		**ft_split(char *str, char charset);
+char		**ft_split(const char *s, char c);
 
 //validate.c
-static char	*join_args(int ac, char *av[]);
-static int	size_check(char const *str, char c);
-static int	is_valid_num(char *str);
-static void	overlap_dup(t_info *stack_info, int input);
 void		validate_args(t_info *stack_info, int ac, char *av[]);
 
 //ready_sort.c
@@ -107,8 +99,8 @@ void		start_sorting(t_info *stack_info);
 void		divide_group(t_info *stack_info);
 
 //hard_code.c
-void		sort_two(t_info *stack_info);
-void		sort_three(t_info *stack_info);
+void		sort_two(t_info *info);
+void		sort_three(t_info *info);
 
 //rotate.c
 void		get_min_rotate(t_info *stack_info, int *a, int *b);

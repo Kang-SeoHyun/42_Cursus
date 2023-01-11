@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:39:35 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 18:03:04 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/11 17:12:29 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,17 @@ void	get_min_rotate(t_info *stack_info, int *a, int *b)
 
 void	rotate_same(t_info *stack_info, int *a, int *b)
 {
-	//살짝
-	while (*a > 0 && *b > 0)
+	while (*a && *b && (*a > 0 && *b > 0))
 	{
 		rr(stack_info);
-		*a--;
-		*b--;
+		*a = *a - 1;
+		*b = *b - 1;
 	}
-	while (*a > 0 && *b > 0)
+	while (*a && *b && (*a < 0 && *b < 0))
 	{
 		rrr(stack_info);
-		*a++;
-		*b++;
+		*a = *a + 1;
+		*b = *b + 1;
 	}
 }
 

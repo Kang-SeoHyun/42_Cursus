@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:57:18 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/09 21:00:22 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/11 15:58:33 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,32 @@ void	sort_two(t_info *stack_info)
 	second = stack_info->stack_a->top->next->next->data;
 	if (first > second)
 		sa(stack_info);
+
 }
 
-void	sort_three(t_info *stack_info)
+void	sort_three(t_info *info)
 {
 	int	first;
 	int	second;
 	int	third;
 
-	first = stack_info->stack_a->top->next->data;
-	second = stack_info->stack_a->top->next->next->data;
-	third = stack_info->stack_a->top->next->next->next->data;
+	first = info->stack_a->top->next->data;
+	second = info->stack_a->top->next->next->data;
+	third = info->stack_a->top->next->next->next->data;
 	if (first > second && second > third && first > third)
 	{
-		ra(stack_info);
-		sa(stack_info);
+		sa(info);
+		rra(info);
 	}
 	else if (first > second && second < third && first > third)
-		ra(stack_info);
+		ra(info);
 	else if (first > second && second < third && first < third)
-		sa(stack_info);
+		sa(info);
 	else if (first < second && second > third && first > third)
-		rra(stack_info);
+		rra(info);
 	else if (first < second && second > third && first < third)
 	{
-		rra(stack_info);
-		sa(stack_info);
+		rra(info);
+		sa(info);
 	}
 }
