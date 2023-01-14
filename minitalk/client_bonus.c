@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 01:04:50 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 04:30:14 by seokang          ###   ########.fr       */
+/*   Created: 2023/01/15 03:04:08 by seokang           #+#    #+#             */
+/*   Updated: 2023/01/15 04:30:24 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 static void	ft_trans_bit(pid_t pid, char letter)
 {
@@ -39,6 +39,14 @@ static void	ft_send_msg(pid_t pid, char msg[])
 		i++;
 	}
 	ft_trans_bit(pid, '\n');
+	ft_trans_bit(pid, '\0');
+}
+
+static void	ft_confirm(int signal)
+{
+	if (signal == SIGUSR1)
+		ft_putstr_fd("Server received message\n", 1);
+	exit(0);
 }
 
 int	main(int ac, char *av[])
@@ -47,6 +55,7 @@ int	main(int ac, char *av[])
 
 	if (ac == 3 && av[2][0] != '\0')
 	{
+		signal(SIGUSR1, ft_confirm);
 		pid = ft_atoi(av[1]);
 		if (pid < 100 || pid > 99999)
 		{
@@ -54,6 +63,8 @@ int	main(int ac, char *av[])
 			return (0);
 		}
 		ft_send_msg(pid, av[2]);
+		while (1)
+			pause();
 	}
 	else
 	{

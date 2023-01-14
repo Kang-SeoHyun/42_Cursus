@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 01:05:20 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 03:02:23 by seokang          ###   ########.fr       */
+/*   Created: 2023/01/15 02:11:46 by seokang           #+#    #+#             */
+/*   Updated: 2023/01/15 04:26:05 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
 # include <unistd.h>
 # include <signal.h>
+# include <stdlib.h>
 
 //utils.c
 void	ft_putchar_fd(char c, int fd);

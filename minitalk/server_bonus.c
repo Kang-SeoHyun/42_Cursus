@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 01:04:47 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 02:33:52 by seokang          ###   ########.fr       */
+/*   Created: 2023/01/15 03:04:37 by seokang           #+#    #+#             */
+/*   Updated: 2023/01/15 03:42:37 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
-static void	ft_handler(int signal)
+static void	ft_handler(int signal, siginfo_t *info, void *s)
 {
 	static int	bit;
 	static char	tmp;
+	pid_t		pid;
 
+	(void)s;
+	pid = info->si_pid;
 	if (signal == SIGUSR1)
 		tmp |= (1 << bit);
 	bit++;
 	if (bit == 8)
 	{
-		ft_putchar_fd(tmp, 1);
+		if (tmp == '\0')
+			kill(pid, SIGUSR1);
+		else
+			ft_putchar_fd(tmp, 1);
 		bit = 0;
 		tmp = 0;
 	}
@@ -37,7 +43,8 @@ static void	ft_pid_print(pid_t pid)
 
 int	main(int ac, char *av[])
 {
-	pid_t	pid;
+	pid_t				pid;
+	struct sigaction	sig;
 
 	(void)av;
 	if (ac != 1 || av[1] != NULL)
@@ -46,10 +53,13 @@ int	main(int ac, char *av[])
 		ft_putstr_fd("Try: ./server \n", 1);
 		return (0);
 	}
+	sig.sa_flags = SA_SIGINFO;
+	sig.sa_sigaction = &ft_handler;
+	sigemptyset(&sig.sa_mask);
 	pid = getpid();
 	ft_pid_print(pid);
-	signal(SIGUSR1, ft_handler);
-	signal(SIGUSR2, ft_handler);
+	sigaction(SIGUSR1, &sig, NULL);
+	sigaction(SIGUSR2, &sig, NULL);
 	while (1)
 		pause();
 	return (0);
