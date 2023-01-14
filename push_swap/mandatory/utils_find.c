@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:12:15 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/11 17:08:03 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:18:58 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@ int	min_of_idx(t_info *stack_info)
 	int		idx;
 	int		min;
 	int		tmp;
-	int		size_a;
 	t_node	*stack_a;
 
 	idx = 0;
 	min = min_of_data(stack_info);
 	tmp = 0;
-	size_a = stack_info->size_a;
 	stack_a = stack_info->stack_a->top->next;
-	while (idx < size_a)
+	while (idx < stack_info->size_a)
 	{
 		tmp = stack_a->data;
 		if (tmp == min)
@@ -33,8 +31,8 @@ int	min_of_idx(t_info *stack_info)
 		idx++;
 		stack_a = stack_a->next;
 	}
-	if (idx >= (size_a + 1) / 2)
-		idx = (size_a - idx) * -1;
+	if (idx >= (stack_info->size_a + 1) / 2)
+		idx = (stack_info->size_a - idx) * -1;
 	return (idx);
 }
 
@@ -43,15 +41,13 @@ int	max_of_idx(t_info *stack_info)
 	int		idx;
 	int		max;
 	int		tmp;
-	int		size_a;
 	t_node	*stack_a;
 
 	idx = 0;
 	tmp = 0;
 	max = max_of_data(stack_info);
-	size_a = stack_info->size_a;
 	stack_a = stack_info->stack_a->top->next;
-	while (idx < size_a)
+	while (idx < stack_info->size_a)
 	{
 		tmp = stack_a->data;
 		if (tmp == max)
@@ -60,21 +56,19 @@ int	max_of_idx(t_info *stack_info)
 		stack_a = stack_a->next;
 	}
 	idx++;
-	if (idx >= (size_a + 1) / 2)
-		idx = (size_a - idx) * -1;
+	if (idx >= (stack_info->size_a + 1) / 2)
+		idx = (stack_info->size_a - idx) * -1;
 	return (idx);
 }
 
 int	mid_of_idx(t_info *stack_info, int num)
 {
 	int			idx;
-	int			size_a;
 	t_node		*stack_a;
 
 	idx = 1;
-	size_a = stack_info->size_a;
 	stack_a = stack_info->stack_a->top->next;
-	while (idx < size_a + 1)
+	while (idx < stack_info->size_a + 1)
 	{
 		if (stack_a->next->data == 0)
 			return (0);
@@ -83,8 +77,8 @@ int	mid_of_idx(t_info *stack_info, int num)
 		idx++;
 		stack_a = stack_a->next;
 	}
-	if (idx >= (size_a + 1) / 2)
-		idx = (size_a - idx) * -1;
+	if (idx >= (stack_info->size_a + 1) / 2)
+		idx = (stack_info->size_a - idx) * -1;
 	return (idx);
 }
 

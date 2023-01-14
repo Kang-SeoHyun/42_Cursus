@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 20:57:18 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/11 15:58:33 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:13:24 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	sort_two(t_info *stack_info)
 	second = stack_info->stack_a->top->next->next->data;
 	if (first > second)
 		sa(stack_info);
-
 }
 
 void	sort_three(t_info *info)
