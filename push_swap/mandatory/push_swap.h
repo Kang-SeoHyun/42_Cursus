@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 22:25:48 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/15 06:45:07 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ typedef struct s_info
 	int				size_array;
 	int				max_size;
 }	t_info;
-
-//push_swap.c
-int			main(int ac, char *av[]);
 
 // init_new.c
 void		print_error(void);
@@ -83,40 +80,39 @@ long long	ft_atoi(const char *str);
 char		**ft_split(const char *s, char c);
 
 //validate.c
-void		validate_args(t_info *stack_info, int ac, char *av[]);
+void		validate_args(t_info *info, int ac, char *av[]);
 
 //ready_sort.c
-void		first_check(t_info	*stack_info);
-int			find_max(t_info *stack_info);
-void		indexing(t_info *stack_info);
-void		stacking(t_info *stack_info);
+void		first_check(t_info	*info);
+int			find_max(t_info *info);
+void		indexing(t_info *info);
+void		stacking(t_info *info);
 
 //sort.c
-void		ascending_order(t_info *stack_info);
-void		sort_array(t_info *stack_info);
-void		start_sorting(t_info *stack_info);
-//조금 수정해보기
-void		divide_group(t_info *stack_info);
+void		divide_group(t_info *info);
+void		ascending_order(t_info *info);
+void		sort_array(t_info *info);
+void		start_sorting(t_info *info);
 
 //hard_code.c
 void		sort_two(t_info *info);
 void		sort_three(t_info *info);
 
 //rotate.c
-void		get_min_rotate(t_info *stack_info, int *a, int *b);
-void		rotate_same(t_info *stack_info, int *a, int *b);
-void		rotate_in_a(t_info *stack_info, int a);
-void		rotate_in_b(t_info *stack_info, int b);
+void		get_min_rotate(t_info *info, int *a, int *b);
+void		rotate_same(t_info *info, int *a, int *b);
+void		rotate_in_a(t_info *info, int a);
+void		rotate_in_b(t_info *info, int b);
 
 //utils_find.c
-int			min_of_idx(t_info *stack_info);
-int			max_of_idx(t_info *stack_info);
-int			mid_of_idx(t_info *stack_info, int num);
-int			find_idx(t_info *stack_info, int num);
+int			min_of_idx(t_info *info);
+int			max_of_idx(t_info *info);
+int			mid_of_idx(t_info *info, int num);
+int			find_idx(t_info *info, int num);
 
 //utils_sort.c
-int			min_of_data(t_info *stack_info);
-int			max_of_data(t_info *stack_info);
+int			min_of_data(t_info *info);
+int			max_of_data(t_info *info);
 int			setidx_getbig(int a, int b, int a_idx, int b_idx);
 
 #endif

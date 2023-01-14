@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 22:07:13 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/15 06:46:52 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*join_args(int ac, char *av[])
 	return (str);
 }
 
-static int	size_check(char const *str, char c)
+static int	get_size(char const *str, char c)
 {
 	int	size;
 	int	i;
@@ -102,7 +102,7 @@ static void	overlap_dup(t_info *info, int input)
 	info->array = tmp;
 }
 
-void	validate_args(t_info *stack_info, int ac, char *av[])
+void	validate_args(t_info *info, int ac, char *av[])
 {
 	int		i;
 	char	*args;
@@ -112,7 +112,7 @@ void	validate_args(t_info *stack_info, int ac, char *av[])
 
 	args = join_args(ac, av);
 	split_av = ft_split(args, ' ');
-	av_size = size_check(args, ' ');
+	av_size = get_size(args, ' ');
 	free(args);
 	i = 0;
 	while (i < av_size)
@@ -121,7 +121,7 @@ void	validate_args(t_info *stack_info, int ac, char *av[])
 			print_error();
 		new_node = init_node(ft_atoi(split_av[i]));
 		free(split_av[i]);
-		overlap_dup(stack_info, new_node->data);
+		overlap_dup(info, new_node->data);
 		i++;
 		free(new_node);
 	}

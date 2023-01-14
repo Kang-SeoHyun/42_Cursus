@@ -6,13 +6,13 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 22:39:35 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/11 17:12:29 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/15 06:34:35 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_min_rotate(t_info *stack_info, int *a, int *b)
+void	get_min_rotate(t_info *info, int *a, int *b)
 {
 	int		a_idx;
 	int		b_idx;
@@ -21,13 +21,13 @@ void	get_min_rotate(t_info *stack_info, int *a, int *b)
 	int		num;
 
 	i = 0;
-	b_node = stack_info->stack_b->top->next;
-	while (i < stack_info->size_b)
+	b_node = info->stack_b->top->next;
+	while (i < info->size_b)
 	{
 		num = b_node->data;
-		a_idx = find_idx(stack_info, num);
-		if (i >= (stack_info->size_b + 1) / 2)
-			b_idx = (stack_info->size_b - i) * -1;
+		a_idx = find_idx(info, num);
+		if (i >= (info->size_b + 1) / 2)
+			b_idx = (info->size_b - i) * -1;
 		else
 			b_idx = i;
 		if (i == 0 || setidx_getbig(*a, *b, a_idx, b_idx))
@@ -40,51 +40,51 @@ void	get_min_rotate(t_info *stack_info, int *a, int *b)
 	}
 }
 
-void	rotate_same(t_info *stack_info, int *a, int *b)
+void	rotate_same(t_info *info, int *a, int *b)
 {
 	while (*a && *b && (*a > 0 && *b > 0))
 	{
-		rr(stack_info);
-		*a = *a - 1;
-		*b = *b - 1;
+		rr(info);
+		*a -= 1;
+		*b -= 1;
 	}
 	while (*a && *b && (*a < 0 && *b < 0))
 	{
-		rrr(stack_info);
-		*a = *a + 1;
-		*b = *b + 1;
+		rrr(info);
+		*a += 1;
+		*b += 1;
 	}
 }
 
-void	rotate_in_a(t_info *stack_info, int a)
+void	rotate_in_a(t_info *info, int a)
 {
 	while (a)
 	{
 		if (a > 0)
 		{
-			ra(stack_info);
+			ra(info);
 			a--;
 		}
 		else
 		{
-			rra(stack_info);
+			rra(info);
 			a++;
 		}
 	}
 }
 
-void	rotate_in_b(t_info *stack_info, int b)
+void	rotate_in_b(t_info *info, int b)
 {
 	while (b)
 	{
 		if (b > 0)
 		{
-			rb(stack_info);
+			rb(info);
 			b--;
 		}
 		else
 		{
-			rrb(stack_info);
+			rrb(info);
 			b++;
 		}
 	}
