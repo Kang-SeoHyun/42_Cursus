@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:26:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/11 17:28:17 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/15 05:49:00 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	sort_array(t_info *stack_info)
 void	start_sorting(t_info *stack_info)
 {
 	if (stack_info->size_array == 2)
-		sa(stack_info);
+		sort_two(stack_info);
 	else if (stack_info->size_array == 3)
 		sort_three(stack_info);
 	else

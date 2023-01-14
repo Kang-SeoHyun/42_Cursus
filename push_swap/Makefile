@@ -6,17 +6,18 @@
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/07 17:06:51 by seokang           #+#    #+#              #
-#    Updated: 2023/01/11 15:38:22 by seokang          ###   ########.fr        #
+#    Updated: 2023/01/15 06:02:43 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC 			= cc
-CFLAGS 		= -Wall -Wextra -Werror
-NAME 		= push_swap
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
+NAME = push_swap
 BONUS_NAME	= checker
 HEADER 		= push_swap.h
 
-OBJS 		=	hard_code.c \
+SRCS 		=	hard_code.c \
 				init_new.c \
 				operations_push.c \
 				operations_R_rotate.c \
@@ -34,15 +35,14 @@ OBJS 		=	hard_code.c \
 				validate.c
 				
 
-SRCS = $(addprefix ./mandatory/, $(OBJS))
-SRCS_BONUS = $(addprefix ./bonus/, $(OBJS_CHECKER))
-SRCS_FILES = $(SRCS:c=o)
-SRCS_BONUS_FILES = $(SRCS_BONUS:c=o)
+OBJS = $(addprefix ./mandatory/, $(SRCS))
+OBJS_BONUS = $(addprefix ./bonus/, $(SRCS_CHECKER))
+
+SRCS_FILES = $(OBJS:c=o)
+SRCS_BONUS_FILES = $(OBJS_BONUS:c=o)
 
 MAND_DIR = mandatory
 BONUS_DIR = bonus
-
-RM = rm -rf
 
 %.o : %c
 	$(CC) $(CFLAGS) -c $< -I.
