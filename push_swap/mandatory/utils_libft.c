@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:20:23 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 21:16:36 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/15 07:50:56 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ long long	ft_atoi(const char *str)
 		res = res * 10 + (*str - '0');
 		str++;
 	}
+	if (!(-2147483648 <= res * sign && res * sign <= 2147483647))
+		print_error();
 	return (res * sign);
 }
