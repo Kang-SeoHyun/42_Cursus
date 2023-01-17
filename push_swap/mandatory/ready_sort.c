@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 17:03:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 06:24:21 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/17 17:23:21 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	first_check(t_info	*info)
 	check = 0;
 	while (size > 1)
 	{
-		if (info->array[size - 1] - info->array[size - 2] > 0)
+		if (info->array[size - 1]  > info->array[size - 2])
 			check++;
 		size--;
 	}
