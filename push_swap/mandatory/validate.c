@@ -14,8 +14,8 @@
 
 static char	*join_args(int ac, char *av[])
 {
-	long long		i;
-	long long		len;
+	int		i;
+	int		len;
 	char			*str;
 	long long		idx;
 	long long		j;
@@ -27,15 +27,15 @@ static char	*join_args(int ac, char *av[])
 	str = (char *)malloc(sizeof(char) * (len + ac));
 	if (!str)
 		return (NULL);
-	i = 0;
+	i = 1;
 	idx = 0;
-	while (++i < ac)
+	while (i < ac)
 	{
 		j = 0;
 		while (av[i][j])
 			str[idx++] = av[i][j++];
-		if (i != ac - 1)
-			str[idx++] = ' ';
+		str[idx++] = ' ';
+		i++;
 	}
 	str[idx] = '\0';
 	return (str);
@@ -86,7 +86,7 @@ static void	overlap_dup(t_info *info, int input)
 			print_error();
 	}
 	info->size_array++;
-	tmp = (int *)malloc(sizeof(int) * info->size_array);
+	tmp = (long *)malloc(sizeof(long) * info->size_array);
 	if (!tmp)
 		print_error();
 	if (info->size_array == 1)

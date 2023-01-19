@@ -49,6 +49,6 @@ void	init_stack(t_info *info)
 	info->stack_b->top->next = info->stack_b->bottom;
 	info->stack_b->bottom->prev = info->stack_b->top;
 	info->size_b = 0;
-	info->array = (int *)malloc(sizeof(int));
+	info->array = (long *)malloc(sizeof(long));
 	info->size_array = 0;
 }

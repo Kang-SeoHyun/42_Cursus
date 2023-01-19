@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
+//# include <fcntl.h>
 
 typedef struct s_node
 {
@@ -36,7 +36,7 @@ typedef struct s_info
 	int				size_a;
 	struct s_stack	*stack_b;
 	int				size_b;
-	int				*array;
+	long			*array;
 	int				size_array;
 	int				max_size;
 }	t_info;

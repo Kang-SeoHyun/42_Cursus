@@ -32,9 +32,9 @@ void	first_check(t_info	*info)
 int	find_max(t_info *info)
 {
 	int		i;
-	int		change;
+	long	change;
 
-	change = -2147483648;
+	change = -2147483649;
 	i = 0;
 	while (i < info->size_array)
 	{
@@ -47,7 +47,7 @@ int	find_max(t_info *info)
 	{
 		if (change == info->array[i])
 		{
-			info->array[i] = -2147483648;
+			info->array[i] = -2147483649;
 			return (i);
 		}
 		i++;
@@ -61,7 +61,7 @@ void	indexing(t_info *info)
 	int	*idx_array;
 	int	max_idx;
 
-	idx_array = (int *)malloc(sizeof(int) * info->size_array);
+	idx_array = (long *)malloc(sizeof(long) * info->size_array);
 	if (!idx_array)
 		print_error();
 	idx = info->size_array - 1;
@@ -84,6 +84,8 @@ void	stacking(t_info *info)
 	while (i < info->size_array)
 	{
 		new = init_node(info->array[i] + 1);
+		if (!new)
+			print_error();
 		push_bottom(info->stack_a, new);
 		i++;
 	}

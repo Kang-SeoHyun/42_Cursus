@@ -14,10 +14,10 @@
 
 void	divide_group(t_info *info)
 {
-	t_node	*tmp;
 	int		i;
 	int		p1;
 	int		p2;
+	t_node	*tmp;
 
 	i = 0;
 	p1 = info->max_size / 3;
