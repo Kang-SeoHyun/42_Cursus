@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 08:48:23 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 08:50:44 by seokang          ###   ########.fr       */
+/*   Created: 2023/01/02 19:26:00 by seokang           #+#    #+#             */
+/*   Updated: 2023/01/17 17:21:30 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	divide_group(t_info *info)
 {
-	t_node	*tmp;
 	int		i;
 	int		p1;
 	int		p2;
+	t_node	*tmp;
 
 	i = 0;
 	p1 = info->max_size / 3;
@@ -89,7 +89,7 @@ void	sort_array(t_info *info)
 void	start_sorting(t_info *info)
 {
 	if (info->size_array == 2)
-		sort_two(info);
+		sa(info);
 	else if (info->size_array == 3)
 		sort_three(info);
 	else

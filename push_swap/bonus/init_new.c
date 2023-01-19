@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 08:28:41 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 08:40:35 by seokang          ###   ########.fr       */
+/*   Created: 2022/12/04 22:04:19 by seokang           #+#    #+#             */
+/*   Updated: 2023/01/10 20:57:21 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ t_node	*init_node(int data)
 	if (!new)
 		return (0);
 	new->data = data;
-	new->next = NULL;
 	new->prev = NULL;
+	new->next = NULL;
 	return (new);
 }
 
@@ -49,6 +49,6 @@ void	init_stack(t_info *info)
 	info->stack_b->top->next = info->stack_b->bottom;
 	info->stack_b->bottom->prev = info->stack_b->top;
 	info->size_b = 0;
-	info->array = (int *)malloc(sizeof(int));
+	info->array = (long *)malloc(sizeof(long));
 	info->size_array = 0;
 }

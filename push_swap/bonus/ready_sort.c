@@ -5,19 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 08:42:50 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 08:43:50 by seokang          ###   ########.fr       */
+/*   Created: 2023/01/02 17:03:00 by seokang           #+#    #+#             */
+/*   Updated: 2023/01/17 22:21:01 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
+void	first_check(t_info	*info)
+{
+	int	size;
+	int	check;
+
+	size = info->size_array;
+	check = 0;
+	while (size > 1)
+	{
+		if (info->array[size - 1] > info->array[size - 2])
+			check++;
+		size--;
+	}
+	if (check == info->size_array - 1)
+		exit(0);
+}
+
 int	find_max(t_info *info)
 {
 	int		i;
-	int		change;
+	long	change;
 
-	change = -2147483648;
+	change = -2147483649;
 	i = 0;
 	while (i < info->size_array)
 	{
@@ -30,7 +47,7 @@ int	find_max(t_info *info)
 	{
 		if (change == info->array[i])
 		{
-			info->array[i] = -2147483648;
+			info->array[i] = -2147483649;
 			return (i);
 		}
 		i++;
@@ -44,7 +61,7 @@ void	indexing(t_info *info)
 	int	*idx_array;
 	int	max_idx;
 
-	idx_array = (int *)malloc(sizeof(int) * info->size_array);
+	idx_array = (long *)malloc(sizeof(long) * info->size_array);
 	if (!idx_array)
 		print_error();
 	idx = info->size_array - 1;
@@ -67,6 +84,8 @@ void	stacking(t_info *info)
 	while (i < info->size_array)
 	{
 		new = init_node(info->array[i] + 1);
+		if (!new)
+			print_error();
 		push_bottom(info->stack_a, new);
 		i++;
 	}
