@@ -21,17 +21,9 @@ int	main(int ac, char *av[])
 	else
 	{
 		init_stack(&stack_info);
-		system("leaks push_swap | grep leaked");
 		validate_args(&stack_info, ac, av);
-		system("leaks push_swap | grep leaked");
-		first_check(&stack_info);
-		system("leaks push_swap | grep leaked");
-		indexing(&stack_info);
-		system("leaks push_swap | grep leaked");
 		stacking(&stack_info);
-		system("leaks push_swap | grep leaked");
-		start_sorting(&stack_info);
-		system("leaks push_swap | grep leaked");
+		checker(&stack_info);
 		exit(0);
 	}	
 	return (0);

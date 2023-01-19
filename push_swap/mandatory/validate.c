@@ -27,15 +27,15 @@ static char	*join_args(int ac, char *av[])
 	str = (char *)malloc(sizeof(char) * (len + ac));
 	if (!str)
 		return (NULL);
-	i = 1;
+	i = 0;
 	idx = 0;
-	while (i < ac)
+	while (++i < ac)
 	{
 		j = 0;
 		while (av[i][j])
 			str[idx++] = av[i][j++];
-		str[idx++] = ' ';
-		i++;
+		if (i != ac - 1)
+			str[idx++] = ' ';
 	}
 	str[idx] = '\0';
 	return (str);
@@ -71,6 +71,8 @@ static int	is_valid_num(char *str)
 			return (0);
 		i++;
 	}
+	if (ft_atoi(str) > 2147483647 || ft_atoi(str) < -2147483648)
+		return (0);
 	return (1);
 }
 

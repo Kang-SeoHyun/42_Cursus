@@ -34,17 +34,28 @@ SRCS_M 		=	hard_code.c \
 				utils_split.c \
 				validate.c
 
-SRCS_B		=
-				
+SRCS_B		=	check_here.c \
+				checker.c \
+				get_next_line.c \
+				init_new.c \
+				oper_p.c \
+				oper_r.c \
+				oper_Rr.c \
+				oper_s.c \
+				push_pop.c \
+				utils_gnl.c \
+				utils_libft.c \
+				utils_split.c \
+				validate.c				
 
-OBJS_M = $(addprefix ./mandatory/, $(SRCS_M))
-OBJS_B = $(addprefix ./bonus/, $(SRCS_B))
+MANDA_DIR = ./mandatory/
+BONUS_DIR = ./bonus/
 
-SRCS_M_FILES = $(OBJS_M:c=o)
-SRCS_B_FILES = $(OBJS_B:c=o)
+OBJS_M = $(addprefix $(MANDA_DIR), $(SRCS_M))
+OBJS_B = $(addprefix $(BONUS_DIR), $(SRCS_B))
 
-MANDa_DIR = mandatory
-BONUS_DIR = bonus
+SRCS_M_FILES = $(OBJS_M:.c=.o)
+SRCS_B_FILES = $(OBJS_B:.c=.o)
 
 %.o : %c
 	$(CC) $(CFLAGS) -c $< -I.

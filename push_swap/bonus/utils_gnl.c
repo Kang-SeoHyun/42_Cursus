@@ -12,16 +12,6 @@
 
 #include "checker.h"
 
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	total_len;
@@ -46,22 +36,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	new_str[i] = '\0';
 	free(s1);
 	return (new_str);
-}
-
-char	*ft_strchr(char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if (c == '\0')
-		return ((char *)&s[i]);
-	return (0);
 }
 
 char	*ft_strndup(char *s, int start, int num)
