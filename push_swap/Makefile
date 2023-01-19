@@ -10,14 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -rf
-NAME = push_swap
-BONUS_NAME	= checker
-HEADER 		= push_swap.h
+CC 		= cc
+CFLAGS 	= -Wall -Wextra -Werror
+RM 		= rm -rf
+NAME 	= push_swap
+BONUS	= checker
+HEADER 	= push_swap.h
 
-SRCS 		=	hard_code.c \
+SRCS_M 		=	hard_code.c \
 				init_new.c \
 				operations_push.c \
 				operations_R_rotate.c \
@@ -33,24 +33,26 @@ SRCS 		=	hard_code.c \
 				utils_sort.c \
 				utils_split.c \
 				validate.c
+
+SRCS_B		=
 				
 
-OBJS = $(addprefix ./mandatory/, $(SRCS))
-OBJS_BONUS = $(addprefix ./bonus/, $(SRCS_CHECKER))
+OBJS_M = $(addprefix ./mandatory/, $(SRCS_M))
+OBJS_B = $(addprefix ./bonus/, $(SRCS_B))
 
-SRCS_FILES = $(OBJS:c=o)
-SRCS_BONUS_FILES = $(OBJS_BONUS:c=o)
+SRCS_M_FILES = $(OBJS_M:c=o)
+SRCS_B_FILES = $(OBJS_B:c=o)
 
-MAND_DIR = mandatory
+MANDa_DIR = mandatory
 BONUS_DIR = bonus
 
 %.o : %c
 	$(CC) $(CFLAGS) -c $< -I.
 
-$(NAME) : $(SRCS_FILES)
+$(NAME) : $(SRCS_M_FILES)
 	$(CC) $(CFLAGS) -o $@ $^
 
-$(BONUS) : $(SRCS_BONUS_FILES)
+$(BONUS) : $(SRCS_B_FILES)
 	$(CC) $(CFLAGS) -o $@ $^
 
 all : $(NAME)
@@ -58,8 +60,8 @@ all : $(NAME)
 bonus : $(BONUS)
 
 clean :
-	$(RM) $(SRCS_FILES)
-	$(RM) $(SRCS_BONUS_FILES)
+	$(RM) $(SRCS_M_FILES)
+	$(RM) $(SRCS_B_FILES)
 
 fclean : clean
 	$(RM) $(NAME)
@@ -69,4 +71,4 @@ re :
 	make fclean
 	make all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re bonus
