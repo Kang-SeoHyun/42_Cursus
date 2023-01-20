@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_here.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/20 17:03:34 by seokang           #+#    #+#             */
+/*   Updated: 2023/01/20 17:08:43 by seokang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 void	stacking(t_info *info)
@@ -46,7 +58,7 @@ void	command_check(char *op, t_info *info)
 		print_error();
 }
 
-void	sort_check(t_info	*info)
+int	sort_check(t_info	*info)
 {
 	int		size;
 	int		check;
@@ -81,10 +93,10 @@ void	checker(t_info *info)
 		command_check(op, info);
 		free (op);
 	}
-    if (sort_check(info) == 1 && !(info->stack_b->size_b))
+	if (sort_check(info) == 1 && !(info->size_b))
 		write(1, "OK\n", 3);
-	else if (sort_check(info) == 0 || info->stack_b->size_b)
+	else if (sort_check(info) == 0 || info->size_b)
 		write(1, "KO\n", 3);
-    else
-        write(1, "Error\n", 6);
+	else
+		write(1, "Error\n", 6);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 08:26:24 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:07:41 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,16 @@ char		**ft_split(const char *s, char c);
 void		validate_args(t_info *info, int ac, char *av[]);
 
 //utils_gnl.c
-char		*ft_strjoin(char *s1, char *s2)
+char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strndup(char *s, int start, int num);
 
 //get_next_line.c
-char		*get_next_line(int fd)
+char		*get_next_line(int fd);
 
 //check_here.c
 void		stacking(t_info *info);
 void		command_check(char *op, t_info *info);
-void		sort_check(t_info	*info);
+int			sort_check(t_info	*info);
 void		checker(t_info *info);
 
 #endif

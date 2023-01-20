@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 06:46:52 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:05:09 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static char	*join_args(int ac, char *av[])
 {
-	int		i;
-	int		len;
-	char			*str;
-	long long		idx;
-	long long		j;
+	int			i;
+	int			len;
+	char		*str;
+	long long	idx;
+	long long	j;
 
 	i = 0;
 	len = 0;
