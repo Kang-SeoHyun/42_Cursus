@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/20 17:05:09 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:16:53 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static int	is_valid_num(char *str)
 
 static void	overlap_dup(t_info *info, int input)
 {
-	int	i;
-	int	*tmp;
+	int			i;
+	long long	*tmp;
 
 	i = -1;
 	while (++i < info->size_array)
@@ -88,7 +88,7 @@ static void	overlap_dup(t_info *info, int input)
 			print_error();
 	}
 	info->size_array++;
-	tmp = (long *)malloc(sizeof(long) * info->size_array);
+	tmp = (long long *)malloc(sizeof(long long) * info->size_array);
 	if (!tmp)
 		print_error();
 	if (info->size_array == 1)

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 22:04:19 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/10 20:57:21 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:11:53 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ void	init_stack(t_info *info)
 	info->stack_b->top->next = info->stack_b->bottom;
 	info->stack_b->bottom->prev = info->stack_b->top;
 	info->size_b = 0;
-	info->array = (long *)malloc(sizeof(long));
+	info->array = (long long *)malloc(sizeof(long long));
 	info->size_array = 0;
 }

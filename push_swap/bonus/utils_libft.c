@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:20:23 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/20 17:04:35 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:17:11 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ long long	ft_atoi(const char *str)
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	unsigned int			i;
+	unsigned int	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')

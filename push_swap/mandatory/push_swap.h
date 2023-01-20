@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/15 08:26:24 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:33:36 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-//# include <fcntl.h>
 
 typedef struct s_node
 {
@@ -36,7 +35,7 @@ typedef struct s_info
 	int				size_a;
 	struct s_stack	*stack_b;
 	int				size_b;
-	long			*array;
+	long long		*array;
 	int				size_array;
 	int				max_size;
 }	t_info;

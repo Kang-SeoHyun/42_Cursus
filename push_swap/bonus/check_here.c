@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:03:34 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/20 17:08:43 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:42:00 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,23 @@ void	command_check(char *op, t_info *info)
 
 int	sort_check(t_info	*info)
 {
-	int		size;
-	int		check;
+	int		i;
+	int		count;
 	t_node	*tmp;
 
-	size = info->size_array;
-	check = 0;
+	i = 0;
+	count = 0;
 	tmp = info->stack_a->top->next;
 	if (info->size_a != info->size_array)
 		return (0);
-	while (size > 1)
+	while (i < info->size_array - 1)
 	{
 		if (tmp->data > tmp->next->data)
-			check++;
-		size--;
+			count++;
+		i++;
 		tmp = tmp->next;
 	}
-	if (check == info->size_array - 1)
+	if (count == 0)
 		return (1);
 	return (0);
 }
@@ -93,9 +93,9 @@ void	checker(t_info *info)
 		command_check(op, info);
 		free (op);
 	}
-	if (sort_check(info) == 1 && !(info->size_b))
+	if (sort_check(info) == 1)
 		write(1, "OK\n", 3);
-	else if (sort_check(info) == 0 || info->size_b)
+	else if (sort_check(info) == 0)
 		write(1, "KO\n", 3);
 	else
 		write(1, "Error\n", 6);

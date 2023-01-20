@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 12:13:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/17 21:53:44 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:33:23 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,11 @@ int	main(int ac, char *av[])
 	else
 	{
 		init_stack(&stack_info);
-		system("leaks push_swap | grep leaked");
 		validate_args(&stack_info, ac, av);
-		system("leaks push_swap | grep leaked");
 		first_check(&stack_info);
-		system("leaks push_swap | grep leaked");
 		indexing(&stack_info);
-		system("leaks push_swap | grep leaked");
 		stacking(&stack_info);
-		system("leaks push_swap | grep leaked");
 		start_sorting(&stack_info);
-		system("leaks push_swap | grep leaked");
 		exit(0);
 	}	
 	return (0);

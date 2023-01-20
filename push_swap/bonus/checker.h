@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:55:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/20 17:07:41 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:36:13 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	42
@@ -40,7 +39,7 @@ typedef struct s_info
 	int				size_a;
 	struct s_stack	*stack_b;
 	int				size_b;
-	long			*array;
+	long long		*array;
 	int				size_array;
 	int				max_size;
 }	t_info;

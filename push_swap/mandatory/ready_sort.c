@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 17:03:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/17 22:21:01 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:22:33 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	first_check(t_info	*info)
 
 int	find_max(t_info *info)
 {
-	int		i;
-	long	change;
+	int			i;
+	long long	change;
 
 	change = -2147483649;
 	i = 0;
@@ -57,11 +57,11 @@ int	find_max(t_info *info)
 
 void	indexing(t_info *info)
 {
-	int	idx;
-	int	*idx_array;
-	int	max_idx;
+	int			idx;
+	long long	*idx_array;
+	int			max_idx;
 
-	idx_array = (long *)malloc(sizeof(long) * info->size_array);
+	idx_array = (long long *)malloc(sizeof(long long) * info->size_array);
 	if (!idx_array)
 		print_error();
 	idx = info->size_array - 1;
