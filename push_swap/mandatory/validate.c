@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:17:08 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/20 17:16:06 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:55:37 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ void	validate_args(t_info *info, int ac, char *av[])
 
 	args = join_args(ac, av);
 	split_av = ft_split(args, ' ');
+	if (!split_av || !*split_av)
+		print_error();
 	av_size = get_size(args, ' ');
 	free(args);
 	i = 0;

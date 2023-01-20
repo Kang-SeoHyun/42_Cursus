@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:37:17 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/20 17:04:27 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:58:43 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	sa(t_info *info)
 	tmp2 = pop_top(info->stack_a);
 	push_top(info->stack_a, tmp1);
 	push_top(info->stack_a, tmp2);
-	write(1, "sa\n", 3);
 }
 
 void	sb(t_info *info)
@@ -33,7 +32,6 @@ void	sb(t_info *info)
 	tmp2 = pop_top(info->stack_b);
 	push_top(info->stack_b, tmp1);
 	push_top(info->stack_b, tmp2);
-	write(1, "sb\n", 3);
 }
 
 void	ss(t_info *info)
@@ -49,5 +47,4 @@ void	ss(t_info *info)
 	tmp2 = pop_top(info->stack_b);
 	push_top(info->stack_b, tmp1);
 	push_top(info->stack_b, tmp2);
-	write(1, "ss\n", 3);
 }

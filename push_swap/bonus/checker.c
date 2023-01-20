@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 12:13:32 by seokang           #+#    #+#             */
-/*   Updated: 2023/01/20 17:03:39 by seokang          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:53:15 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	main(int ac, char *av[])
 {
 	t_info	stack_info;
 
-	if (ac < 2)
-		print_error();
-	else
+	if (ac >= 2)
 	{
 		init_stack(&stack_info);
 		validate_args(&stack_info, ac, av);
