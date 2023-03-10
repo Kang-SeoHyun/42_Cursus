@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:51:26 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/10 20:27:52 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/10 20:58:26 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,32 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+
+
+typedef struct s_map
+{
+	int		col;
+	int		row;
+	char	*map_str;
+}	t_map;
+
+typedef struct s_check_map
+{
+	int	pl_col;
+	int	pl_row;
+	int	collectible;
+	int	exit;
+	int	*check;	
+}	t_check_map;
+
+typedef struct s_game
+{
+	int			cnt;
+	int			collectible;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_map		map;
+	t_check_map	check_map;
+}	t_game;
 
 #endif

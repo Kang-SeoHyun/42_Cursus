@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 19:32:44 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/10 21:20:29 by seokang          ###   ########.fr       */
+/*   Created: 2023/03/10 20:36:33 by seokang           #+#    #+#             */
+/*   Updated: 2023/03/10 20:58:53 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void ft_check_file_type(char *file_name)
+int main(int argc, char *argv[])
 {
-    if (ft_strncmp(file_name + ft_strlen(file_name) - 4, ".ber", 4))
-}
+    t_game  game;
 
-void    ft_init_map(t_game *game, char *file_name)
-{
-    ft_check_file_type(file_name);
+    if (argc != 2)
+    {
+        perror("ERROR in arguments");
+        exit(1);
+    }
+    ft_init_map(&game, argv[1]);
+    return (0);
 }
