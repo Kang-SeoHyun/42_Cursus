@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:32:44 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/18 19:26:19 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/18 20:20:30 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ void    ft_init_map(t_game *game, char *file_name)
     ft_check_file_type(file_name);
     ft_count_col_and_row(&(game->map), file_name);
     ft_set_map(&(game->map), file_name, 0);
-    ft_check_map(game);
+    ft_verify_map(game);
 }

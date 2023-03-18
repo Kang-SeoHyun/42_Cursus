@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:51:26 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/18 20:18:21 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/18 20:57:45 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
 
+# define SIZE 32
+
 //key set
+# define X_EVENT_KEY_PRESS 2
+# define X_EVENT_KEY_EXIT 17
+
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_A 0
@@ -60,7 +65,13 @@ void    print_err(char  *msg);
 
 /* map.c */
 void    ft_init_map(t_game *game, char *file_name);
-void    ft_check_map(t_game *game);
+void    ft_verify_map(t_game *game);
 void    ft_check_valid_path(t_game *game);
+
+/* game.c */
+void    ft_start_game(t_game *game);
+
+/* sprites.c */
+void	ft_init_sprites(t_game *game);
 
 #endif
