@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map2.c                                             :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:10:44 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/11 17:21:59 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/18 19:26:38 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,12 @@ static void ft_check_wall(t_map *map)
     }
 }
 
-void    ft_verify_map(t_game *game)
+void    ft_check_map(t_game *game)
 {
     ft_check_rectangle(&(game->map));
     game->check_map.collectible = 0;
     game->check_map.exit = 0;
     ft_check_components(game);
     ft_check_wall(&(game->map));
-    //할 차례!!!!!!아래꺼
     ft_check_valid_path(game);
 }

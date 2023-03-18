@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:51:26 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/11 16:23:01 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/18 20:18:21 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void    print_err(char  *msg);
 
 /* map.c */
 void    ft_init_map(t_game *game, char *file_name);
-void    ft_verify_map(t_game *game);
+void    ft_check_map(t_game *game);
+void    ft_check_valid_path(t_game *game);
 
 #endif

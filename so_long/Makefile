@@ -1,12 +1,91 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    MAKEFILE                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:50:07 by seokang           #+#    #+#              #
-#    Updated: 2022/11/11 17:50:08 by seokang          ###   ########.fr        #
+#    Updated: 2023/03/18 20:15:07 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# compile options
+NAME		= so_long
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror
+RM			= rm -f
+MLX			= -Lmlx -lmlx -framework OpenGL -framework Appkit
+LIBFT		= -Llibft -lft
+
+# header files
+HEADER_DIR  = mandatory/
+HEADER_SRCS	= so_long.h
+HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
+
+# source files
+M_DIR		= mandatory/
+M_SRCS      = main.c map_check.c map_set.c map_valid.c
+M_PATH		= $(addprefix $(M_DIR), $(M_SRCS))
+M_OBJS		= $(M_PATH:c=o)
+
+#gnl
+G_DIR		= gnl/
+G_SRCS		= get_next_line.c get_next_line_utils.c
+G_PATH		= $(addprefix $(G_DIR), $(G_SRCS))
+G_OBJS		= $(G_PATH:c=o)
+
+# colors
+RESET = \033[0m
+GREEN = \033[1;32m
+CYAN = \033[1;36m
+
+ifdef BONUSFLAG
+	OBJS = $(B_OBJS)
+else
+	OBJS = $(M_OBJS)
+endif
+
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
+	
+$(NAME): $(G_OBJS) $(OBJS)
+	@make -C mlx all
+	@make -C libft all
+	@$(CC) $(CFLAGS) $(MLX) $(LIBFT) $(G_OBJS) $(OBJS) -o $@
+	@echo "$(GREEN)╔════════════════════════════════════════╗$(RESET)"
+	@echo "$(GREEN)║       so_long compile finished :)      ║$(RESET)"
+	@echo "$(GREEN)╠════════════════════════════════════════╣$(RESET)"
+	@echo "$(GREEN)║                                        ║$(RESET)"
+	@echo "$(GREEN)║                     Have fun !         ║$(RESET)"
+	@echo "$(GREEN)║                                        ║$(RESET)"
+	@echo "$(GREEN)╚════════════════════════════════════════╝$(RESET)"
+
+all: $(NAME)
+
+bonus:
+	make BONUSFLAG=1
+
+clean:
+	@make -C mlx clean
+	@make -C libft clean
+	@$(RM) $(G_OBJS)
+	@$(RM) $(M_OBJS)
+	@$(RM) $(B_OBJS)
+	@echo "$(CYAN)╔════════════════════════════════════════╗$(RESET)"
+	@echo "$(CYAN)║           make clean finished.         ║$(RESET)"
+	@echo "$(CYAN)╚════════════════════════════════════════╝$(RESET)"
+
+fclean:
+	@make -C libft fclean
+	@make clean
+	@$(RM) $(NAME)
+	@echo "$(CYAN)╔════════════════════════════════════════╗$(RESET)"
+	@echo "$(CYAN)║          make fclean finished.         ║$(RESET)"
+	@echo "$(CYAN)╚════════════════════════════════════════╝$(RESET)"
+
+re:
+	make fclean
+	make all
+
+.PHONY: all bonus clean fclean re
