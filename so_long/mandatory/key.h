@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 20:36:33 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/21 19:11:01 by seokang          ###   ########.fr       */
+/*   Created: 2023/03/21 18:51:07 by seokang           #+#    #+#             */
+/*   Updated: 2023/03/21 18:53:50 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef KEY_H
+# define KEY_H
 
-void    print_err(char  *msg)
-{
-    perror(msg);
-    exit(1);
-}
+# define X_EVENT_KEY_PRESS		2
+# define X_EVENT_KEY_EXIT		17
 
-int main(int argc, char *argv[])
-{
-    t_game  game;
+# define KEY_ESC	53
+# define KEY_W		13
+# define KEY_A		0
+# define KEY_S		1
+# define KEY_D		2
+# define KEY_UP		126
+# define KEY_LEFT	123
+# define KEY_DOWN	125
+# define KEY_RIGHT	124
 
-    if (argc != 2)
-        print_err("ERROR in arguments");
-    init_map(&game, argv[1]);
-    ft_start_game(&game);
-    return (0);
-}
+#endif

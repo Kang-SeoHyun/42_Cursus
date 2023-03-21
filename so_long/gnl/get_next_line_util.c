@@ -6,13 +6,13 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:52 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/10 20:26:07 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/21 16:44:50 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *s)
+int	ft_strlen_g(char *s)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_g(char *s1, char *s2)
 {
 	size_t	total_len;
 	char	*new_str;
@@ -30,7 +30,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s2)
 		return (0);
-	total_len = ft_strlen(s1) + ft_strlen(s2);
+	total_len = ft_strlen_g(s1) + ft_strlen_g(s2);
 	new_str = (char *)malloc(sizeof(char) * (total_len + 1));
 	if (!new_str)
 		return (NULL);
@@ -48,7 +48,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (new_str);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr_g(char *s, int c)
 {
 	int	i;
 
@@ -64,7 +64,7 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-char	*ft_strndup(char *s, int start, int num)
+char	*ft_strndup_g(char *s, int start, int num)
 {
 	int		idx_s;
 	int		idx_t;

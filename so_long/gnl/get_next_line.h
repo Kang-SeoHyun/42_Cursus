@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 20:16:06 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/10 20:16:09 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/21 16:43:39 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 char	*get_next_line(int fd);
 
-int		ft_strlen(char *s);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(char *s, int c);
-char	*ft_strndup(char *s, int start, int num);
+int		ft_strlen_g(char *s);
+char	*ft_strjoin_g(char *s1, char *s2);
+char	*ft_strchr_g(char *s, int c);
+char	*ft_strndup_g(char *s, int start, int num);
 
 #endif

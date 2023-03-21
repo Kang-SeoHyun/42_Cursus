@@ -6,7 +6,7 @@
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:50:07 by seokang           #+#    #+#              #
-#    Updated: 2023/03/18 20:15:07 by seokang          ###   ########.fr        #
+#    Updated: 2023/03/21 18:12:49 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,20 +25,15 @@ HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
 # source files
 M_DIR		= mandatory/
-M_SRCS      = main.c map_check.c map_set.c map_valid.c
+M_SRCS      = game.c main.c map_check.c map_set.c map_valid.c move.c sprites.c
 M_PATH		= $(addprefix $(M_DIR), $(M_SRCS))
 M_OBJS		= $(M_PATH:c=o)
 
 #gnl
 G_DIR		= gnl/
-G_SRCS		= get_next_line.c get_next_line_utils.c
+G_SRCS		= get_next_line.c get_next_line_util.c
 G_PATH		= $(addprefix $(G_DIR), $(G_SRCS))
 G_OBJS		= $(G_PATH:c=o)
-
-# colors
-RESET = \033[0m
-GREEN = \033[1;32m
-CYAN = \033[1;36m
 
 ifdef BONUSFLAG
 	OBJS = $(B_OBJS)
@@ -53,13 +48,6 @@ $(NAME): $(G_OBJS) $(OBJS)
 	@make -C mlx all
 	@make -C libft all
 	@$(CC) $(CFLAGS) $(MLX) $(LIBFT) $(G_OBJS) $(OBJS) -o $@
-	@echo "$(GREEN)╔════════════════════════════════════════╗$(RESET)"
-	@echo "$(GREEN)║       so_long compile finished :)      ║$(RESET)"
-	@echo "$(GREEN)╠════════════════════════════════════════╣$(RESET)"
-	@echo "$(GREEN)║                                        ║$(RESET)"
-	@echo "$(GREEN)║                     Have fun !         ║$(RESET)"
-	@echo "$(GREEN)║                                        ║$(RESET)"
-	@echo "$(GREEN)╚════════════════════════════════════════╝$(RESET)"
 
 all: $(NAME)
 
@@ -72,17 +60,11 @@ clean:
 	@$(RM) $(G_OBJS)
 	@$(RM) $(M_OBJS)
 	@$(RM) $(B_OBJS)
-	@echo "$(CYAN)╔════════════════════════════════════════╗$(RESET)"
-	@echo "$(CYAN)║           make clean finished.         ║$(RESET)"
-	@echo "$(CYAN)╚════════════════════════════════════════╝$(RESET)"
 
 fclean:
 	@make -C libft fclean
 	@make clean
 	@$(RM) $(NAME)
-	@echo "$(CYAN)╔════════════════════════════════════════╗$(RESET)"
-	@echo "$(CYAN)║          make fclean finished.         ║$(RESET)"
-	@echo "$(CYAN)╚════════════════════════════════════════╝$(RESET)"
 
 re:
 	make fclean

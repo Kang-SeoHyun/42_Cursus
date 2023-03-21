@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/10 20:25:59 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/21 16:44:08 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static char	*ft_baguni_pugi(int fd, char *backup)
 	while (reres > 0)
 	{
 		baguni[reres] = '\0';
-		backup = ft_strjoin(backup, baguni);
-		if (ft_strchr(backup, '\n'))
+		backup = ft_strjoin_g(backup, baguni);
+		if (ft_strchr_g(backup, '\n'))
 			break ;
 		reres = read(fd, baguni, BUFFER_SIZE);
 	}
@@ -48,14 +48,14 @@ static char	*ft_na_nugi(char **result, char *backup)
 	if (idx_nl == -1)
 	{
 		if (*backup != '\0')
-			*result = ft_strndup(backup, 0, ft_strlen(backup));
+			*result = ft_strndup_g(backup, 0, ft_strlen_g(backup));
 		free(backup);
 		return (NULL);
 	}
 	else
 	{
-		*result = ft_strndup(backup, 0, idx_nl + 1);
-		temp = ft_strndup(backup, idx_nl + 1, ft_strlen(backup) - idx_nl);
+		*result = ft_strndup_g(backup, 0, idx_nl + 1);
+		temp = ft_strndup_g(backup, idx_nl + 1, ft_strlen_g(backup) - idx_nl);
 		free(backup);
 		backup = temp;
 	}
@@ -72,7 +72,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!backup)
 	{
-		backup = ft_strndup("", 0, 0);
+		backup = ft_strndup_g("", 0, 0);
 		if (!backup)
 			return (NULL);
 		*backup = '\0';

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:56:35 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/18 21:24:42 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:09:28 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,52 @@ void	ft_init_sprites(t_game *game)
 	int	width;
 	int	height;
 
-    
+    game->imgs.black = mlx_xpm_file_to_image(game->mlx_ptr, "img/black.xpm", &width, &height);
+	game->imgs.pacfood = mlx_xpm_file_to_image(game->mlx_ptr, "img/pacdot_food.xpm", &width, &height);
+	game->imgs.pacman = mlx_xpm_file_to_image(game->mlx_ptr, "img/pac_closed.xpm", &width, &height);
+	game->imgs.portal = mlx_xpm_file_to_image(game->mlx_ptr, "img/portal.xpm", &width, &height);
+	game->imgs.wall = mlx_xpm_file_to_image(game->mlx_ptr, "img/wall.xpm", &width, &height);
+}
+
+static void	ft_show_image(t_game *game, void *sprite, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite, (x + 1) * SIZE, (y + 1) * SIZE);
+}
+
+void	ft_set_sprites(t_game *game)
+{
+	int	col;
+	int	row;
+	int	idx;
+
+	row = 0;
+	while (row < game->map.row)
+	{
+		col = 0;
+		while (col < game->map.col)
+		{
+			idx = row * game->map.col + col;
+			if (game->map.map_str[idx] == '1')
+				ft_show_image(game, game->imgs.wall, col, row);
+			if (game->map.map_str[idx] == '0')
+				ft_show_image(game, game->imgs.black, col, row);
+			if (game->map.map_str[idx] == 'E')
+				ft_show_image(game, game->imgs.portal, col, row);
+			if (game->map.map_str[idx] == 'C')
+				ft_show_image(game, game->imgs.pacfood, col, row);
+			if (game->map.map_str[idx] == 'P')
+				ft_show_image(game, game->imgs.pacman, col, row);
+			col++;
+		}
+		row++;
+	}
+}
+
+void	ft_destroy_sprites(t_game *game)
+{
+	mlx_destroy_image(game->mlx_ptr, game->imgs.black);
+	mlx_destroy_image(game->mlx_ptr, game->imgs.pacfood);
+	mlx_destroy_image(game->mlx_ptr, game->imgs.pacman);
+	mlx_destroy_image(game->mlx_ptr, game->imgs.portal);
+	mlx_destroy_image(game->mlx_ptr, game->imgs.wall);
 }
