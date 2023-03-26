@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:25:13 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/21 18:55:39 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/26 18:37:25 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static int	ft_press_key(int key_code, t_game *game)
 void	ft_start_game(t_game *game)
 {
 	game->mlx_ptr = mlx_init();
-	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map.col + 2) * SIZE, \
-		(game->map.row + 2) * SIZE, "so_long");
+	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map.col) * SIZE, \
+		(game->map.row) * SIZE, "so_long");
 	ft_init_game(game);
 	mlx_hook(game->win_ptr, X_EVENT_KEY_PRESS, 0, &ft_press_key, game);
 	mlx_hook(game->win_ptr, X_EVENT_KEY_EXIT, 0, &ft_exit_game, game);
