@@ -6,7 +6,7 @@
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:50:07 by seokang           #+#    #+#              #
-#    Updated: 2023/03/21 18:12:49 by seokang          ###   ########.fr        #
+#    Updated: 2023/03/26 17:15:14 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
 # source files
 M_DIR		= mandatory/
-M_SRCS      = game.c main.c map_check.c map_set.c map_valid.c move.c sprites.c
+M_SRCS      = init_game.c main.c map_check.c init_map.c map_valid.c init_move.c init_img.c
 M_PATH		= $(addprefix $(M_DIR), $(M_SRCS))
 M_OBJS		= $(M_PATH:c=o)
 
