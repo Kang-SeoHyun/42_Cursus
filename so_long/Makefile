@@ -6,7 +6,7 @@
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:50:07 by seokang           #+#    #+#              #
-#    Updated: 2023/03/26 17:15:14 by seokang          ###   ########.fr        #
+#    Updated: 2023/03/26 19:25:15 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,31 +35,21 @@ G_SRCS		= get_next_line.c get_next_line_util.c
 G_PATH		= $(addprefix $(G_DIR), $(G_SRCS))
 G_OBJS		= $(G_PATH:c=o)
 
-ifdef BONUSFLAG
-	OBJS = $(B_OBJS)
-else
-	OBJS = $(M_OBJS)
-endif
-
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 	
-$(NAME): $(G_OBJS) $(OBJS)
+$(NAME): $(G_OBJS) $(M_OBJS)
 	@make -C mlx all
 	@make -C libft all
-	@$(CC) $(CFLAGS) $(MLX) $(LIBFT) $(G_OBJS) $(OBJS) -o $@
+	@$(CC) $(CFLAGS) $(MLX) $(LIBFT) $(G_OBJS) $(M_OBJS) -o $@
 
 all: $(NAME)
-
-bonus:
-	make BONUSFLAG=1
 
 clean:
 	@make -C mlx clean
 	@make -C libft clean
 	@$(RM) $(G_OBJS)
 	@$(RM) $(M_OBJS)
-	@$(RM) $(B_OBJS)
 
 fclean:
 	@make -C libft fclean

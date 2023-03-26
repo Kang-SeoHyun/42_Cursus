@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:51:26 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/26 18:10:04 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/26 19:40:44 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_check
 	int	p_row;
 	int	collectible;
 	int	exit;
-	int	*check;	
+	int	*check;
 }	t_check;
 
 typedef struct s_game
@@ -66,27 +66,27 @@ typedef enum e_direction
 	Up,
 	Down,
 	Left,
-	Right			
+	Right
 }	t_direction;
 
 /* main.c */
-void    print_err(char  *msg);
+void	print_err(char	*msg);
 
 /* map.c */
-void    init_map(t_game *game, char *file_name);
-void    parse_map(t_game *game);
-void    check_valid_path(t_game *game);
+void	init_map(t_game	*game, char	*file_name);
+void	parse_map(t_game	*game);
+void	check_valid_path(t_game	*game);
 
 /* game.c */
-void    ft_start_game(t_game *game);
-int		ft_exit_game(t_game *game);
+void	ft_start_game(t_game	*game);
+int		ft_exit_game(t_game	*game);
 
 /* sprites.c */
-void	ft_init_sprites(t_game *game);
-void	ft_set_sprites(t_game *game);
-void	ft_destroy_sprites(t_game *game);
+void	ft_init_sprites(t_game	*game);
+void	ft_set_sprites(t_game	*game);
+void	ft_destroy_sprites(t_game	*game);
 
 /* move.c */
-void	ft_move(t_game *game, t_direction direction);
+void	ft_move(t_game	*game, t_direction	direction);
 
 #endif

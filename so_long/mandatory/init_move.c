@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   init_move.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:24:55 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/21 18:12:03 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/26 19:44:32 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,27 @@ static void	ft_set_nxt_idx(t_map *map, t_direction direction, int cur, int *nxt)
 
 void	ft_move(t_game *game, t_direction direction)
 {
-    int cur;
-    int nxt;
+	int	cur;
+	int	nxt;
 
-    ft_set_cur_idx(&game->map, &cur);
-    ft_set_nxt_idx(&game->map, direction, cur, &nxt);
-    if (game->map.map_str[nxt] != '1')
-    {
-        if (game->map.map_str[nxt] == 'C')
+	ft_set_cur_idx(&game->map, &cur);
+	ft_set_nxt_idx(&game->map, direction, cur, &nxt);
+	if (game->map.map_str[nxt] != '1')
+	{
+		if (game->map.map_str[nxt] == 'C')
 			game->collectible--;
-        if (game->map.map_str[nxt] == 'E')
+		if (game->map.map_str[nxt] == 'E')
 		{
 			if (game->collectible)
 				return ;
 			else
 				ft_exit_game(game);
 		}
-        ft_putstr_fd("count : ", 1);
+		ft_putstr_fd("count : ", 1);
 		ft_putnbr_fd(++game->cnt, 1);
-        write(1, "\n", 1);
-        game->map.map_str[cur] = '0';
-        game->map.map_str[nxt] = 'P';
-    }
-    ft_set_sprites(game); 
+		write(1, "\n", 1);
+		game->map.map_str[cur] = '0';
+		game->map.map_str[nxt] = 'P';
+	}
+	ft_set_sprites(game);
 }

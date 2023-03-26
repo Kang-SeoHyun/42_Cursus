@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_set.c                                          :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:32:44 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/21 19:23:01 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/26 19:57:21 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void count_map_size(t_map *map, char *file_name)
+static void	count_map_size(t_map	*map, char	*file_name)
 {
 	int		fd;
 	int		cur_col;
@@ -53,7 +53,7 @@ char	*ft_str_replace(char *str, char c1, char c2)
 	return (str);
 }
 
-static void make_map(t_map *map, char *file_name, int idx)
+static void	make_map(t_map *map, char *file_name, int idx)
 {
 	int		fd;
 	int		cur_col;
@@ -82,16 +82,16 @@ static void make_map(t_map *map, char *file_name, int idx)
 	map->map_str[idx] = '\0';
 }
 
-static void read_file(char *file_name)
+static void	read_file(char	*file_name)
 {
-    if (ft_strncmp(file_name + ft_strlen(file_name) - 4, ".ber", 4))
-        print_err("ERROR in file type.");
+	if (ft_strncmp(file_name + ft_strlen(file_name) - 4, ".ber", 4))
+		print_err("ERROR in file type.");
 }
 
-void    init_map(t_game *game, char *file_name)
+void	init_map(t_game	*game, char	*file_name)
 {
-    read_file(file_name);
-    count_map_size(&(game->map), file_name);
-    make_map(&(game->map), file_name, 0);
-    parse_map(game);
+	read_file(file_name);
+	count_map_size(&(game->map), file_name);
+	make_map(&(game->map), file_name, 0);
+	parse_map(game);
 }

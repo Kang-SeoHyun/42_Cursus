@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:25:13 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/26 18:37:25 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/26 19:38:18 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_init_game(t_game *game)
 	ft_set_sprites(game);
 }
 
-int ft_exit_game(t_game *game)
+int	ft_exit_game(t_game *game)
 {
 	free(game->map.map_str);
 	ft_destroy_sprites(game);
@@ -44,11 +44,11 @@ static int	ft_press_key(int key_code, t_game *game)
 		ft_exit_game(game);
 	else if (key_code == KEY_UP || key_code == KEY_W)
 		ft_move(game, Up);
-	else if (key_code == KEY_LEFT ||key_code == KEY_A)
+	else if (key_code == KEY_LEFT || key_code == KEY_A)
 		ft_move(game, Left);
-	else if (key_code == KEY_DOWN ||key_code == KEY_S)
+	else if (key_code == KEY_DOWN || key_code == KEY_S)
 		ft_move(game, Down);
-	else if (key_code == KEY_RIGHT ||key_code == KEY_D)
+	else if (key_code == KEY_RIGHT || key_code == KEY_D)
 		ft_move(game, Right);
 	return (0);
 }

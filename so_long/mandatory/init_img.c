@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 20:56:35 by seokang           #+#    #+#             */
-/*   Updated: 2023/03/26 18:37:51 by seokang          ###   ########.fr       */
+/*   Updated: 2023/03/26 19:43:37 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@ void	ft_init_sprites(t_game *game)
 	int	width;
 	int	height;
 
-    game->imgs.black = mlx_xpm_file_to_image(game->mlx_ptr, "img/white.xpm", &width, &height);
-	game->imgs.pacfood = mlx_xpm_file_to_image(game->mlx_ptr, "img/red_dock.xpm", &width, &height);
-	game->imgs.pacman = mlx_xpm_file_to_image(game->mlx_ptr, "img/blue_dock.xpm", &width, &height);
-	game->imgs.portal = mlx_xpm_file_to_image(game->mlx_ptr, "img/goal.xpm", &width, &height);
-	game->imgs.wall = mlx_xpm_file_to_image(game->mlx_ptr, "img/wall.xpm", &width, &height);
+	game->imgs.black = mlx_xpm_file_to_image(game->mlx_ptr, \
+	"img/white.xpm", &width, &height);
+	game->imgs.pacfood = mlx_xpm_file_to_image(game->mlx_ptr, \
+	"img/red_dock.xpm", &width, &height);
+	game->imgs.pacman = mlx_xpm_file_to_image(game->mlx_ptr, \
+	"img/blue_dock.xpm", &width, &height);
+	game->imgs.portal = mlx_xpm_file_to_image(game->mlx_ptr, \
+	"img/goal.xpm", &width, &height);
+	game->imgs.wall = mlx_xpm_file_to_image(game->mlx_ptr, \
+	"img/wall.xpm", &width, &height);
 }
 
-static void	ft_show_image(t_game *game, void *sprite, int x, int y)
+static void	ft_show_image(t_game *game, void *img, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite, (x ) * SIZE, (y) * SIZE);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+	img, (x) * SIZE, (y) * SIZE);
 }
 
 void	ft_set_sprites(t_game *game)
