@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simulate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/03 18:18:14 by seokang           #+#    #+#             */
+/*   Updated: 2023/04/03 18:18:15 by seokang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 static bool	check_died(t_info *info, int philo_id)
@@ -72,7 +84,7 @@ void	simulate(t_info *info)
 		pthread_mutex_init(&(info->m_fork[idx]), NULL);
 		philos[idx].id = idx;
 		philos[idx].info = info;
-		if (pthread_create(&philos[idx].thread, NULL, \ 
+		if (pthread_create(&philos[idx].thread, NULL, \
 			함수, (void *)(philos + idx)) != 0)
 			break;
 		idx++;
