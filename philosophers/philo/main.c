@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:17:48 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/03 18:17:49 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/04 14:31:33 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 5 && argc != 6)
 	{
-		ft_error("argument count") //print err
+		ft_error("argument count");
 		return (1);
 	}
 	if (parsing(&info, argc, argv) == -1)

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:18:09 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/03 18:18:10 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/04 16:15:26 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	smart_timer(int time) //msleep
 void	print_state(pthread_mutex_t *m_print, size_t start, int idx, const char *message)
 {
 	pthread_mutex_lock(m_print);
-	printf("%lld\t%d %s\n" get_time(start), idx, message);
+	printf("%lld\t%d %s\n", get_time(start), idx, message);
 	pthread_mutex_unlock(m_print);
 }
 
 void	print_died(pthread_mutex_t *m_print, size_t start, int idx, const char *message)
 {
 	pthread_mutex_lock(m_print);
-	printf(RED "%lld\t%d %s\n" DEF_COLOR, get_time(start), idx, message);
+	printf("%lld\t%d %s\n", get_time(start), idx, message);
 	exit(1); //실패
 	pthread_mutex_unlock(m_print);
 }
@@ -47,7 +47,7 @@ void	print_died(pthread_mutex_t *m_print, size_t start, int idx, const char *mes
 void	print_done(pthread_mutex_t *m_print)
 {
 	pthread_mutex_lock(m_print);
-	printf(GREEN "successfully!\n" DEF_COLOR);
+	printf("successfully!\n");
 	exit(0); //성공
 	pthread_mutex_unlock(m_print);
 }
