@@ -17,7 +17,12 @@ CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=thread
 RM			= rm -f
 
 # source files
-SRCS      	=
+SRCS      	= main.c 		\
+			  parsing.c 	\
+			  philo_utils.c \
+			  philosopher.c \
+			  simulate.c	
+
 OBJS		= $(SRCS:c=o)
 
 

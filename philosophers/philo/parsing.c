@@ -46,7 +46,7 @@ int	parsing(t_info	*info, int argc, char *argv[])
 	info->time_to_sleep = ft_atoi(argv[4]);
 	if (info->time_to_die <= 0 || info->time_to_eat <= 0
 		|| info->time_to_sleep <= 0)
-		return (ft_error("time argument"));
+		return (ft_error("time argument\n"));
 	info->must_eat = 0;
 	if (argc == 6)
 	{

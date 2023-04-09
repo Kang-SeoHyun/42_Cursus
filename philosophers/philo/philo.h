@@ -57,7 +57,25 @@ typedef struct s_philo
 	t_info 		*info;
 	t_status	status;
 	pthread_t	thread;
-
 }				t_philo;
+
+/* main */
+int	ft_error(char *str);
+
+/* parsing */
+int		parsing(t_info	*info, int argc, char *argv[]);
+
+/* utils */
+void	print_state(pthread_mutex_t *m_print, size_t start, int idx, const char *message);
+void	print_died(pthread_mutex_t *m_print, size_t start, int idx, const char *message);
+void	print_done(pthread_mutex_t *m_print);
+size_t	get_time(size_t start);
+void	smart_timer(int time);
+
+/* simulate */
+void	simulate(t_info *info);
+
+/* philosopher */
+void    *routine(void *arg);
 
 #endif

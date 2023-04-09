@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-static int	check_died(t_info *info, int philo_id)
+static int	check_alive(t_info *info, int philo_id)
 {
 	size_t	time_interval;
 
@@ -22,12 +22,12 @@ static int	check_died(t_info *info, int philo_id)
 	else
 		time_interval = get_time(info->last_eat_time[philo_id]);
 	pthread_mutex_unlock(&info->m_eat[philo_id]);
-	if (time_interval > size_t)(info->time_to_die)
-		return (1);
-	return (0);
+	if (time_interval > (size_t)(info->time_to_die))
+		return (1); //죽었으면
+	return (0); //살았으면
 }
 
-static int	check_done(t_info *info)
+static int	check_finish(t_info *info)
 {
 	int	idx;
 
@@ -43,7 +43,7 @@ static int	check_done(t_info *info)
 		pthread_mutex_unlock(&info->m_eat[idx]);
 		idx++;
 	}
-	return (1);
+	return (1); //끝났으면
 }
 
 static void	ft_manage(t_info *info)
@@ -51,19 +51,19 @@ static void	ft_manage(t_info *info)
 	int		idx;
 	int		is_dead;
 
-	info->start_time = get_time();
+	info->start_time = get_time(0);
 	is_dead = 0;
 	while (1)
 	{
 		idx = -1;
 		while (!(is_dead) && ++idx < info->philo_count)
-			is_dead = check_died(info, idx);
+			is_dead = check_alive(info, idx);
 		if (is_dead)
 		{
 			print_died(&info->m_print, info->start_time, idx, DIE);
 			break ;
 		}
-		if (info->must_eat && check_done(info))
+		if (info->must_eat && check_finish(info))
 		{
 			print_done(&info->m_print);
 			break ;
@@ -85,7 +85,7 @@ void	simulate(t_info *info)
 		philos[idx].id = idx;
 		philos[idx].info = info;
 		if (pthread_create(&philos[idx].thread, NULL, \
-			함수, (void *)(philos + idx)) != 0)
+			routine, (void *)(philos + idx)) != 0)
 			break;
 		idx++;
 	}
