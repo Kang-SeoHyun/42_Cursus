@@ -34,35 +34,35 @@
 typedef struct s_status
 {
 	int	end;
-	int	n_full;
+	int	full;
 }	t_status;
 
 typedef struct s_arg
 {
-	int	n_philo;
-	int	die_time;
-	int	eat_time;
-	int	sleep_time;
+	int	philo_count;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
 	int	must_eat;
 }	t_arg;
 
 typedef struct s_info
 {
 	t_arg			arg;
-	pthread_mutex_t	mtx_print;
-	t_status		stat;
-	size_t			birth_t;
+	pthread_mutex_t	m_print;
+	t_status		state;
+	size_t			start_time;
 }	t_info;
 
 typedef struct s_philo
 {
-	int				idx;
+	int				id;
 	pthread_t		tid;
-	int				cnt_eat;
+	int				eat_cnt;
 	size_t			last_eat_t;
 	t_info			*info;
-	pthread_mutex_t	*mtx_left;
-	pthread_mutex_t	*mtx_right;
+	pthread_mutex_t	*left_hand;
+	pthread_mutex_t	*right_hand;
 }	t_philo;
 
 enum e_enum
@@ -76,7 +76,7 @@ enum e_enum
 int			init_info(t_philo **philo, t_info *info);
 
 /* parsing */
-int			parsing(int argc, char **argv, t_info *info);
+int			parsing(t_info *info, int argc, char **argv);
 
 /* print */
 int			ft_error(char *str);
@@ -84,10 +84,10 @@ int			print_state(t_philo *philo, int idx, char *str, int eat_status);
 
 /* philo_utils */
 size_t		get_time(void);
-void		smart_timer(int time);
+void		msleep(int time);
 void		monitor(t_philo *philo);
 void		mutex_free(t_philo *philo, t_info *info, t_arg *arg);
 
-void		*action(void *param);
+void		*action(void *arg);
 
 #endif

@@ -18,17 +18,18 @@ int	main(int argc, char **argv)
 	t_info	info;
 	t_philo	*philo;
 
-	if (parsing(argc, argv, &info) == ERROR)
+	if (argc != 5 && argc != 6)
+		return (ft_error("Input argument is wrong."));
+	if (parsing(&info, argc, argv) == ERROR)
 		return (ERROR);
 	if (init_info(&philo, &info) == SUCCESS)
 		monitor(philo);
 	i = -1;
-	while (++i < philo->info->arg.n_philo)
-		pthread_mutex_unlock(philo[i].mtx_left);
+	while (++i < philo->info->arg.philo_count)
+		pthread_mutex_unlock(philo[i].left_hand);
 	i = -1;
-	while (++i < philo->info->arg.n_philo)
+	while (++i < philo->info->arg.philo_count)
 		pthread_join(philo[i].tid, NULL);
 	mutex_free(philo, philo->info, &philo->info->arg);
-	printf(GREEN"It's a success!\n"RESET);
 	return (0);
 }

@@ -16,15 +16,15 @@ static int	init_mutex(t_info *info, pthread_mutex_t **fork)
 {
 	int	i;
 
-	*fork = malloc(sizeof(pthread_mutex_t) * info->arg.n_philo);
+	if (pthread_mutex_init(&info->m_print, NULL) != 0)
+		return (ERROR);
+	*fork = malloc(sizeof(pthread_mutex_t) * info->arg.philo_count);
 	if (!(*fork))
 		return (ERROR);
 	i = -1;
-	while (++i < info->arg.n_philo)
-		if (pthread_mutex_init(&(*fork)[i], PTHREAD_MUTEX_NORMAL) != 0)
+	while (++i < info->arg.philo_count)
+		if (pthread_mutex_init(&(*fork)[i], NULL) != 0)
 			return (ERROR);
-	if (pthread_mutex_init(&info->mtx_print, PTHREAD_MUTEX_NORMAL) != 0)
-		return (ERROR);
 	return (SUCCESS);
 }
 
@@ -32,26 +32,26 @@ static int	init_philo(t_philo **philo, t_info *info, t_arg *arg, pthread_mutex_t
 {
 	int	i;
 
-	(*philo) = malloc(sizeof(t_philo) * arg->n_philo);
-	if (*philo == NULL)
+	(*philo) = malloc(sizeof(t_philo) * arg->philo_count);
+	if (!philo)
 		return (ERROR);
 	i = -1;
-	while (++i < arg->n_philo)
+	while (++i < arg->philo_count)
 	{
-		(*philo)[i].idx = i;
-		(*philo)[i].cnt_eat = 0;
+		(*philo)[i].id = i;
+		(*philo)[i].eat_cnt = 0;
 		(*philo)[i].info = info;
-		(*philo)[i].mtx_left = &fork[i];
-		(*philo)[i].mtx_right = &fork[(i + 1) % arg->n_philo];
+		(*philo)[i].left_hand = &fork[i];
+		(*philo)[i].right_hand = &fork[(i + 1) % (arg->philo_count)];
 		(*philo)[i].last_eat_t = get_time();
 	}
-	pthread_mutex_lock(&info->mtx_print);
+	pthread_mutex_lock(&info->m_print);
 	i = -1;
-	while (++i < arg->n_philo)
+	while (++i < arg->philo_count)
 		if (pthread_create(&(*philo)[i].tid, NULL, action, &(*philo)[i]))
 			return (ft_error("pthread_create is not working."));
-	info->birth_t = get_time();
-	pthread_mutex_unlock(&info->mtx_print);
+	info->start_time = get_time();
+	pthread_mutex_unlock(&info->m_print);
 	return (SUCCESS);
 }
 
@@ -59,8 +59,8 @@ int	init_info(t_philo **philo, t_info *info)
 {
 	pthread_mutex_t	*fork;
 
-	info->stat.end = 0;
-	info->stat.n_full = 0;
+	info->state.end = 0;
+	info->state.full = 0;
 	if (init_mutex(info, &fork) == ERROR)
 		return (ft_error("init_mutex is not working."));
 	if (init_philo(philo, info, &info->arg, fork) == ERROR)

@@ -14,48 +14,47 @@
 
 static int	pick_up(t_philo *philo)
 {
-	pthread_mutex_lock(philo->mtx_right);
-	if (print_state(philo, philo->idx, PICKUP, 0))
+	pthread_mutex_lock(philo->right_hand);
+	if (print_state(philo, philo->id, PICKUP, 0))
 		return (ERROR);
-	pthread_mutex_lock(philo->mtx_left);
-	if (print_state(philo, philo->idx, PICKUP, 0))
+	pthread_mutex_lock(philo->left_hand);
+	if (print_state(philo, philo->id, PICKUP, 0))
 		return (ERROR);
 	return (SUCCESS);
 }
 
 static int	eating(t_philo *philo, t_arg *arg)
 {
-	if (print_state(philo, philo->idx, EAT, EATTING))
+	if (print_state(philo, philo->id, EAT, EATTING))
 		return (ERROR);
-	smart_timer(arg->eat_time);
+	msleep(arg->time_to_eat);
 	return (SUCCESS);
 }
 
 static int	put_down(t_philo *philo, t_arg *arg)
 {
-	pthread_mutex_unlock(philo->mtx_right);
-	pthread_mutex_unlock(philo->mtx_left);
-	if (print_state(philo, philo->idx, SLEEP, 0))
+	pthread_mutex_unlock(philo->right_hand);
+	pthread_mutex_unlock(philo->left_hand);
+	if (print_state(philo, philo->id, SLEEP, 0))
 		return (ERROR);
-	smart_timer(arg->sleep_time);
-	if (print_state(philo, philo->idx, THINK, 0))
+	msleep(arg->time_to_sleep);
+	if (print_state(philo, philo->id, THINK, 0))
 		return (ERROR);
 	usleep(50);
 	return (SUCCESS);
 }
 
-void	*action(void *param)
+void	*action(void *arg)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *)param;
-	pthread_mutex_lock(&philo->info->mtx_print);
+	philo = (t_philo *)arg;
+	pthread_mutex_lock(&philo->info->m_print);
 	(*philo).last_eat_t = get_time();
-	pthread_mutex_unlock(&philo->info->mtx_print);
-	if (philo->idx % 2 != 0)
-		smart_timer(philo->info->arg.eat_time / 2);
-	while (!pick_up(philo)
-		&& !eating(philo, &philo->info->arg)
-		&& !put_down(philo, &philo->info->arg));
+	pthread_mutex_unlock(&philo->info->m_print);
+	if (philo->id % 2 != 0)
+		msleep(philo->info->arg.time_to_eat / 2);
+	while (!pick_up(philo) && !eating(philo, &philo->info->arg) \
+			&& !put_down(philo, &philo->info->arg));
 	return (NULL);
 }

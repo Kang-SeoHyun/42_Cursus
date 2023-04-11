@@ -20,7 +20,7 @@ size_t	get_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-void	smart_timer(int time)
+void	msleep(int time)
 {
 	size_t	start;
 
@@ -32,27 +32,27 @@ void	smart_timer(int time)
 void	monitor(t_philo *philo)
 {
 	int		i;
-	int		end_f;
-	size_t	now_t;
+	int		is_end;
+	size_t	now_time;
 
 	while (1)
 	{
 		i = -1;
-		while (++i < philo->info->arg.n_philo)
+		while (++i < philo->info->arg.philo_count)
 		{
-			pthread_mutex_lock(&philo->info->mtx_print);
-			end_f = philo->info->stat.end;
-			now_t = get_time();
-			if (now_t > philo->info->arg.die_time + philo[i].last_eat_t)
+			pthread_mutex_lock(&philo->info->m_print);
+			is_end = philo->info->state.end;
+			now_time = get_time();
+			if (now_time > philo->info->arg.time_to_die + philo[i].last_eat_t)
 			{
-				philo->info->stat.end++;
-				printf(RED"%ld %d died\n"RESET, now_t - philo->info->birth_t, i + 1);
-				pthread_mutex_unlock(&philo->info->mtx_print);
+				philo->info->state.end++;
+				printf(RED"%ld %d died\n"RESET, (now_time - philo->info->start_time), i + 1);
+				pthread_mutex_unlock(&philo->info->m_print);
 				return ;
 			}
 			else
-				pthread_mutex_unlock(&philo->info->mtx_print);
-			if (end_f)
+				pthread_mutex_unlock(&philo->info->m_print);
+			if (is_end)
 				return ;
 		}
 	}
@@ -63,9 +63,9 @@ void	mutex_free(t_philo *philo, t_info *info, t_arg *arg)
 	int	i;
 
 	i = -1;
-	while (++i < arg->n_philo)
-		pthread_mutex_destroy(philo[i].mtx_left);
-	pthread_mutex_destroy(&info->mtx_print);
-	free(philo[0].mtx_left);
+	while (++i < arg->philo_count)
+		pthread_mutex_destroy(philo[i].left_hand);
+	pthread_mutex_destroy(&info->m_print);
+	free(philo[0].left_hand);
 	free(philo);
 }

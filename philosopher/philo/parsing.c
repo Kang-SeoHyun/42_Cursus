@@ -36,18 +36,16 @@ static int	ft_atoi(char *str)
 		return (-1);
 }
 
-int	parsing(int argc, char **argv, t_info *info)
+int	parsing(t_info *info, int argc, char **argv)
 {
-	if (!(argc == 5 || argc == 6))
-		return (ft_error("Input argument is wrong."));
-	info->arg.n_philo = ft_atoi(argv[1]);
-	if (info->arg.n_philo <= 0)
+	info->arg.philo_count = ft_atoi(argv[1]);
+	if (info->arg.philo_count <= 0)
 		return (ft_error("There's no philosopher."));
-	info->arg.die_time = ft_atoi(argv[2]);
-	info->arg.eat_time = ft_atoi(argv[3]);
-	info->arg.sleep_time = ft_atoi(argv[4]);
-	if (info->arg.die_time <= 0 || info->arg.eat_time <= 0
-		|| info->arg.sleep_time <= 0)
+	info->arg.time_to_die = ft_atoi(argv[2]);
+	info->arg.time_to_eat = ft_atoi(argv[3]);
+	info->arg.time_to_sleep = ft_atoi(argv[4]);
+	if (info->arg.time_to_die <= 0 || info->arg.time_to_eat <= 0
+		|| info->arg.time_to_sleep <= 0)
 		return (ft_error("The time is weird."));
 	info->arg.must_eat = 0;
 	if (argc == 6)
