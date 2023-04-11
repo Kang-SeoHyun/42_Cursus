@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:32:05 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 18:41:09 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/11 21:39:48 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ static void	take_fork(t_philo *philo)
 	if (philo->id % 2)
 	{
 		pthread_mutex_lock(&info->m_forks[philo->id]);
-		print_state(&info->m_print, info->start_time, philo->id, PICKUP);
+		print_state(info, philo->id, PICKUP);
 		pthread_mutex_lock(&info->m_forks[(philo->id + 1) % philo_count]);
-		print_state(&info->m_print, info->start_time, philo->id, PICKUP);
+		print_state(info, philo->id, PICKUP);
 	}
 	else
 	{
 		pthread_mutex_lock(&info->m_forks[(philo->id + 1) % philo_count]);
-		print_state(&info->m_print, info->start_time, philo->id, PICKUP);
+		print_state(info, philo->id, PICKUP);
 		pthread_mutex_lock(&info->m_forks[philo->id]);
-		print_state(&info->m_print, info->start_time, philo->id, PICKUP);
+		print_state(info, philo->id, PICKUP);
 	}
 }
 
@@ -44,7 +44,7 @@ static void	eating(t_philo *philo)
 	info->last_eat_time[philo->id] = get_time(0);
 	++info->eat_cnt[philo->id];
 	pthread_mutex_unlock(&info->m_eat[philo->id]);
-	print_state(&info->m_print, info->start_time, philo->id, EAT);
+	print_state(info, philo->id, EAT);
 	smart_timer(info->time_to_eat);
 }
 
@@ -81,8 +81,8 @@ void    *routine(void *arg)
         take_fork(philo);
 		eating(philo);
 		put_down(philo);
-		print_state(&info->m_print, info->start_time, philo->id, SLEEP);
+		print_state(info, philo->id, SLEEP);
 		smart_timer(info->time_to_sleep);
-		print_state(&info->m_print, info->start_time, philo->id, THINK);
+		print_state(info, philo->id, THINK);
 	}
 }

@@ -6,17 +6,22 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:18:09 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 18:26:50 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/11 21:41:07 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	print_state(pthread_mutex_t *m_print, size_t start, int idx, const char *message)
+void	print_state(t_info *info, int idx, const char *message)
 {
-	pthread_mutex_lock(m_print);
-	printf("%zu    %d %s\n", get_time(start), idx, message);
-	pthread_mutex_unlock(m_print);
+	pthread_mutex_lock(&info->m_print);
+	if (info->end)
+	{
+		pthread_mutex_unlock(&info->m_print);
+		return ;
+	}
+	printf("%zu    %d %s\n", get_time(info->start_time), idx, message);
+	pthread_mutex_unlock(&info->m_print);
 }
 
 void	print_died(pthread_mutex_t *m_print, size_t start, int idx, const char *message)
@@ -24,15 +29,13 @@ void	print_died(pthread_mutex_t *m_print, size_t start, int idx, const char *mes
 	pthread_mutex_lock(m_print);
 	printf(RED"%zu    %d %s\n"RESET, get_time(start), idx, message);
 	pthread_mutex_unlock(m_print);
-	exit(1);
 }
 
 void	print_done(pthread_mutex_t *m_print)
 {
 	pthread_mutex_lock(m_print);
-	printf(GREEN"successfully!\n"RESET);
+	printf(GREEN"It's a success!\n"RESET);
 	pthread_mutex_unlock(m_print);
-	exit(0);
 }
 
 size_t	get_time(size_t start)

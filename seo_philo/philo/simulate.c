@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:18:14 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 17:01:58 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/11 21:32:40 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static int	check_alive(t_info *info, int philo_id)
 {
-	size_t	time_interval;
+	size_t	time;
 
 	pthread_mutex_lock(&info->m_eat[philo_id]);
 	if (info->eat_cnt[philo_id] == 0)
-		time_interval = get_time(info->start_time);
+		time = get_time(info->start_time);
 	else
-		time_interval = get_time(info->last_eat_time[philo_id]);
+		time = get_time(info->last_eat_time[philo_id]);
 	pthread_mutex_unlock(&info->m_eat[philo_id]);
-	if (time_interval > (size_t)info->time_to_die)
+	if (time > (size_t)info->time_to_die)
 		return (1);
 	return (0);
 }
@@ -31,8 +31,8 @@ static int	check_finish(t_info *info)
 {
 	int	idx;
 
-	idx = 0;
-	while (idx < info->philo_count)
+	idx = -1;
+	while (++idx < info->philo_count)
 	{
 		pthread_mutex_lock(&info->m_eat[idx]);
 		if (info->eat_cnt[idx] < info->must_eat)
@@ -41,7 +41,6 @@ static int	check_finish(t_info *info)
 			return (0);
 		}
 		pthread_mutex_unlock(&info->m_eat[idx]);
-		idx++;
 	}
 	return (1);
 }
@@ -60,11 +59,13 @@ static void	ft_manage(t_info *info)
 			is_dead = check_alive(info, idx);
 		if (is_dead)
 		{
+			info->end = 1;
 			print_died(&info->m_print, info->start_time, idx, DIE);
 			break ;
 		}
 		if (info->must_eat && check_finish(info))
 		{
+			info->end = 1;
 			print_done(&info->m_print);
 			break ;
 		}
