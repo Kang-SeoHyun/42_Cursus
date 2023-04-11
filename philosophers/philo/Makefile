@@ -6,25 +6,25 @@
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 18:17:56 by seokang           #+#    #+#              #
-#    Updated: 2023/04/03 18:17:57 by seokang          ###   ########.fr        #
+#    Updated: 2023/04/11 18:44:59 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # compile options
 NAME		= philo
+HEADER 		= philo.h
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=thread
-RM			= rm -f
+RM			= rm -rf
 
 # source files
-SRCS      	= main.c 		\
-			  parsing.c 	\
+SRCS      	= main.c \
+			  simulate.c \
+			  parsing.c \
 			  philo_utils.c \
-			  philosopher.c \
-			  simulate.c	
+			  routine.c
 
-OBJS		= $(SRCS:c=o)
-
+OBJS		= $(SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -35,10 +35,10 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ -lpthread -o $@
 
 clean:
-	@$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:
-	@$(RM) $(NAME)
+fclean: clean
+	$(RM) $(NAME)
 
 re:
 	make fclean

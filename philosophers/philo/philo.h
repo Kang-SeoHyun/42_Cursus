@@ -6,12 +6,13 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:18:12 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/04 16:14:18 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/11 18:13:05 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -27,14 +28,9 @@
 
 # define MAX_PHILO 200
 //color
+# define RESET		"\033[0m"
 # define RED		"\033[1;91m"
 # define GREEN		"\033[1;92m"
-
-typedef struct s_status
-{
-	int	end;
-	int	n_full;
-}		t_status;
 
 typedef struct s_info
 {
@@ -55,7 +51,6 @@ typedef struct s_philo
 {
 	int			id;
 	t_info 		*info;
-	t_status	status;
 	pthread_t	thread;
 }				t_philo;
 
@@ -70,7 +65,7 @@ void	print_state(pthread_mutex_t *m_print, size_t start, int idx, const char *me
 void	print_died(pthread_mutex_t *m_print, size_t start, int idx, const char *message);
 void	print_done(pthread_mutex_t *m_print);
 size_t	get_time(size_t start);
-void	smart_timer(int time);
+void	smart_timer(size_t time);
 
 /* simulate */
 void	simulate(t_info *info);

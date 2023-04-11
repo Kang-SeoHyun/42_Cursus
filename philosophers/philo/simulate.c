@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:18:14 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/04 21:20:55 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/11 17:01:58 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static int	check_alive(t_info *info, int philo_id)
 	else
 		time_interval = get_time(info->last_eat_time[philo_id]);
 	pthread_mutex_unlock(&info->m_eat[philo_id]);
-	if (time_interval > (size_t)(info->time_to_die))
-		return (1); //죽었으면
-	return (0); //살았으면
+	if (time_interval > (size_t)info->time_to_die)
+		return (1);
+	return (0);
 }
 
 static int	check_finish(t_info *info)
@@ -43,7 +43,7 @@ static int	check_finish(t_info *info)
 		pthread_mutex_unlock(&info->m_eat[idx]);
 		idx++;
 	}
-	return (1); //끝났으면
+	return (1);
 }
 
 static void	ft_manage(t_info *info)
@@ -89,10 +89,10 @@ void	simulate(t_info *info)
 			break;
 		idx++;
 	}
-	pthread_mutex_init(&(info->m_print), NULL);
+	pthread_mutex_init(&info->m_print, NULL);
 	if (idx == info->philo_count)
 		ft_manage(info);
-	pthread_mutex_destroy(&(info->m_print));
+	pthread_mutex_destroy(&info->m_print);
 	while (--idx >= 0)
 	{
 		pthread_mutex_destroy(&info->m_eat[idx]);

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:17:48 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/04 14:31:33 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/11 17:25:36 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_error(char *str)
 {
-	printf("ERROR : %s", str);
+	printf(RED"ERROR : %s", str);
 	return (1);
 }
 
