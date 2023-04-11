@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:55:38 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 22:49:54 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/11 22:52:26 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int	pick_up(t_philo *philo)
 {
-	pthread_mutex_lock(philo->mtx_left);
+	pthread_mutex_lock(philo->mtx_right);
 	if (print_state(philo, philo->idx, PICKUP, 0))
 		return (ERROR);
-	pthread_mutex_lock(philo->mtx_right);
+	pthread_mutex_lock(philo->mtx_left);
 	if (print_state(philo, philo->idx, PICKUP, 0))
 		return (ERROR);
 	return (SUCCESS);
