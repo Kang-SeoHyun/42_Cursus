@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 22:29:19 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 22:29:28 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/12 19:00:32 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_atoi(char *str)
 {
-	int num;
+	int	num;
 
 	num = 0;
 	while (*str == 32 || (9 <= *str && *str <= 13))

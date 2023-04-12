@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:54:27 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/12 18:29:37 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/12 18:59:59 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static int	init_mutex(t_info *info, pthread_mutex_t **fork)
 	return (SUCCESS);
 }
 
-static int	init_philo(t_philo **philo, t_info *info, t_arg *arg, pthread_mutex_t *fork)
+static int	init_philo(t_philo **philo, t_info *info, t_arg *arg, \
+						pthread_mutex_t *fork)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:53:52 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/12 18:45:59 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/12 19:06:51 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	monitor(t_philo *philo)
 {
 	int		i;
 	int		is_end;
-	size_t	now_time;
+	size_t	now;
 
 	while (1)
 	{
@@ -41,12 +41,12 @@ void	monitor(t_philo *philo)
 		while (++i < philo->info->arg.philo_count)
 		{
 			pthread_mutex_lock(&philo->info->m_print);
-			now_time = get_time();
+			now = get_time();
 			is_end = philo->info->state.end;
-			if (now_time > philo->info->arg.time_to_die + philo[i].last_eat_t)
+			if (now > philo->info->arg.time_to_die + philo[i].last_eat_t)
 			{
 				philo->info->state.end++;
-				printf(RED"%ld %d died\n"RESET, (now_time - philo->info->start_time), i + 1);
+				printf("%ld %d died\n", (now - philo->info->start_time), i + 1);
 				pthread_mutex_unlock(&philo->info->m_print);
 				return ;
 			}

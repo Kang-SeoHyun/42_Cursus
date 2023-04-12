@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:55:38 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/12 18:46:20 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/12 19:05:07 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	eating(t_philo *philo, t_arg *arg)
 
 static int	put_down(t_philo *philo, t_arg *arg)
 {
-	if(philo->id % 2)
+	if (philo->id % 2)
 	{
 		pthread_mutex_unlock(philo->right_hand);
 		pthread_mutex_unlock(philo->left_hand);
@@ -76,6 +76,7 @@ void	*action(void *arg)
 		msleep(5);
 	while (!pick_up(philo) \
 		&& !eating(philo, &philo->info->arg) \
-		&& !put_down(philo, &philo->info->arg));
+		&& !put_down(philo, &philo->info->arg))
+		continue ;
 	return (NULL);
 }
