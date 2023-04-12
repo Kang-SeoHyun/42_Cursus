@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:53:52 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 22:54:45 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/12 18:45:59 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	msleep(int time)
 
 	start = get_time();
 	while (get_time() < time + start)
-		usleep(100);
+		usleep(500);
 }
 
 void	monitor(t_philo *philo)
@@ -41,8 +41,8 @@ void	monitor(t_philo *philo)
 		while (++i < philo->info->arg.philo_count)
 		{
 			pthread_mutex_lock(&philo->info->m_print);
-			is_end = philo->info->state.end;
 			now_time = get_time();
+			is_end = philo->info->state.end;
 			if (now_time > philo->info->arg.time_to_die + philo[i].last_eat_t)
 			{
 				philo->info->state.end++;

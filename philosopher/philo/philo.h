@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:52:16 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 22:41:24 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/12 18:26:28 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
-# define VAL_INT_MAX			2147483647
-# define VAL_INT_MIN			2147483648
 
 //flag
 # define PICKUP		"has taken a fork"

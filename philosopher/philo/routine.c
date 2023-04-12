@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:55:38 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 22:52:26 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/12 18:46:20 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 static int	pick_up(t_philo *philo)
 {
-	pthread_mutex_lock(philo->right_hand);
-	if (print_state(philo, philo->id, PICKUP, 0))
-		return (ERROR);
-	pthread_mutex_lock(philo->left_hand);
-	if (print_state(philo, philo->id, PICKUP, 0))
-		return (ERROR);
+	if (philo->id % 2)
+	{
+		pthread_mutex_lock(philo->right_hand);
+		if (print_state(philo, philo->id, PICKUP, 0))
+			return (ERROR);
+		pthread_mutex_lock(philo->left_hand);
+		if (print_state(philo, philo->id, PICKUP, 0))
+			return (ERROR);
+	}
+	else
+	{
+		pthread_mutex_lock(philo->left_hand);
+		if (print_state(philo, philo->id, PICKUP, 0))
+			return (ERROR);
+		pthread_mutex_lock(philo->right_hand);
+		if (print_state(philo, philo->id, PICKUP, 0))
+			return (ERROR);
+	}
 	return (SUCCESS);
 }
 
@@ -33,8 +45,16 @@ static int	eating(t_philo *philo, t_arg *arg)
 
 static int	put_down(t_philo *philo, t_arg *arg)
 {
-	pthread_mutex_unlock(philo->right_hand);
-	pthread_mutex_unlock(philo->left_hand);
+	if(philo->id % 2)
+	{
+		pthread_mutex_unlock(philo->right_hand);
+		pthread_mutex_unlock(philo->left_hand);
+	}
+	else
+	{
+		pthread_mutex_unlock(philo->left_hand);
+		pthread_mutex_unlock(philo->right_hand);
+	}
 	if (print_state(philo, philo->id, SLEEP, 0))
 		return (ERROR);
 	msleep(arg->time_to_sleep);
@@ -53,8 +73,9 @@ void	*action(void *arg)
 	(*philo).last_eat_t = get_time();
 	pthread_mutex_unlock(&philo->info->m_print);
 	if (philo->id % 2 != 0)
-		msleep(philo->info->arg.time_to_eat / 2);
-	while (!pick_up(philo) && !eating(philo, &philo->info->arg) \
-			&& !put_down(philo, &philo->info->arg));
+		msleep(5);
+	while (!pick_up(philo) \
+		&& !eating(philo, &philo->info->arg) \
+		&& !put_down(philo, &philo->info->arg));
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:55:12 by seokang           #+#    #+#             */
-/*   Updated: 2023/04/11 22:37:23 by seokang          ###   ########.fr       */
+/*   Updated: 2023/04/12 18:31:59 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_error(char *str)
 int	print_state(t_philo *philo, int idx, char *str, int eat_status)
 {
 	size_t	now_time;
+
+	pthread_mutex_lock(&philo->info->m_print);
 	if (philo->info->state.end == 0)
 	{
 		now_time = get_time();

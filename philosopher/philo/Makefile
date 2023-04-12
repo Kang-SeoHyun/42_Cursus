@@ -6,7 +6,7 @@
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:51:26 by seokang           #+#    #+#              #
-#    Updated: 2023/04/11 22:29:03 by seokang          ###   ########.fr        #
+#    Updated: 2023/04/12 17:09:37 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME		= philo
 HEADER 		= philo.h
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror #-g -fsanitize=thread
+CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=thread
 RM			= rm -rf
 
 # source files
