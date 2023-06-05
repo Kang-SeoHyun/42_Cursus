@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:45:04 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:45:05 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:44:22 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:44:23 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+t_list	*ft_lstnew(void	*content)
 {
-	if (fd < 0)
-		return ;
-	write(fd, &c, 1);
+	t_list	*new_node;
+
+	new_node = (t_list *) malloc(sizeof(t_list));
+	if (!new_node)
+		return (0);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
 }

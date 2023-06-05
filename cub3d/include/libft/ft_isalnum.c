@@ -5,18 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 13:41:43 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/25 14:00:05 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:43:14 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:43:16 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isalnum(int c)
 {
-	if ('A' <= c && c <= 'Z')
+	if ('0' <= c && c <= '9')
+		return (1);
+	else if ('A' <= c && c <= 'Z')
 		return (1);
 	else if ('a' <= c && c <= 'z')
-		return (1);
-	else if ('0' <= c && c <= '9')
 		return (1);
 	else
 		return (0);

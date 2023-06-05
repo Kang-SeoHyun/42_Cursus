@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 12:26:44 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/19 20:21:45 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:46:04 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:46:05 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	hay_len;
-	size_t	nee_len;
-	size_t	i;
+	size_t	idx_str;
+	size_t	idx_find;
 
-	hay_len = ft_strlen(haystack);
-	nee_len = ft_strlen(needle);
-	i = 0;
-	if (len > hay_len)
-		len = hay_len;
-	if (*needle == '\0')
+	idx_str = 0;
+	if (!needle[0])
 		return ((char *)haystack);
-	if (hay_len < nee_len || len < nee_len)
-		return (0);
-	while (*haystack && i <= len - nee_len)
+	while (haystack[idx_str] && idx_str < len)
 	{
-		if (ft_strncmp((char *)haystack, (char *)needle, nee_len) == 0)
-			return ((char *)haystack);
-		haystack++;
-		i++;
+		idx_find = 0;
+		while (haystack[idx_str + idx_find] == needle[idx_find] \
+			&& idx_str + idx_find < len)
+		{
+			idx_find++;
+			if (!needle[idx_find])
+				return ((char *)&haystack[idx_str]);
+		}
+		idx_str++;
 	}
 	return (0);
 }

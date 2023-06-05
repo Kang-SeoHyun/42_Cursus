@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 17:36:00 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/25 15:36:37 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:45:27 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:45:27 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
+	while (1)
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
+		if (*s == (char)c)
+			return ((char *)s);
+		if (*s == '\0')
+			return (NULL);
+		s++;
 	}
-	if (c == '\0')
-		return ((char *)&s[i]);
-	return (0);
 }

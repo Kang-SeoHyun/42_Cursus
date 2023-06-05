@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 20:27:24 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/22 16:52:32 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:45:14 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:45:14 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,22 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long long	num;
-	char		c;
+	char	res;
 
-	num = n;
-	if (num < 0)
+	if (fd < 0)
+		return ;
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n < 0)
 	{
 		write(fd, "-", 1);
-		num *= -1;
+		ft_putnbr_fd(-n, fd);
 	}
-	if (num > 9)
-	{
-		ft_putnbr_fd(num / 10, fd);
-		ft_putnbr_fd(num % 10, fd);
-	}	
 	else
 	{
-		c = num + '0';
-		write(fd, &c, 1);
+		if (n > 9)
+			ft_putnbr_fd((n / 10), fd);
+		res = n % 10 + 48;
+		write(fd, &res, 1);
 	}
 }

@@ -5,54 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 12:50:05 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/22 16:33:47 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:43:42 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:43:43 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_intlen(long long n)
+static int	ft_len(int n)
 {
-	int			i;
+	int			size;
+	long long	num;
 
-	i = 0;
-	if (n <= 0)
+	size = 1;
+	num = n;
+	if (num < 0)
 	{
-		i++;
-		n *= (-1);
+		num *= -1;
+		size++;
 	}
-	while (n)
+	while (num > 9)
 	{
-		n /= 10;
-		i++;
+		size++;
+		num /= 10;
 	}
-	return (i);
+	return (size);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*result;
-	int			n_len;
 	long long	num;
+	int			len;
+	char		*arr;
 
 	num = n;
-	n_len = ft_intlen(num);
-	result = malloc(sizeof(char) * (n_len + 1));
-	if (!result)
+	len = ft_len(n);
+	arr = (char *) malloc (sizeof(char) * (len + 1));
+	if (!arr)
 		return (0);
-	result[n_len] = '\0';
+	if (num == 0)
+		arr[0] = '0';
 	if (num < 0)
 	{
-		num *= (-1);
-		result[0] = '-';
+		arr[0] = '-';
+		num *= -1;
 	}
-	if (num == 0)
-		result[0] = '0';
+	arr[len] = '\0';
 	while (num)
 	{
-		result[--n_len] = num % 10 + '0';
+		arr[--len] = num % 10 + '0';
 		num /= 10;
 	}
-	return (result);
+	return (arr);
 }

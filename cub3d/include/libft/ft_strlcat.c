@@ -5,29 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 17:46:35 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/14 19:15:46 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:45:42 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:45:43 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t	d_len;
-	size_t	s_len;
-	size_t	i;
+	size_t	idx_d;
+	size_t	idx_s;
+	size_t	len_d;
+	size_t	len_s;
 
-	d_len = ft_strlen(dst);
-	s_len = ft_strlen(src);
-	i = 0;
-	if (dstsize < d_len)
-		return (s_len + dstsize);
-	while (d_len + i + 1 < dstsize && src[i])
-	{
-		dst[d_len + i] = src[i];
-		i++;
-	}
-	dst[d_len + i] = '\0';
-	return (d_len + s_len);
+	len_d = ft_strlen(dest);
+	len_s = ft_strlen(src);
+	idx_d = len_d;
+	idx_s = 0;
+	if (size <= len_d)
+		return (len_s + size);
+	while (src[idx_s] && idx_d < size - 1)
+		dest[idx_d++] = src[idx_s++];
+	dest[idx_d] = '\0';
+	return (len_d + len_s);
 }

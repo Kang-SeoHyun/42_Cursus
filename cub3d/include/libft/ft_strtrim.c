@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 12:48:52 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/22 15:23:37 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:46:13 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:46:14 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char		*new_str;
-	size_t		i;
-	size_t		start;
-	size_t		end;
+	char	*result;
+	int		start;
+	int		end;
+	int		i;
 
 	if (!s1)
 		return (0);
@@ -25,16 +25,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return ((char *) s1);
 	i = 0;
 	start = 0;
-	end = ft_strlen(s1);
-	while (start < end && ft_strchr(set, s1[start]))
+	end = ft_strlen(s1) - 1;
+	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	while (start < end && ft_strchr(set, s1[end - 1]))
+	while (s1[end] && ft_strchr(set, s1[end]) && start <= end)
 		end--;
-	new_str = (char *)malloc(end - start + 1);
-	if (!new_str)
+	result = malloc(end - start + 2);
+	if (!result)
 		return (0);
-	while (start < end)
-		new_str[i++] = s1[start++];
-	new_str[i] = '\0';
-	return (new_str);
+	while (start <= end)
+		result[i++] = s1[start++];
+	result[i] = '\0';
+	return (result);
 }

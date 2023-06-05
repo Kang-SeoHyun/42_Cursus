@@ -5,21 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 12:49:21 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/25 13:58:43 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:45:34 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:45:35 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	i;
+	unsigned int	idx;
 
-	i = 0;
-	if (!s || !f)
+	idx = 0;
+	if (!s)
 		return ;
-	while (s[i])
+	while (s[idx])
 	{
-		f(i, &s[i]);
-		i++;
+		f(idx, s + idx);
+		idx++;
 	}
 }

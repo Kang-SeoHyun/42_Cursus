@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/05 15:23:04 by seokang           #+#    #+#              #
-#    Updated: 2023/06/05 15:23:13 by seokang          ###   ########.fr        #
+#    Created: 2023/06/05 15:27:58 by seokang           #+#    #+#              #
+#    Updated: 2023/06/05 15:28:03 by seokang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude  -g #-g3 -fsanitize=address
 # -g3 -fsanitize=address
 # -o2 or -o3
 NAME = cub3D
+
 SRCS_DIR = src
 SRCS =	src/main.c			\
 		src/exit.c			\

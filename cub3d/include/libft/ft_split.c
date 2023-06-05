@@ -5,92 +5,88 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 12:49:29 by seokang           #+#    #+#             */
-/*   Updated: 2022/07/25 13:43:59 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/05 15:45:23 by seokang           #+#    #+#             */
+/*   Updated: 2023/06/05 15:45:23 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_word(const char *str, char c)
+static int	count_word(char const *str, char c)
 {
-	int	count;
+	int	cnt;
 
-	count = 0;
+	cnt = 0;
 	while (*str)
 	{
 		while (*str && *str == c)
-			str++;
+			++str;
 		if (*str && *str != c)
 		{
-			count++;
+			++cnt;
 			while (*str && *str != c)
-				str++;
+				++str;
 		}
 	}
-	return (count);
+	return (cnt);
 }
 
-static char	*ft_strlen_dup(const char **str, char c)
+static char	*ft_strlen_dup(char const **str, char c)
 {
-	int		w_len;
+	int		word_len;
 	int		cnt;
 	char	*copy;
 
-	w_len = 0;
+	word_len = 0;
 	while (*(*str) && *(*str) != c)
 	{
-		w_len++;
-		(*str)++;
+		++word_len;
+		++*str;
 	}
-	*str -= w_len;
-	copy = malloc(sizeof(char) * (w_len + 1));
+	*str -= word_len;
+	copy = malloc(sizeof(char) * (word_len + 1));
 	if (!copy)
 		return (0);
 	cnt = 0;
-	while (*(*str) && ++cnt <= w_len)
+	while (*(*str) && ++cnt <= word_len)
 		*copy++ = *(*str)++;
 	*copy = '\0';
-	copy -= w_len;
+	copy -= word_len;
 	return (copy);
 }
 
 static char	**free_copy(char **str, int size)
 {
-	int	i;
+	int	index;
 
-	i = 0;
-	while (i < size)
-	{
-		free(str[i]);
-		i++;
-	}
+	index = -1;
+	while (++index < size)
+		free(str[index]);
 	free(str);
 	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
-	int		c_word;
-	int		i;
+	char	**copy;
+	int		words;
+	int		index;
 
 	if (!s)
 		return (0);
-	i = 0;
-	c_word = ft_count_word(s, c);
-	result = malloc(sizeof(char *) * (c_word + 1));
-	if (!result)
+	words = count_word(s, c);
+	copy = malloc(sizeof(char *) * (words + 1));
+	if (!copy)
 		return (0);
-	while (i < c_word)
+	index = -1;
+	while (++index < words)
 	{
 		while (*s && *s == c)
-			s++;
-		result[i] = ft_strlen_dup(&s, c);
-		if (!result[i])
-			return (free_copy(result, i));
-		i++;
+			++s;
+		copy[index] = ft_strlen_dup(&s, c);
+		if (!copy[index])
+			return (free_copy(copy, index));
 	}
-	result[i] = 0;
-	return (result);
+	copy[index] = 0;
+	return (copy);
 }
