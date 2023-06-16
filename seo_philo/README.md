@@ -1,4 +1,5 @@
 # 🧔🏼 philosophers 🧔🏼
+밥묵자
 > process 
 > > threading  
 > > thread 만드는 법  
