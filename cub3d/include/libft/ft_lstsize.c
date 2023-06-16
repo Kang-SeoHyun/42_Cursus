@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:44:30 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:44:31 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/21 14:23:37 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/21 14:58:07 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	size;
+	int	i;
 
-	size = 0;
-	if (!lst)
-		return (0);
+	i = 0;
 	while (lst)
 	{
-		size++;
+		i++;
 		lst = lst->next;
 	}
-	return (size);
+	return (i);
 }

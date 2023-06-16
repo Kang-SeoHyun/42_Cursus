@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_type.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:28:25 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:27 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:33:36 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:33:36 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	get_type_of_component(char *line)
 {
-	if (!ft_strncmp(line, NORTH, 3))
+	if (!ft_strncmp(line, "NO ", 3))
 		return (NO);
-	else if (!ft_strncmp(line, SOUTH, 3))
+	else if (!ft_strncmp(line, "SO ", 3))
 		return (SO);
-	else if (!ft_strncmp(line, WEST, 3))
+	else if (!ft_strncmp(line,"WE ", 3))
 		return (WE);
-	else if (!ft_strncmp(line, EAST, 3))
+	else if (!ft_strncmp(line, "EA ", 3))
 		return (EA);
 	else
 		return (FALSE);
@@ -28,9 +28,9 @@ int	get_type_of_component(char *line)
 
 int	get_type_of_color(char *line)
 {
-	if (!ft_strncmp(line, FLOOR, 2))
+	if (!ft_strncmp(line, "F ", 2))
 		return (F);
-	else if (!ft_strncmp(line, CEILING, 2))
+	else if (!ft_strncmp(line, "C ", 2))
 		return (C);
 	else
 		return (FALSE);

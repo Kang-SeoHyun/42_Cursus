@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:44:09 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:44:09 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/21 14:24:08 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/21 16:31:39 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		return ;
 	while (lst)
 	{
-		(*f)(lst->content);
+		f(lst->content);
 		lst = lst->next;
 	}
 }

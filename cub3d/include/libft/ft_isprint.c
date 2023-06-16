@@ -5,16 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:43:38 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:43:39 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/08 13:57:21 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/25 13:59:52 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_isprint(int c)
 {
-	if (' ' <= c && c <= '~')
+	if (32 <= c && c <= 126)
 		return (1);
 	else
 		return (0);

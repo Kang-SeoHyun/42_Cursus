@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_value.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:28:30 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:32 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:33:40 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:33:40 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_value_of_addr(char *line)
 
 	split_line = ft_split(line, ' ');
 	if (!split_line[1] || split_line[2])
-		exit_with_error("Invalid file contents");
+		error_exit("Invalid file contents");
 	res = ft_strdup(split_line[1]);
 	idx = -1;
 	while (split_line[++idx])
@@ -35,7 +35,7 @@ int	get_value_of_color(char *line)
 	int		color_num;
 
 	if (*line == '\0')
-		exit_with_error("ReadLine is empty");
+		error_exit("ReadLine is empty");
 	value_line = get_value_of_addr(line);
 	color_num = set_value_of_color(value_line);
 	return (color_num);
@@ -62,7 +62,7 @@ bool	get_value_of_path(char *path, t_game *game, int idx)
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		exit_with_error("Cannot open xpm file");
+		error_exit("Cannot open xpm file");
 	close(fd);
 	game->tex[idx].tex_path_malloc = ft_strdup(path);
 	return (true);

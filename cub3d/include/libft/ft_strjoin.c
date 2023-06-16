@@ -5,37 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:45:38 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:45:39 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/21 12:49:15 by seokang           #+#    #+#             */
+/*   Updated: 2022/09/02 17:48:50 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	ft_strcat(char *dest, const char *src)
+{
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	total_len;
-	size_t	i;
-	char	*total_s;
+	char	*new_str;
+	size_t	s_len;
 
 	if (!s1 || !s2)
 		return (0);
-	i = 0;
-	total_len = ft_strlen(s1) + ft_strlen(s2);
-	total_s = malloc (total_len + 1);
-	if (!total_s)
+	s_len = ft_strlen(s1) + ft_strlen(s2);
+	new_str = (char *)malloc(sizeof(char) * (s_len + 1));
+	if (!new_str)
 		return (0);
-	while (i < ft_strlen(s1))
-	{
-		total_s[i] = s1[i];
-		i++;
-	}
-	i = 0;
-	while (i < ft_strlen(s2))
-	{
-		total_s[ft_strlen(s1) + i] = s2[i];
-		i++;
-	}
-	total_s[total_len] = '\0';
-	return (total_s);
+	new_str[0] = '\0';
+	ft_strcat(new_str, s1);
+	ft_strcat(new_str, s2);
+	s1 = NULL;
+	s2 = NULL;
+	return (new_str);
 }

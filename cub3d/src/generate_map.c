@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:28:20 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:22 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:33:30 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:33:31 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	set_player_position(t_map *map, int col, int row)
 {
-	if (map->player.starting_initial || map->player.y || map->player.x)
-		exit_with_error("Duplicated player value");
-	map->player.starting_initial = map->saved_map[col][row];
+	if (map->player.start_point || map->player.y || map->player.x)
+		error_exit("Duplicated player value");
+	map->player.start_point = map->saved_map[col][row];
 	map->player.y = (double)col;
 	map->player.x = (double)row;
 	map->saved_map[col][row] = '0';
@@ -58,14 +58,13 @@ void	set_map(t_map *map)
 				continue ;
 			else if (ft_strchr(MOVABLE, map->saved_map[col][row]))
 			{
-				if (set_map_component(map, col, row) == ERROR)
-					exit_with_error("A component of the map \
-						was saved incorrectly");
+				if (set_map_component(map, col, row) == -1)
+					error_exit("A component of the map was saved incorrectly");
 			}
 		}
 	}
-	if (!map->player.starting_initial)
-		exit_with_error("Failed to save the player's location value");
+	if (!map->player.start_point)
+		error_exit("Failed to save the player's location value");
 }
 
 void	get_map(t_map *map)
@@ -75,7 +74,7 @@ void	get_map(t_map *map)
 
 	map->saved_map = ft_split(map->map_value, '\n');
 	if (map->saved_map == 0)
-		exit_with_error("Cannot saved map");
+		error_exit("Cannot saved map");
 	col = -1;
 	row = 0;
 	while (map->saved_map[++col] != 0)

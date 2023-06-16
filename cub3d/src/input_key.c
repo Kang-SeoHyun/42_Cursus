@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_key.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:28:41 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:43 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:33:50 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:33:50 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	deal_key(int key_code, t_game *game)
 {
-	if (key_code == KEY_ESC)
-		exit_event(game);
-	else if (key_code == KEY_W || key_code == KEY_UP)
+	if (key_code == ESC)
+		press_exit(game);
+	else if (key_code == W || key_code == UP)
 		parallel_move(game, 0);
-	else if (key_code == KEY_S || key_code == KEY_DOWN)
+	else if (key_code == S || key_code == DOWN)
 		parallel_move(game, M_PI);
-	else if (key_code == KEY_A)
+	else if (key_code == A)
 		parallel_move(game, M_PI_2);
-	else if (key_code == KEY_D)
+	else if (key_code == D)
 		parallel_move(game, -M_PI_2);
-	else if (key_code == KEY_RIGHT)
+	else if (key_code == RIGHT)
 		rotate_move(game, -R_UNIT * 0.1f);
-	else if (key_code == KEY_LEFT)
+	else if (key_code == LEFT)
 		rotate_move(game, R_UNIT * 0.1f);
 	return (0);
 }

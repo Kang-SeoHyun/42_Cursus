@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:46:00 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:46:00 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/13 15:32:57 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/25 15:34:38 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	idx;
+	size_t			i;
 
-	idx = 0;
-	while (n--)
+	i = 0;
+	while (i < n)
 	{
-		if (!s1[idx] && !s2[idx])
+		if (!s1[i] && !s2[i])
 			return (0);
-		if (s1[idx] != s2[idx])
-			return ((const unsigned char)s1[idx] \
-				- (const unsigned char)s2[idx]);
-		idx++;
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
 	return (0);
 }

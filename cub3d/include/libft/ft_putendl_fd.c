@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:45:09 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:45:10 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/19 20:27:22 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/19 21:58:05 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	write(fd, "\n", 1);
 }

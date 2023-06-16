@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:29:13 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:29:14 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:34:24 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:34:25 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,20 @@ bool	is_contain(char *str, char c)
 void	check_saved_component(t_game *game)
 {
 	if (!game->tex[1].tex_path_malloc || \
-		!is_valid_extention(game->tex[1].tex_path_malloc, XPM_EXTENSION))
-		exit_with_error("Saved Invalid component no");
+		!is_valid_extention(game->tex[1].tex_path_malloc, ".xpm"))
+		error_exit("Saved Invalid component no");
 	if (!game->tex[2].tex_path_malloc || \
-		!is_valid_extention(game->tex[2].tex_path_malloc, XPM_EXTENSION))
-		exit_with_error("Saved Invalid component so");
+		!is_valid_extention(game->tex[2].tex_path_malloc, ".xpm"))
+		error_exit("Saved Invalid component so");
 	if (!game->tex[3].tex_path_malloc || \
-		!is_valid_extention(game->tex[3].tex_path_malloc, XPM_EXTENSION))
-		exit_with_error("Saved Invalid component we");
+		!is_valid_extention(game->tex[3].tex_path_malloc, ".xpm"))
+		error_exit("Saved Invalid component we");
 	if (!game->tex[4].tex_path_malloc || \
-		!is_valid_extention(game->tex[4].tex_path_malloc, XPM_EXTENSION))
-		exit_with_error("Saved Invalid component ea");
+		!is_valid_extention(game->tex[4].tex_path_malloc, ".xpm"))
+		error_exit("Saved Invalid component ea");
 	if (game->img.floor_color == INIT || game->img.ceil_color == INIT \
 		|| game->img.floor_color == game->img.ceil_color)
-		exit_with_error("Saved Invalid color value");
+		error_exit("Saved Invalid color value");
 }
 
 void	check_color_value_comma(char *line)
@@ -69,7 +69,7 @@ void	check_color_value_comma(char *line)
 		line++;
 	}
 	if (cnt != 2)
-		exit_with_error("Invalid RGB format(comma)");
+		error_exit("Invalid RGB format(comma)");
 }
 
 void	check_color_value(char *line)
@@ -81,18 +81,18 @@ void	check_color_value(char *line)
 	check_color_value_comma(line);
 	split_line = ft_split(line, ',');
 	if (!split_line)
-		exit_with_error("Invalid RGB format(Does not contain a value)");
+		error_exit("Invalid RGB format(Does not contain a value)");
 	idx = -1;
 	while (split_line[++idx])
 	{
 		jdx = -1;
 		while (split_line[idx][++jdx])
 			if (!ft_isdigit(split_line[idx][jdx]))
-				exit_with_error("Invalid RGB format\
+				error_exit("Invalid RGB format\
 					(Contains a non-numeric value)");
 	}
 	if (idx != 3)
-		exit_with_error("Invalid RGB format(Value exceeds 3)");
+		error_exit("Invalid RGB format(Value exceeds 3)");
 	idx = -1;
 	while (split_line[++idx])
 		free(split_line[idx]);

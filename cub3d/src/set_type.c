@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_type.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:29:05 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:29:06 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:34:13 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:34:13 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ void	set_type_of_component(t_game *game, int type, char *line)
 	value_line = get_value_of_addr(line);
 	if (type == NO && (game->tex[NO].tex_path_malloc \
 			|| !get_value_of_path(value_line, game, NO)))
-		exit_with_error("Invalid 'NO' file");
+		error_exit("Invalid 'NO' file");
 	else if (type == SO && (game->tex[SO].tex_path_malloc \
 			|| !get_value_of_path(value_line, game, SO)))
-		exit_with_error("Invalid 'SO' file");
+		error_exit("Invalid 'SO' file");
 	else if (type == WE && (game->tex[WE].tex_path_malloc \
 			|| !get_value_of_path(value_line, game, WE)))
-		exit_with_error("Invalid 'WE' file");
+		error_exit("Invalid 'WE' file");
 	else if (type == EA && (game->tex[EA].tex_path_malloc \
 			|| !get_value_of_path(value_line, game, EA)))
-		exit_with_error("Invalid 'EA' file");
+		error_exit("Invalid 'EA' file");
 	free(value_line);
 }
 
@@ -37,13 +37,13 @@ void	set_type_of_color(t_img *img, int type, char *line)
 	if (type == F)
 	{
 		if (img->floor_color != INIT)
-			exit_with_error("Already saved the value of F");
+			error_exit("Already saved the value of F");
 		img->floor_color = get_value_of_color(line);
 	}
 	else if (type == C)
 	{
 		if (img->ceil_color != INIT)
-			exit_with_error("Already saved the value of C");
+			error_exit("Already saved the value of C");
 		img->ceil_color = get_value_of_color(line);
 	}
 }

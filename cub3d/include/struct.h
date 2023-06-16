@@ -3,42 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejachoi <ejachoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 19:23:53 by ejachoi           #+#    #+#             */
-/*   Updated: 2023/05/27 19:27:31 by ejachoi          ###   ########.fr       */
+/*   Created: 2023/06/10 16:33:03 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:33:04 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-
-/*
-** =============================================================================
-** Dependencies from User
-** =============================================================================
-*/
-
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
 # include "minilibx_opengl_20191021/mlx.h"
-
-/*
-** =============================================================================
-** Dependencies from System
-** =============================================================================
-*/
-
 # include <math.h>
 # include <fcntl.h>
 # include <string.h>
 # include <stdbool.h>
 
-/*
-** =============================================================================
-** Macros
-** =============================================================================
-*/
+
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
@@ -48,20 +30,10 @@
 
 # define TRUE 1
 # define FALSE 0
-# define ERROR -1
 
 # define INIT -1
-
-# define MAP_EXTENSION ".cub"
-# define XPM_EXTENSION ".xpm"
 # define FAIL 1
 
-# define NORTH "NO "
-# define SOUTH "SO "
-# define WEST "WE "
-# define EAST "EA "
-# define FLOOR "F "
-# define CEILING "C "
 
 # define MAP_COMPONENT "01NSEW "
 # define UNMOVABLE "1 "
@@ -75,24 +47,23 @@
 # define C 6
 # define MAP 7
 
-# define SCREEN_WIDTH 1920
-# define SCREEN_HEIGHT 1080
+# define WIDTH 1920
+# define HEIGHT 1080
 # define M_UNIT 0.1
 # define R_UNIT M_PI_4
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_EXIT 17
 
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_ESC 53
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_W 13
-# define KEY_F 3
+# define LEFT 123
+# define RIGHT 124
+# define UP 126
+# define DOWN 125
+# define ESC 53
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 
 typedef unsigned int	t_ui;
 
@@ -114,7 +85,7 @@ typedef struct s_img2
 
 typedef struct s_player
 {
-	char	starting_initial;
+	char	start_point;
 	double	y;
 	double	x;
 	double	dirx;
@@ -185,10 +156,6 @@ typedef struct s_game
 
 	double		step;
 	double		texpos;
-	int			miniw;
-	int			minih;
-	int			gridw;
-	int			gridh;
 }	t_game;
 
 #endif

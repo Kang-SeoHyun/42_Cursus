@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:44:35 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:44:36 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/13 18:39:40 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/14 18:43:45 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const unsigned char	*src;
+	unsigned char	*src;
+	size_t			i;
 
-	src = (const unsigned char *)s;
-	while (n--)
+	src = (unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		if (*src == (unsigned char)c)
-			return ((void *)src);
-		src++;
+		if (src[i] == (unsigned char)c)
+			return (&src[i]);
+		i++;
 	}
-	return (NULL);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:28:53 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:54 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:33:58 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:34:00 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main_loop(t_game *g)
 	&(g->screen.size_l), &(g->screen.endian));
 	draw_background(g);
 	x = -1;
-	while (++x < SCREEN_WIDTH)
+	while (++x < WIDTH)
 		cast_one_ray(g, x);
 	mlx_put_image_to_window(g->mlx, g->win, g->screen.img, 0, 0);
 	return (0);

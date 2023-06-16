@@ -5,57 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:29:31 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:29:32 by seokang          ###   ########.fr       */
+/*   Created: 2022/08/31 16:32:52 by seokang           #+#    #+#             */
+/*   Updated: 2022/09/16 16:53:54 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	gnl_strlen(const char *s)
+int	gnl_strlen(char *s)
 {
-	int	cnt;
+	int	i;
 
-	cnt = 0;
-	while (s[cnt])
-		cnt++;
-	return (cnt);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 char	*gnl_strjoin(char *s1, char *s2)
 {
-	int		idx;
-	int		size_s1;
-	int		size_s2;
-	char	*connected_s;
+	size_t	total_len;
+	char	*new_str;
+	int		i;
 
-	size_s1 = gnl_strlen(s1);
-	size_s2 = gnl_strlen(s2);
-	connected_s = (char *)malloc(sizeof(char) * (size_s1 + size_s2) + 1);
-	if (!connected_s)
+	if (!s2)
+		return (0);
+	total_len = gnl_strlen(s1) + gnl_strlen(s2);
+	new_str = (char *)malloc(sizeof(char) * (total_len + 1));
+	if (!new_str)
 		return (NULL);
-	idx = 0;
-	while (*s1)
-		connected_s[idx++] = *s1++;
+	i = 0;
+	new_str[i] = '\0';
+	while (s1[i])
+	{
+		new_str[i] = s1[i];
+		i++;
+	}
 	while (*s2)
-		connected_s[idx++] = *s2++;
-	connected_s[idx] = '\0';
-	return (connected_s);
+		new_str[i++] = *s2++;
+	new_str[i] = '\0';
+	free(s1);
+	return (new_str);
 }
 
-char	*gnl_strndup(const char *src, int start, int num)
+char	*gnl_strchr(char *s, int c)
 {
-	char	*temp;
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (c == '\0')
+		return ((char *)&s[i]);
+	return (0);
+}
+
+char	*gnl_strndup(char *s, int start, int num)
+{
 	int		idx_s;
 	int		idx_t;
+	char	*temp;
 
 	idx_s = 0;
 	idx_t = 0;
 	temp = (char *)malloc(sizeof(char) * num + 1);
 	if (!temp)
 		return (NULL);
-	while (src[idx_s] && idx_t < num)
-		temp[idx_t++] = src[start + idx_s++];
+	while (s[idx_s] && idx_t < num)
+		temp[idx_t++] = s[start + idx_s++];
 	temp[idx_t] = '\0';
 	return (temp);
 }

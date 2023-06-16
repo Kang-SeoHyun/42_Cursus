@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:45:47 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:45:47 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/14 17:46:32 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/14 19:17:53 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	idx;
-	size_t	src_len;
+	size_t	s_len;
+	size_t	i;
 
-	idx = 0;
-	src_len = ft_strlen(src);
-	if (!dst || !src)
-		return (0);
-	if (!dstsize)
-		return (src_len);
-	while (src[idx] && idx < (dstsize - 1))
+	s_len = ft_strlen(src);
+	i = 0;
+	while (i + 1 < dstsize && src[i])
 	{
-		dst[idx] = src[idx];
-		idx++;
+		dst[i] = src[i];
+		i++;
 	}
-	dst[idx] = '\0';
-	return (src_len);
+	if (dstsize != 0)
+		dst[i] = '\0';
+	return (s_len);
 }

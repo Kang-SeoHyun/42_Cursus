@@ -5,16 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:46:24 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:46:25 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/08 17:25:36 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/25 13:57:04 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_tolower(int c)
 {
 	if ('A' <= c && c <= 'Z')
-		c += 32;
-	return (c);
+		return (c + 32);
+	else
+		return (c);
 }

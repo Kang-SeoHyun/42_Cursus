@@ -1,17 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: seokang <seokang@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/05 15:27:58 by seokang           #+#    #+#              #
-#    Updated: 2023/06/05 15:28:03 by seokang          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinclude  -g #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iinclude  
+#-g 
+#-g3 -fsanitize=address
 # -g3 -fsanitize=address
 # -o2 or -o3
 NAME = cub3D
@@ -26,11 +17,11 @@ SRCS =	src/main.c			\
 		src/set_value.c		\
 		src/init.c			\
 		src/validation.c	\
-		src/input_key.c \
-		src/set_ray.c \
-		src/set_texture.c \
-		src/raycast.c \
-		src/draw_line.c \
+		src/input_key.c 	\
+		src/set_ray.c 		\
+		src/set_texture.c 	\
+		src/raycast.c 		\
+		src/draw_line.c 	\
 
 
 OBJS = $(SRCS:.c=.o)
@@ -38,13 +29,11 @@ OBJS = $(SRCS:.c=.o)
 MLX_NAME = mlx
 MLX_DIR = include/minilibx_opengl_20191021
 
-GNL_NAME = gnl
-GNL_DIR = include/get_next_line
-
 LIBFT_NAME = ft
 LIBFT_DIR = include/libft
 
-.PHONY : all clean fclean re
+GNL_NAME = gnl
+GNL_DIR = include/get_next_line
 
 $(NAME) : $(OBJS)
 	$(MAKE) -C $(MLX_DIR) all
@@ -59,17 +48,16 @@ $(SRCS_DIR)/%.o : $(SRCS_DIR)/%.c
 	$(CC) $(CFLAGS) -I$(MLX_DIR) -I$(GNL_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
 all : $(NAME)
-
 bonus : $(NAME)
 
 clean :
-	@rm -rf $(OBJS)
+	rm -rf $(OBJS)
 	$(MAKE) -C $(MLX_DIR) clean
 	$(MAKE) -C $(GNL_DIR) clean
 	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean :
-	@rm -rf $(NAME) $(OBJS)
+	rm -rf $(NAME) $(OBJS)
 	$(MAKE) -C $(MLX_DIR) clean
 	$(MAKE) -C $(GNL_DIR) fclean
 	$(MAKE) -C $(LIBFT_DIR) fclean
@@ -77,3 +65,5 @@ fclean :
 re :
 	$(MAKE) fclean
 	$(MAKE) all
+
+.PHONY : all clean fclean re

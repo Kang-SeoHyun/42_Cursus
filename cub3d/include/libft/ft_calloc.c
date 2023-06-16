@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:43:07 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:43:08 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/19 16:01:07 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/25 15:26:05 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*p;
+	void	*ptr;
 
-	if ((count == SIZE_MAX && size > 1) || (count > 1 && size == SIZE_MAX))
-		return (NULL);
-	p = malloc(size * count);
-	if (!p)
+	if ((size * count) / count != size)
 		return (0);
-	ft_memset(p, 0, size * count);
-	return (p);
+	ptr = (void *)malloc (count * size);
+	if (!ptr)
+		return (0);
+	ft_memset(ptr, 0, count * size);
+	return (ptr);
 }

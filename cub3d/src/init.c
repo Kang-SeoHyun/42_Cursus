@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:28:34 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:36 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:33:45 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:33:45 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_game(t_game *game, int fd)
 		{
 			type = get_type(line);
 			if (!type)
-				exit_with_error("Invalid type");
+				error_exit("Invalid type");
 			set_type(game, type, line);
 		}
 		free(line);
@@ -45,11 +45,11 @@ void	init_coordinates(t_game *g)
 
 	g->px = g->map.player.y + 0.5f;
 	g->py = g->map.player.x + 0.5f;
-	if (g->map.player.starting_initial == 'N')
+	if (g->map.player.start_point == 'N')
 		angle = M_PI;
-	else if (g->map.player.starting_initial == 'E')
+	else if (g->map.player.start_point == 'E')
 		angle = M_PI_2;
-	else if (g->map.player.starting_initial == 'S')
+	else if (g->map.player.start_point == 'S')
 		angle = 0;
 	else
 		angle = -M_PI_2;
@@ -64,8 +64,8 @@ int	init_window(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (1);
-	game->win = mlx_new_window(game->mlx, (int)SCREEN_WIDTH, \
-		(int)SCREEN_HEIGHT, "CUB_3D");
+	game->win = mlx_new_window(game->mlx, (int)WIDTH, \
+		(int)HEIGHT, "CUB_3D");
 	if (!game->win)
 		return (1);
 	return (0);
@@ -84,5 +84,5 @@ void	init_img(t_game *game)
 		tx[3].tex_path_malloc, &(tx[3].width), &(tx[3].height));
 	tx[4].texture.img = mlx_xpm_file_to_image(game->mlx, \
 		tx[4].tex_path_malloc, &(tx[4].width), &(tx[4].height));
-	game->screen.img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	game->screen.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 }

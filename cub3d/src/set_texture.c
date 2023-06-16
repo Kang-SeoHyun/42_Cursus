@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:29:01 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:29:03 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:34:08 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:34:10 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	cal_texture(t_game *g, t_texture wall_tex)
 	if (g->side == 1 && g->raydiry < 0)
 		g->texx = wall_tex.width - g->texx - 1;
 	g->step = 1.0 * wall_tex.height / g->lineheight;
-	g->texpos = (g->drawstart - SCREEN_HEIGHT / 2 + g->lineheight / 2);
+	g->texpos = (g->drawstart - HEIGHT / 2 + g->lineheight / 2);
 	g->texpos *= g->step;
 }

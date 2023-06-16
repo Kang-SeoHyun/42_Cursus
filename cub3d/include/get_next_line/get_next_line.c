@@ -5,90 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:29:36 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:29:38 by seokang          ###   ########.fr       */
+/*   Created: 2022/08/31 16:32:48 by seokang           #+#    #+#             */
+/*   Updated: 2022/09/18 14:31:32 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	is_newline(char *s)
+static char	*ft_baguni_pugi(int fd, char *backup)
 {
-	int	idx_nl;
+	char	*baguni;
+	int		reres;
 
-	idx_nl = -1;
-	while (s[++idx_nl])
+	baguni = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!baguni)
+		return (NULL);
+	reres = read(fd, baguni, BUFFER_SIZE);
+	while (reres > 0)
 	{
-		if (s[idx_nl] == '\n')
-			return (idx_nl);
+		baguni[reres] = '\0';
+		backup = gnl_strjoin(backup, baguni);
+		if (gnl_strchr(backup, '\n'))
+			break ;
+		reres = read(fd, baguni, BUFFER_SIZE);
 	}
-	return (-1);
+	free(baguni);
+	return (backup);
 }
 
-static char	*split_to_line(char **backup, char *buf)
+static char	*ft_na_nugi(char **result, char *backup)
 {
-	char	*line;
-	char	*temp_new_backup;
+	int		idx_end;
 	int		idx_nl;
+	char	*temp;
 
-	line = NULL;
-	idx_nl = is_newline(*backup);
+	idx_end = 0;
+	idx_nl = -1;
+	while (backup[idx_end] && backup[idx_end] != '\n')
+		idx_end++;
+	if (backup[idx_end] == '\n')
+		idx_nl = idx_end;
 	if (idx_nl == -1)
 	{
-		if (*backup[0] != '\0')
-			line = gnl_strndup(*backup, 0, gnl_strlen(*backup));
-		free(*backup);
-		*backup = NULL;
+		if (*backup != '\0')
+			*result = gnl_strndup(backup, 0, gnl_strlen(backup));
+		free(backup);
+		return (NULL);
 	}
 	else
 	{
-		line = gnl_strndup(*backup, 0, idx_nl + 1);
-		temp_new_backup = \
-		gnl_strndup(*backup, idx_nl + 1, gnl_strlen(*backup) - idx_nl);
-		free(*backup);
-		*backup = temp_new_backup;
+		*result = gnl_strndup(backup, 0, idx_nl + 1);
+		temp = gnl_strndup(backup, idx_nl + 1, gnl_strlen(backup) - idx_nl);
+		free(backup);
+		backup = temp;
 	}
-	free(buf);
-	return (line);
-}
-
-static char	*get_line(int fd, char **backup, char *buf)
-{
-	char	*new_backup;
-	int		read_byte;
-	int		idx_next;
-
-	read_byte = read(fd, buf, BUFFER_SIZE);
-	while (read_byte > 0)
-	{
-		buf[read_byte] = '\0';
-		new_backup = gnl_strjoin(*backup, buf);
-		free(*backup);
-		*backup = new_backup;
-		idx_next = is_newline(*backup);
-		if (idx_next != -1)
-			return (split_to_line(backup, buf));
-		read_byte = read(fd, buf, BUFFER_SIZE);
-	}
-	return (split_to_line(backup, buf));
+	return (backup);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*buf;
+	char		*result;
 	static char	*backup;
 
-	buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (buf == NULL)
+	result = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (BUFFER_SIZE <= 0 && read(fd, buf, 0) == -1)
+	if (!backup)
 	{
-		free(buf);
-		return (NULL);
-	}
-	if (backup != NULL && is_newline(backup) != -1)
-		return (split_to_line(&backup, buf));
-	if (backup == NULL)
 		backup = gnl_strndup("", 0, 0);
-	return (get_line(fd, &backup, buf));
+		if (!backup)
+			return (NULL);
+		*backup = '\0';
+	}
+	backup = ft_baguni_pugi(fd, backup);
+	if (!backup)
+		return (NULL);
+	backup = ft_na_nugi(&result, backup);
+	return (result);
 }

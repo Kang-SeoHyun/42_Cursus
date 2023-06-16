@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:43:47 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:43:48 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/21 14:24:33 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/22 15:14:08 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*curr;
+	t_list	*temp;
 
-	curr = *lst;
-	if (!lst || !new)
-		return ;
-	if (!*lst)
+	temp = *lst;
+	if (!(*lst))
 	{
 		*lst = new;
 		return ;
 	}
-	ft_lstlast(*lst)->next = new;
+	if (!new)
+		return ;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new;
 }

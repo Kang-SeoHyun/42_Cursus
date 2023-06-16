@@ -18,21 +18,21 @@ SRCS = get_next_line.c get_next_line_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
-.PHONY : all clean fclean re
-
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rc $@ $^
+	ar rcs $(NAME) $(OBJS)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean : $(OBJS)
-	@rm -f $(OBJS)
+	rm -rf $(OBJS)
 
-fclean : $(OBJS) $(OBJS) $(NAME)
-	@rm -f $^
+fclean: clean
+	rm -rf $(NAME)
 
 re : fclean
 	make all
+
+.PHONY : all clean fclean re

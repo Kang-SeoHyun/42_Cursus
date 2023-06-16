@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_value.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:29:09 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:29:10 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:34:17 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:34:18 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	set_value_of_element(char *value_line, int *idx)
 	while (value_line[++(*idx)] && ft_isdigit(value_line[*idx]))
 		rgb = rgb * 10 + (value_line[*idx] - '0');
 	if (rgb < 0 || 255 < rgb)
-		exit_with_error("Error message");
+		error_exit("Error message");
 	return (rgb);
 }
 

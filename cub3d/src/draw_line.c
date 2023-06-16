@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:28:10 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:12 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:33:15 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:33:16 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	dda(t_game *g)
 
 void	getdrawpoint(t_game *g)
 {
-	g->lineheight = (int)(SCREEN_HEIGHT / g->perpwalldist);
-	g->drawstart = (-1 * g->lineheight / 2) + (SCREEN_HEIGHT / 2);
+	g->lineheight = (int)(HEIGHT / g->perpwalldist);
+	g->drawstart = (-1 * g->lineheight / 2) + (HEIGHT / 2);
 	if (g->drawstart < 0)
 		g->drawstart = 0;
-	g->drawend = g->lineheight / 2 + SCREEN_HEIGHT / 2;
-	if (g->drawend >= SCREEN_HEIGHT)
-		g->drawend = SCREEN_HEIGHT - 1;
+	g->drawend = g->lineheight / 2 + HEIGHT / 2;
+	if (g->drawend >= HEIGHT)
+		g->drawend = HEIGHT - 1;
 }
 
 void	drawline(t_game *g, t_texture wall_tex, int x)
@@ -61,6 +61,6 @@ void	drawline(t_game *g, t_texture wall_tex, int x)
 		color = g->wall_data[wall_tex.height * g->texy + g->texx];
 		if (g->side == 1)
 			color = (color >> 1) & 8355711;
-		g->screen_data[y * SCREEN_WIDTH + x] = color;
+		g->screen_data[y * WIDTH + x] = color;
 	}
 }

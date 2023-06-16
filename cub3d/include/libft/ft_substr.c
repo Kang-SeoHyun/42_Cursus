@@ -5,43 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:46:18 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:46:21 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/21 12:48:43 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/22 15:59:39 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_nullstr(void)
+static char	*ft_empty(void)
 {
-	char	*sub;
+	char	*temp;
 
-	sub = (char *)malloc(sizeof(char) * 1);
-	if (!sub)
+	temp = (char *)malloc(sizeof(char) * 1);
+	if (!temp)
 		return (0);
-	sub[0] = 0;
-	return (sub);
+	temp[0] = '\0';
+	return (temp);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
+	size_t	s_len;
 	size_t	i;
 
-	i = 0;
 	if (!s)
 		return (0);
-	if (ft_strlen(s) <= start)
+	s_len = ft_strlen(s);
+	i = 0;
+	if (s_len <= start)
 	{
-		substr = ft_nullstr();
+		substr = ft_empty();
 		return (substr);
 	}
-	if (ft_strlen(s) - start < len)
-		len = ft_strlen(s) - start;
-	substr = malloc (len + 1);
+	if (s_len < start + len)
+		len = s_len - start;
+	substr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!substr)
 		return (0);
-	while (i < len && (start + i) < ft_strlen(s))
+	while (i < len)
 	{
 		substr[i] = s[start + i];
 		i++;

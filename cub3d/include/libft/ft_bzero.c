@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:42:59 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 16:29:54 by seokang          ###   ########.fr       */
+/*   Created: 2022/07/13 12:42:06 by seokang           #+#    #+#             */
+/*   Updated: 2022/07/14 14:47:19 by seokang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,14 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	unsigned char	*src;
+	size_t			i;
+
+	src = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		src[i] = 0;
+		i++;
+	}
 }

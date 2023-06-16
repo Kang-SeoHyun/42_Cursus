@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seokang <seokang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gsong <gsong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:28:57 by seokang           #+#    #+#             */
-/*   Updated: 2023/06/05 15:28:59 by seokang          ###   ########.fr       */
+/*   Created: 2023/06/10 16:34:03 by gsong             #+#    #+#             */
+/*   Updated: 2023/06/10 16:34:03 by gsong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ void	draw_background(t_game *g)
 	int	x;
 
 	y = -1;
-	while (++y < SCREEN_HEIGHT)
+	while (++y < HEIGHT)
 	{
 		x = -1;
-		while (++x < SCREEN_WIDTH)
+		while (++x < WIDTH)
 		{
-			if (y < SCREEN_HEIGHT / 2)
-				g->screen_data[y * SCREEN_WIDTH + x] = g->img.ceil_color;
-			else if (y > SCREEN_HEIGHT / 2)
-				g->screen_data[y * SCREEN_WIDTH + x] = g->img.floor_color;
+			if (y < HEIGHT / 2)
+				g->screen_data[y * WIDTH + x] = g->img.ceil_color;
+			else if (y > HEIGHT / 2)
+				g->screen_data[y * WIDTH + x] = g->img.floor_color;
 			else
-				g->screen_data[y * SCREEN_WIDTH + x] = 0;
+				g->screen_data[y * WIDTH + x] = 0;
 		}
 	}
 }
 
 void	ray_cal_init(t_game *g, int x)
 {
-	g->camerax = 2 * x / (double)(SCREEN_WIDTH - 1) - 1;
+	g->camerax = 2 * x / (double)(WIDTH - 1) - 1;
 	g->raydirx = g->dirx + g->planex * g->camerax;
 	g->raydiry = g->diry + g->planey * g->camerax;
 	g->mapx = (int)(g->px);
