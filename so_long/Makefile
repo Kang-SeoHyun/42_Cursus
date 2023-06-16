@@ -18,7 +18,7 @@ RM			= rm -f
 MLX			= -Lmlx -lmlx -framework OpenGL -framework Appkit
 LIBFT		= -Llibft -lft
 
-# header files
+# header file
 HEADER_DIR  = mandatory/
 HEADER_SRCS	= so_long.h
 HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
